@@ -52,20 +52,16 @@ DRIVER guides you through six stages from concept to completion:
 ### From GitHub (Recommended)
 
 ```bash
-# In Claude Code
+# Step 1: In Claude Code
 /plugin marketplace add https://github.com/CinderZhang/driver-plugin
+```
+
+```bash
+# Step 2: In Claude Code
 /plugin install driver@driver-plugin
 ```
 
 Restart Claude Code after installing.
-
-### From Local Folder (For Development)
-
-```bash
-# In Claude Code
-/plugin marketplace add /path/to/driver-plugin
-/plugin install driver@driver-dev
-```
 
 ---
 
