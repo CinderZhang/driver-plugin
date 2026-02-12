@@ -77,7 +77,40 @@ Read all relevant files:
 
 ### 2. Create Export Directory Structure
 
-Create `driver-plan/` with this structure:
+Determine the tech stack from the project (check `/product/product-overview.md` and existing source files).
+
+#### Path A: Python + Streamlit (Quant/Analytical Tools)
+
+```
+driver-plan/
+├── README.md                    # Quick start guide
+├── product-overview.md          # Product summary (always provide)
+│
+├── prompts/                     # Ready-to-use prompts for coding agents
+│   ├── one-shot-prompt.md       # Prompt for full implementation
+│   └── section-prompt.md        # Prompt template for section-by-section
+│
+├── instructions/                # Implementation instructions
+│   ├── one-shot-instructions.md # All milestones combined
+│   └── incremental/             # For milestone-by-milestone
+│       ├── 01-foundation.md
+│       └── [NN]-[section-id].md
+│
+├── requirements.txt             # Python dependencies (pinned versions)
+├── app.py                       # Main Streamlit entry point
+├── calculations/                # Core logic (pure Python, testable)
+│   └── [module].py
+├── data/                        # Data loading and processing
+│   └── loader.py
+└── sections/                    # Section modules
+    └── [section-id]/
+        ├── README.md
+        ├── tests.md             # Test-writing instructions (pytest)
+        ├── page.py              # Streamlit page for this section
+        └── logic.py             # Calculation logic (separate from UI)
+```
+
+#### Path B: React + TypeScript (Web App UI)
 
 ```
 driver-plan/
@@ -111,12 +144,36 @@ driver-plan/
 For each file, generate appropriate content:
 
 - **product-overview.md**: Product summary with sections and data model
-- **Prompts**: Ready-to-paste prompts that ask clarifying questions about auth, data modeling, tech stack
+- **Prompts**: Ready-to-paste prompts that ask clarifying questions about data sources, deployment, tech stack
 - **Instructions**: Milestone-by-milestone implementation guides
-- **tests.md**: Framework-agnostic test instructions for TDD approach
-- **Section READMEs**: Overview, user flows, callback props
+- **tests.md**: Framework-appropriate test instructions
+- **Section READMEs**: Overview, user flows, key logic
 
-Include the key preamble in all instruction files:
+#### Path A Preamble (Python + Streamlit)
+
+Include in all instruction files:
+
+```markdown
+**What you're receiving:**
+- Working Streamlit app with calculation logic
+- Separated concerns: UI (page.py) and logic (logic.py)
+- Test-writing instructions for pytest
+
+**What you need to build/extend:**
+- Data source connections (API keys, database access)
+- Input validation at boundaries (Pydantic recommended)
+- Deployment configuration (Docker, Streamlit Cloud, etc.)
+
+**Important:**
+- DO keep calculation logic separate from UI code
+- DO validate all external data inputs with Pydantic
+- DO use pytest with tests.md for calculation verification
+- DO NOT mix data fetching into calculation functions
+```
+
+#### Path B Preamble (React + TypeScript)
+
+Include in all instruction files:
 
 ```markdown
 **What you're receiving:**
@@ -135,7 +192,16 @@ Include the key preamble in all instruction files:
 - DO use test-driven development with tests.md
 ```
 
-### 4. Transform Import Paths
+### 4. Prepare Files for Export
+
+#### Path A (Python + Streamlit)
+
+- Copy `.py` files with clean imports (no DRIVER-specific paths)
+- Generate `requirements.txt` from imports used in the project (pin versions)
+- Ensure `calculations/` modules are pure Python (no Streamlit imports)
+- Include sample data as CSV/JSON if applicable
+
+#### Path B (React + TypeScript)
 
 When copying components:
 
