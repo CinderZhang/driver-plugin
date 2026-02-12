@@ -1,6 +1,6 @@
 {
-  "name": "driver",
-  "description": "DRIVER methodology for AI-augmented product development - Define, Represent, Implement, Validate, Evolve, Reflect",
+  "name": "finance-driver",
+  "description": "DRIVER methodology for finance and quantitative tool development - Define, Represent, Implement, Validate, Evolve, Reflect",
   "version": "1.0.0",
   "author": {
     "name": "Cinder Zhang",

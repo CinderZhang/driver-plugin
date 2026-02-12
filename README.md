@@ -58,7 +58,7 @@ DRIVER guides you through six stages from concept to completion:
 
 ```bash
 # Step 2: In Claude Code
-/plugin install driver@driver-plugin
+/plugin install finance-driver@driver
 ```
 
 Restart Claude Code after installing.
@@ -72,13 +72,13 @@ Restart Claude Code after installing.
 claude
 
 # Initialize a DRIVER project
-/driver:init
+/finance-driver:init
 
 # Check available commands
-/driver:help
+/finance-driver:help
 
 # Begin with research and definition
-/driver:define
+/finance-driver:define
 ```
 
 ---
@@ -88,44 +88,44 @@ claude
 ### Utility
 | Skill | Purpose |
 |-------|---------|
-| `/driver:init` | Initialize a new DRIVER project |
-| `/driver:status` | Show progress, suggest next step |
-| `/driver:help` | Full reference with Chinese term explanations |
+| `/finance-driver:init` | Initialize a new DRIVER project |
+| `/finance-driver:status` | Show progress, suggest next step |
+| `/finance-driver:help` | Full reference with Chinese term explanations |
 
 ### DEFINE Stage
 | Skill | Purpose |
 |-------|---------|
-| `/driver:define` | Research and define product vision (开题调研) |
+| `/finance-driver:define` | Research and define product vision (开题调研) |
 
 ### REPRESENT Stage
 | Skill | Purpose |
 |-------|---------|
-| `/driver:represent-roadmap` | Break into 3-5 buildable sections |
-| `/driver:represent-datamodel` | Define core entities |
-| `/driver:represent-tokens` | Choose colors and typography |
-| `/driver:represent-shell` | Design navigation shell |
-| `/driver:represent-section` | Spec a section |
+| `/finance-driver:represent-roadmap` | Break into 3-5 buildable sections |
+| `/finance-driver:represent-datamodel` | Define core entities |
+| `/finance-driver:represent-tokens` | Choose colors and typography |
+| `/finance-driver:represent-shell` | Design navigation shell |
+| `/finance-driver:represent-section` | Spec a section |
 
 ### IMPLEMENT Stage
 | Skill | Purpose |
 |-------|---------|
-| `/driver:implement-data` | Create sample data |
-| `/driver:implement-screen` | Build and run code |
+| `/finance-driver:implement-data` | Create sample data |
+| `/finance-driver:implement-screen` | Build and run code |
 
 ### VALIDATE Stage
 | Skill | Purpose |
 |-------|---------|
-| `/driver:validate` | Capture screenshots as evidence |
+| `/finance-driver:validate` | Capture screenshots as evidence |
 
 ### EVOLVE Stage
 | Skill | Purpose |
 |-------|---------|
-| `/driver:evolve` | Generate final export package |
+| `/finance-driver:evolve` | Generate final export package |
 
 ### REFLECT Stage
 | Skill | Purpose |
 |-------|---------|
-| `/driver:reflect` | Capture learnings and tech stack lessons |
+| `/finance-driver:reflect` | Capture learnings and tech stack lessons |
 
 ---
 

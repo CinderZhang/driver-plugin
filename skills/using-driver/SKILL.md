@@ -112,10 +112,10 @@ When in each stage, these patterns apply:
 
 ## Utility Skills
 
-- `/driver:init` — Set up a new DRIVER project
-- `/driver:status` — Check where you are, get suggestions
-- `/driver:help` — Full reference with Chinese term explanations
-- `/driver:research` — Lightweight 分头研究 at any stage — find libraries, approaches, references
+- `/finance-driver:init` — Set up a new DRIVER project
+- `/finance-driver:status` — Check where you are, get suggestions
+- `/finance-driver:help` — Full reference with Chinese term explanations
+- `/finance-driver:research` — Lightweight 分头研究 at any stage — find libraries, approaches, references
 
 ## Finance/Quant Examples
 
@@ -136,4 +136,4 @@ As a Cognition Mate:
 - If they agree, proceed directly — don't say "run /command"
 - Keep momentum through the DRIVER stages
 - Ask one question at a time, not multiple
-- For new users, suggest `/driver:init` or `/driver:help`
+- For new users, suggest `/finance-driver:init` or `/finance-driver:help`

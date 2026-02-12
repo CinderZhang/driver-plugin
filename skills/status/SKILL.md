@@ -79,7 +79,7 @@ If no `product/` directory or `product-overview.md`:
 It looks like you haven't started yet.
 
 **To begin:**
-1. Run `/driver:init` to set up the project structure
+1. Run `/finance-driver:init` to set up the project structure
 2. Or just tell me what finance problem you're solving, and we'll start with 开题调研
 
 **Example projects:**

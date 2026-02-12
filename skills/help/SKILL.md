@@ -94,21 +94,21 @@ The fastest feedback loop: See result → Give feedback → Iterate → See upda
 
 | Skill | Stage | Purpose |
 |-------|-------|---------|
-| `/driver:init` | Setup | Initialize project structure |
-| `/driver:status` | Any | Check progress, get suggestions |
-| `/driver:help` | Any | This help page |
-| `/driver:research` | Any | Lightweight 分头研究 — research libraries, approaches, references |
-| `/driver:define` | DEFINE | Research and define vision |
-| `/driver:represent-roadmap` | REPRESENT | Break into sections |
-| `/driver:represent-datamodel` | REPRESENT | Define core entities |
-| `/driver:represent-tokens` | REPRESENT | Colors/typography (web apps) |
-| `/driver:represent-shell` | REPRESENT | Navigation shell (web apps) |
-| `/driver:represent-section` | REPRESENT | Spec a section |
-| `/driver:implement-data` | IMPLEMENT | Sample data (web apps) |
-| `/driver:implement-screen` | IMPLEMENT | Build and run code |
-| `/driver:validate` | VALIDATE | Cross-check: known answers, reasonableness, edges, AI risks |
-| `/driver:evolve` | EVOLVE | Generate export package |
-| `/driver:reflect` | REFLECT | Capture learnings |
+| `/finance-driver:init` | Setup | Initialize project structure |
+| `/finance-driver:status` | Any | Check progress, get suggestions |
+| `/finance-driver:help` | Any | This help page |
+| `/finance-driver:research` | Any | Lightweight 分头研究 — research libraries, approaches, references |
+| `/finance-driver:define` | DEFINE | Research and define vision |
+| `/finance-driver:represent-roadmap` | REPRESENT | Break into sections |
+| `/finance-driver:represent-datamodel` | REPRESENT | Define core entities |
+| `/finance-driver:represent-tokens` | REPRESENT | Colors/typography (web apps) |
+| `/finance-driver:represent-shell` | REPRESENT | Navigation shell (web apps) |
+| `/finance-driver:represent-section` | REPRESENT | Spec a section |
+| `/finance-driver:implement-data` | IMPLEMENT | Sample data (web apps) |
+| `/finance-driver:implement-screen` | IMPLEMENT | Build and run code |
+| `/finance-driver:validate` | VALIDATE | Cross-check: known answers, reasonableness, edges, AI risks |
+| `/finance-driver:evolve` | EVOLVE | Generate export package |
+| `/finance-driver:reflect` | REFLECT | Capture learnings |
 
 ---
 
@@ -149,8 +149,8 @@ Testing:      pytest + Hypothesis
 
 ## Getting Started
 
-1. **New project:** `/driver:init` or just describe what you want to build
-2. **Existing project:** `/driver:status` to see where you are
+1. **New project:** `/finance-driver:init` or just describe what you want to build
+2. **Existing project:** `/finance-driver:status` to see where you are
 3. **Stuck?** Tell me the finance problem you're solving — we'll figure it out together
 
 ---

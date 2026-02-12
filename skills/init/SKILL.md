@@ -40,7 +40,7 @@ product/
 If `product/` exists with files, ask:
 
 "I see an existing DRIVER project. What would you like to do?
-- Continue where you left off (run `/driver:status`)
+- Continue where you left off (run `/finance-driver:status`)
 - Start fresh (this will overwrite existing files)"
 
 ### 2. Create Base Structure
@@ -62,12 +62,12 @@ This project follows the DRIVER methodology for finance/quant tool development.
 
 ## Workflow
 
-1. `/driver:define` — Establish vision, research what exists (开题调研)
-2. `/driver:represent-roadmap` — Break into 3-5 buildable sections
-3. `/driver:implement-screen` — Build and run, iterate on feedback
-4. `/driver:validate` — Capture evidence it works
-5. `/driver:evolve` — Generate final export package
-6. `/driver:reflect` — Capture lessons learned
+1. `/finance-driver:define` — Establish vision, research what exists (开题调研)
+2. `/finance-driver:represent-roadmap` — Break into 3-5 buildable sections
+3. `/finance-driver:implement-screen` — Build and run, iterate on feedback
+4. `/finance-driver:validate` — Capture evidence it works
+5. `/finance-driver:evolve` — Generate final export package
+6. `/finance-driver:reflect` — Capture lessons learned
 
 ## Philosophy
 
@@ -79,7 +79,7 @@ This project follows the DRIVER methodology for finance/quant tool development.
 
 ## Next Step
 
-Run `/driver:define` to begin.
+Run `/finance-driver:define` to begin.
 ```
 
 ### 3. Confirm and Guide
@@ -104,7 +104,7 @@ product/
 
 ## Proactive Flow
 
-After init, immediately offer to start `/driver:define`. Don't leave the user wondering what to do next.
+After init, immediately offer to start `/finance-driver:define`. Don't leave the user wondering what to do next.
 
 ---
 
@@ -112,4 +112,4 @@ After init, immediately offer to start `/driver:define`. Don't leave the user wo
 
 - **Minimal scaffold** — Only create what's needed
 - **Finance-focused** — Guide toward quant/finance use cases
-- **Clear next step** — Always point to `/driver:define`
+- **Clear next step** — Always point to `/finance-driver:define`
