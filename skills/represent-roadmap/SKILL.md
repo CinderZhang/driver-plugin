@@ -122,7 +122,13 @@ Building on: [Key foundations from D&D]
 [One sentence description]
 ```
 
-### 6. Suggest Next Step
+### 6. Set Expectations
+
+After saving the roadmap, normalize what comes next:
+
+"One thing to expect: **this plan will be wrong in some way.** That's not failure — that's the process working. You'll discover things during implementation that you couldn't have known from planning alone. When that happens, come back and update the roadmap. The R-I loop (Represent ↔ Implement) is how real work gets done."
+
+### 7. Suggest Next Step
 
 Once the roadmap is saved, proactively suggest moving forward:
 

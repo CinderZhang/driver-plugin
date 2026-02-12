@@ -102,12 +102,14 @@ Through conversation, identify:
 
 - **The problem space** — What pain exists? What are they really trying to solve?
 - **The success vision** — What does "done" look like? How will they know it works?
+- **The failure criteria** — How will you know if you're wrong? What would make you reconsider?
 - **The unique value** — What's specific to their situation beyond what exists?
 
 Ask questions one at a time. Examples:
 - "What's the single biggest pain point you're addressing?"
 - "When this is working, what will you be able to do that you can't do now?"
 - "What would you show someone to prove this works?"
+- "What would tell you the approach isn't working — what's your checkpoint for reconsidering?"
 
 ### 5. Tech Stack (If Relevant)
 
@@ -161,6 +163,9 @@ Once they approve, create `/product/product-overview.md`:
 
 ## Success Looks Like
 [What "done" means — concrete, verifiable]
+
+## How We'd Know We're Wrong
+[Checkpoint for reconsidering the approach — what signals would mean we need to pivot?]
 
 ## Building On (Existing Foundations)
 - **[Library/Tool]** — [How we'll use it]

@@ -111,7 +111,20 @@ Tell them:
 
 What needs to change?"
 
-### 3. Iterate Based on What They See
+### 3. The Ownership Check
+
+After building, pause and check — does the developer understand what was built?
+
+**Ask them (pick the most relevant):**
+- "Can you explain what this calculation does?"
+- "If [assumption] changed, could you tell me where to modify it?"
+- "Would you catch it if a formula here was wrong?"
+
+If they can't answer, **slow down.** Walk through the key logic together. The philosophy: *"If you can't explain it, you don't own it — and you won't catch errors in validation."*
+
+This matters most for financial calculations — a confident-looking wrong formula can cost real money.
+
+### 4. Iterate Based on What They See
 
 They'll give feedback based on what they see:
 - "The chart needs to show X instead of Y"
@@ -125,7 +138,7 @@ They'll give feedback based on what they see:
 
 This loop continues until it works.
 
-### 4. Structure for Larger Apps
+### 5. Structure for Larger Apps
 
 As the app grows, organize:
 
@@ -143,7 +156,7 @@ project/
 
 **Principle:** Keep calculation logic separate from UI. Makes it testable and reusable.
 
-### 5. Key Patterns for Quant Apps
+### 6. Key Patterns for Quant Apps
 
 **Data display:**
 ```python

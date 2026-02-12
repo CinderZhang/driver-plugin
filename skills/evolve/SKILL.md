@@ -152,7 +152,29 @@ rm -f driver-plan.zip
 zip -r driver-plan.zip driver-plan/
 ```
 
-### 6. Confirm Completion
+### 6. Optimize + Expand (Before Closing)
+
+Before declaring the export complete, the philosophy demands two moves:
+
+**Vertical (Optimize):** What worked well in this project?
+- Which prompts or approaches produced the best results? Save them.
+- Which sections were built fastest? Why?
+- Any reusable patterns worth extracting?
+
+**Horizontal (Expand):** What else does this enable?
+- What new questions did this analysis raise?
+- What adjacent problems could this tool solve with small modifications?
+- What patterns here might transfer to other projects?
+
+Present briefly to the developer:
+
+"Before we wrap up, two quick questions:
+1. **What worked best** in this project that you'd want to reuse?
+2. **What else could this enable** — any adjacent problems or follow-up questions this tool raises?"
+
+Capture their answers in the export's `README.md` under a "Future Directions" section.
+
+### 7. Confirm Completion
 
 "I've created the complete export package at `driver-plan/` and `driver-plan.zip`.
 

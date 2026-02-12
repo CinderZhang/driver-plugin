@@ -248,7 +248,7 @@ These insights will help you improve on future projects.
 1. ✓ **Define** — Established product vision (开题调研)
 2. ✓ **Represent** — Designed roadmap, data model, sections
 3. ✓ **Implement** — Built and saw results running (Show don't tell)
-4. ✓ **Validate** — Captured screenshots
+4. ✓ **Validate** — Cross-checked against known answers, reasonableness, edges
 5. ✓ **Evolve** — Generated export package (Final deliverable)
 6. ✓ **Reflect** — Documented learnings
 

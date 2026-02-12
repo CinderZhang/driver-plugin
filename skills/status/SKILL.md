@@ -27,7 +27,7 @@ Check for the existence of these files/directories:
 | `product/sections/*/spec.md` | REPRESENT | Count sections |
 | `product/sections/*/data.json` | IMPLEMENT | Count with data |
 | `src/sections/*/` | IMPLEMENT | Count built |
-| `product/sections/*.png` | VALIDATE | Count screenshots |
+| `product/sections/*.png` | VALIDATE | Count validated (screenshots as evidence) |
 | `driver-plan/` | EVOLVE | ✓ or ✗ |
 | `product/reflect.md` | REFLECT | ✓ or ✗ |
 
@@ -48,7 +48,7 @@ REPRESENT   [✓] Roadmap: 3 sections planned
             [✗] Shell (optional for Streamlit)
             [~] Sections: 1/3 specified
 IMPLEMENT   [~] Sections: 1/3 built
-VALIDATE    [✗] No screenshots captured
+VALIDATE    [✗] Not validated (cross-check pending)
 EVOLVE      [✗] Export not generated
 REFLECT     [✗] Learnings not captured
 ```

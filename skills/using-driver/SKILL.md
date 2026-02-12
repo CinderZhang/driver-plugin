@@ -39,7 +39,7 @@ REFLECT (Optional learnings)
 | DEFINE | **NO BUILDING WITHOUT 分头研究 FIRST** — Research what exists |
 | REPRESENT | **PLAN THE UNIQUE PART** — Don't reinvent what exists |
 | IMPLEMENT | **SHOW DON'T TELL** — Build and run it, don't explain it |
-| VALIDATE | **EVIDENCE BEFORE CLAIMS** — See it running before claiming done |
+| VALIDATE | **CROSS-CHECK YOUR INSTRUMENTS** — Known answers, reasonableness, edges, AI risks |
 | EVOLVE | **FINAL DELIVERABLE** — Export is self-contained, no dependencies |
 | REFLECT | **CAPTURE TECH STACK LESSONS** — Especially what didn't work |
 
@@ -69,7 +69,7 @@ Always announce which stage you're in:
 
 "We're in IMPLEMENT — I'll build this and show you. Tell me what needs to change."
 
-"We're in VALIDATE — let's capture screenshots to document this."
+"We're in VALIDATE — cross-checking our instruments: known answers, reasonableness, edges, AI blind spots."
 
 "We're in EVOLVE — generating your final export package."
 
@@ -107,7 +107,7 @@ When in each stage, these patterns apply:
 
 - **DEFINE**: Must do 分头研究 (parallel research)
 - **IMPLEMENT**: Must use "show don't tell" — build and run, not describe
-- **VALIDATE**: Must have evidence before claiming complete
+- **VALIDATE**: Must cross-check — known answers, reasonableness, edges, AI blind spots
 - **REFLECT**: Must capture tech stack lessons
 
 ## Utility Skills
@@ -115,6 +115,7 @@ When in each stage, these patterns apply:
 - `/driver:init` — Set up a new DRIVER project
 - `/driver:status` — Check where you are, get suggestions
 - `/driver:help` — Full reference with Chinese term explanations
+- `/driver:research` — Lightweight 分头研究 at any stage — find libraries, approaches, references
 
 ## Finance/Quant Examples
 

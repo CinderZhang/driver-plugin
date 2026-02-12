@@ -52,8 +52,8 @@ DRIVER is a methodology for building finance and quantitative analysis tools wit
                            ↓
 ┌─────────────────────────────────────────────────────────┐
 │  VALIDATE                                                │
-│  "Does it actually work?"                               │
-│  Evidence before claims — see it running                │
+│  "Cross-check your instruments"                         │
+│  Known answers, reasonableness, edges, AI blind spots   │
 └─────────────────────────────────────────────────────────┘
                            ↓
 ┌─────────────────────────────────────────────────────────┐
@@ -97,6 +97,7 @@ The fastest feedback loop: See result → Give feedback → Iterate → See upda
 | `/driver:init` | Setup | Initialize project structure |
 | `/driver:status` | Any | Check progress, get suggestions |
 | `/driver:help` | Any | This help page |
+| `/driver:research` | Any | Lightweight 分头研究 — research libraries, approaches, references |
 | `/driver:define` | DEFINE | Research and define vision |
 | `/driver:represent-roadmap` | REPRESENT | Break into sections |
 | `/driver:represent-datamodel` | REPRESENT | Define core entities |
@@ -105,7 +106,7 @@ The fastest feedback loop: See result → Give feedback → Iterate → See upda
 | `/driver:represent-section` | REPRESENT | Spec a section |
 | `/driver:implement-data` | IMPLEMENT | Sample data (web apps) |
 | `/driver:implement-screen` | IMPLEMENT | Build and run code |
-| `/driver:validate` | VALIDATE | Capture screenshots |
+| `/driver:validate` | VALIDATE | Cross-check: known answers, reasonableness, edges, AI risks |
 | `/driver:evolve` | EVOLVE | Generate export package |
 | `/driver:reflect` | REFLECT | Capture learnings |
 
@@ -161,6 +162,6 @@ Testing:      pytest + Hypothesis
 | DEFINE | NO BUILDING WITHOUT 分头研究 FIRST |
 | REPRESENT | PLAN THE UNIQUE PART — DON'T REINVENT |
 | IMPLEMENT | SHOW DON'T TELL — BUILD AND RUN IT |
-| VALIDATE | EVIDENCE BEFORE CLAIMS |
+| VALIDATE | CROSS-CHECK YOUR INSTRUMENTS — four checks, every time |
 | EVOLVE | SELF-CONTAINED DELIVERABLE |
 | REFLECT | CAPTURE WHAT DIDN'T WORK |
