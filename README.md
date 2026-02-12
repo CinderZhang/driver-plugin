@@ -113,12 +113,12 @@ claude
 | `/finance-driver:init` | Initialize a new DRIVER project |
 | `/finance-driver:status` | Show progress, suggest next step |
 | `/finance-driver:help` | Full reference with Chinese term explanations |
+| `/finance-driver:research` | Lightweight 分头研究 — find libraries, approaches, references anytime |
 
 ### DEFINE Stage
 | Skill | Purpose |
 |-------|---------|
 | `/finance-driver:define` | Research and define product vision (开题调研) |
-| `/finance-driver:research` | Lightweight 分头研究 — find libraries, approaches, references anytime |
 
 ### REPRESENT Stage
 | Skill | Purpose |
@@ -250,7 +250,7 @@ Issues and pull requests welcome. Please read the philosophy section first — c
 
 ## Author
 
-Cinder Zhang (cinderzhang@gmail.com)
+Cinder Zhang (zhangcinder@gmail.com)
 
 ---
 
