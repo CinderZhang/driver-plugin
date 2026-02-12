@@ -52,10 +52,10 @@ DRIVER guides you through six stages from concept to completion:
 
 | Stage | Purpose | Iron Law |
 |-------|---------|----------|
-| **D**efine | Research what exists | No building without 分头研究 first |
+| **D**efine | Discover + define vision | No building without 分头研究 first |
 | **R**epresent | Plan part by part | Don't reinvent what exists |
 | **I**mplement | Build and run | Show don't tell |
-| **V**alidate | Verify it works | Evidence before claims |
+| **V**alidate | Cross-check your instruments | Known answers, reasonableness, edges, AI risks |
 | **E**volve | Package deliverable | Self-contained export |
 | **R**eflect | Capture learnings | Document what didn't work |
 
