@@ -7,6 +7,28 @@ A methodology for AI-augmented finance and quantitative tool development.
 
 ---
 
+## ⚠️ Renamed: `driver` → `finance-driver`
+
+**If you installed before this change**, the plugin name has been updated from `driver` to `finance-driver` and the marketplace from `driver-plugin` to `driver`. All skill prefixes changed from `/driver:` to `/finance-driver:`.
+
+**To update:**
+
+```bash
+# 1. Remove the old plugin and marketplace
+/plugin uninstall driver@driver-plugin
+/plugin marketplace remove driver-plugin
+
+# 2. Add the renamed marketplace and install
+/plugin marketplace add https://github.com/CinderZhang/driver-plugin
+/plugin install finance-driver@driver
+```
+
+Restart Claude Code after updating.
+
+**Why the rename?** The `driver` marketplace is now an umbrella for domain-specific DRIVER plugins. `finance-driver` is the first — future plugins like `accounting-driver`, `marketing-driver`, etc. will live under the same marketplace.
+
+---
+
 ## ⚠️ Disclaimer
 
 **DRIVER is a development methodology, not financial software.**
@@ -96,6 +118,7 @@ claude
 | Skill | Purpose |
 |-------|---------|
 | `/finance-driver:define` | Research and define product vision (开题调研) |
+| `/finance-driver:research` | Lightweight 分头研究 — find libraries, approaches, references anytime |
 
 ### REPRESENT Stage
 | Skill | Purpose |
@@ -115,7 +138,7 @@ claude
 ### VALIDATE Stage
 | Skill | Purpose |
 |-------|---------|
-| `/finance-driver:validate` | Capture screenshots as evidence |
+| `/finance-driver:validate` | Cross-check: known answers, reasonableness, edges, AI risks |
 
 ### EVOLVE Stage
 | Skill | Purpose |
