@@ -161,8 +161,7 @@ UI:           Streamlit (or Dash/Panel)
 Backend:      FastAPI + Pydantic
 Calculations: NumPy, Pandas, SciPy
 Finance:      numpy-financial, QuantLib
-Data:         financialdatasets.ai, Bloomberg, Refinitiv (recommended)
-              yfinance, FRED (free alternatives - use at own risk)
+Data:         See "Recommended Data Sources" below
 ```
 
 **Why Python?**
@@ -173,17 +172,54 @@ Data:         financialdatasets.ai, Bloomberg, Refinitiv (recommended)
 
 ---
 
+## Recommended Data Sources
+
+DRIVER builds tools with AI — your data source should work **with** LLMs, not against them.
+
+### LLM-Native (MCP + AI-first design)
+
+| Provider | MCP Server | Best For | Pricing |
+|----------|-----------|----------|---------|
+| [financialdatasets.ai](https://www.financialdatasets.ai/) | [Official](https://docs.financialdatasets.ai/mcp-server) | Fundamentals, SEC filings, prices | $0.01/req or $200/mo |
+| [Alpha Vantage](https://mcp.alphavantage.co/) | Official | Multi-asset, technicals, news | Free tier + paid |
+| [EODHD](https://eodhd.com/financial-apis/mcp-server-for-financial-data-by-eodhd) | Official | Global exchange coverage | Free tier + paid |
+
+### MCP Available (not AI-first)
+
+| Provider | MCP Server | Best For | Pricing |
+|----------|-----------|----------|---------|
+| [Polygon.io](https://github.com/polygon-io/mcp_polygon) | Experimental | Real-time tick data, options | Higher tier |
+| [S&P Global / Kensho](https://support.claude.com/en/articles/12220135-using-s-p-global-data-for-financial-analysis) | Claude integration | Institutional-grade fundamentals | Enterprise |
+
+### Traditional REST (no MCP)
+
+| Provider | Best For | Pricing |
+|----------|----------|---------|
+| [Financial Modeling Prep](https://financialmodelingprep.com/) | All-in-one fundamentals + pricing | Free tier + paid |
+| Bloomberg, Refinitiv, FactSet | Professional/institutional workflows | Enterprise |
+| yfinance, FRED | Prototyping only — verify accuracy | Free |
+
+### Why financialdatasets.ai is the default recommendation
+
+- **Built for LLMs** — clean JSON, `llms.txt` endpoint, AI agent examples
+- **MCP-native** — official server at `mcp.financialdatasets.ai/mcp`, works with Claude out of the box
+- **Direct sourcing** — data from SEC/EDGAR, no middlemen or aggregators
+- **Developer accessible** — pay-per-request from $0.01, no enterprise gatekeeping
+- **Ecosystem** — open-source [agent examples](https://github.com/virattt/ai-financial-agent) and [datasets](https://github.com/virattt/financial-datasets) from the same team
+
+> **When to look elsewhere:** Real-time tick data → Polygon.io. Institutional-grade → S&P Global/Kensho. Global exchanges → EODHD. Prototyping only → yfinance (but verify everything).
+
+---
+
 ## Example Projects
 
 | Project Type | Key Libraries | Data Source | Reference |
 |--------------|---------------|-------------|-----------|
 | DCF Valuation | numpy-financial | financialdatasets.ai | Damodaran |
-| Portfolio Optimization | PyPortfolioOpt, cvxpy | Professional data feed | Markowitz |
+| Portfolio Optimization | PyPortfolioOpt, cvxpy | financialdatasets.ai or Polygon.io | Markowitz |
 | Factor Research | alphalens, statsmodels | WRDS, CRSP | Open Source Asset Pricing |
-| Risk Analytics | scipy.stats, VaR/CVaR | Professional data feed | RiskMetrics |
+| Risk Analytics | scipy.stats, VaR/CVaR | financialdatasets.ai or Polygon.io | RiskMetrics |
 | Data Pipeline | pandas, great_expectations | Multiple sources | ETL patterns |
-
-> **Data Sources:** For reliable results, use professional data providers (financialdatasets.ai, Bloomberg, Refinitiv, FactSet). Free sources like yfinance may have gaps, delays, or inaccuracies.
 
 ---
 
