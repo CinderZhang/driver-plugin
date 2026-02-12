@@ -65,7 +65,7 @@ This project follows the DRIVER methodology for finance/quant tool development.
 1. `/finance-driver:define` — Establish vision, research what exists (开题调研)
 2. `/finance-driver:represent-roadmap` — Break into 3-5 buildable sections
 3. `/finance-driver:implement-screen` — Build and run, iterate on feedback
-4. `/finance-driver:validate` — Capture evidence it works
+4. `/finance-driver:validate` — Cross-check: known answers, reasonableness, edges, AI risks
 5. `/finance-driver:evolve` — Generate final export package
 6. `/finance-driver:reflect` — Capture lessons learned
 

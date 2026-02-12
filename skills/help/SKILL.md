@@ -119,13 +119,15 @@ UI:           Streamlit (or Dash/Panel)
 Backend:      FastAPI + Pydantic
 Calculations: NumPy, Pandas, SciPy
 Finance:      numpy-financial, QuantLib
-Data Sources: financialdatasets.ai, Bloomberg, Refinitiv (recommended)
-              yfinance, FRED (free alternatives - verify accuracy)
+Data Sources: See README for tiered recommendations
+              LLM-Native: financialdatasets.ai, Alpha Vantage, EODHD
+              MCP Available: Polygon.io, S&P Global/Kensho
+              Free (verify): yfinance, FRED
 Storage:      SQLite → PostgreSQL, Parquet files
 Testing:      pytest + Hypothesis
 ```
 
-> **Data Quality Matters:** For reliable financial analysis, use professional data providers. Free sources like yfinance may have gaps, delays, or inaccuracies that affect your results.
+> **Data Quality Matters:** For LLM-driven development, use MCP-native data providers (financialdatasets.ai recommended). Free sources like yfinance may have gaps, delays, or inaccuracies.
 
 **Why Python over TypeScript for quant work:**
 - Vectorized calculations (NumPy) vs manual loops

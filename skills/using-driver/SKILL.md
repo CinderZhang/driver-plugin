@@ -25,7 +25,7 @@ REPRESENT (Plan the unique part)
     ↓ "Want me to start building?"
 IMPLEMENT (Show don't tell)
     ↓ "What needs to change?"
-VALIDATE (See it running)
+VALIDATE (Cross-check your instruments)
     ↓ "Ready to generate the export?"
 EVOLVE (Final deliverable)
     ↓ "Want to capture what you learned?"

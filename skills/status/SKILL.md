@@ -27,7 +27,7 @@ Check for the existence of these files/directories:
 | `product/sections/*/spec.md` | REPRESENT | Count sections |
 | `product/sections/*/data.json` | IMPLEMENT | Count with data |
 | `src/sections/*/` | IMPLEMENT | Count built |
-| `product/sections/*.png` | VALIDATE | Count validated (screenshots as evidence) |
+| `product/sections/*/validation.md` | VALIDATE | Count validated (cross-check results) |
 | `driver-plan/` | EVOLVE | ✓ or ✗ |
 | `product/reflect.md` | REFLECT | ✓ or ✗ |
 
@@ -56,8 +56,8 @@ REFLECT     [✗] Learnings not captured
 **Current Stage:** IMPLEMENT
 
 **Sections:**
-| Section | Spec | Data | Built | Screenshot |
-|---------|------|------|-------|------------|
+| Section | Spec | Data | Built | Validated |
+|---------|------|------|-------|-----------|
 | Portfolio Optimizer | ✓ | ✓ | ✓ | ✗ |
 | Risk Dashboard | ✓ | ✗ | ✗ | ✗ |
 | Backtest Engine | ✗ | ✗ | ✗ | ✗ |
@@ -68,7 +68,7 @@ You're in the middle of building. The **Risk Dashboard** section has a spec but 
 **Want me to:**
 - Generate sample data for Risk Dashboard?
 - Continue building the Portfolio Optimizer?
-- Capture screenshots of what's done?"
+- Run cross-check validation on what's done?"
 
 ### 3. Handle Empty Project
 
