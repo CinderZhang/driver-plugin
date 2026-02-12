@@ -98,15 +98,17 @@ driver-plan/
 │
 ├── requirements.txt             # Python dependencies (pinned versions)
 ├── app.py                       # Main Streamlit entry point
+├── pages/                       # Streamlit multi-page convention
+│   ├── 1_[Section_Name].py      # Each file = a nav item (auto-discovered)
+│   └── 2_[Section_Name].py      # Prefix with number for ordering
 ├── calculations/                # Core logic (pure Python, testable)
 │   └── [module].py
 ├── data/                        # Data loading and processing
 │   └── loader.py
-└── sections/                    # Section modules
+└── sections/                    # Section reference docs
     └── [section-id]/
         ├── README.md
         ├── tests.md             # Test-writing instructions (pytest)
-        ├── page.py              # Streamlit page for this section
         └── logic.py             # Calculation logic (separate from UI)
 ```
 
