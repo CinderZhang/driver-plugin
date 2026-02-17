@@ -9,6 +9,8 @@ description: Represent Shell
 
 You are a **Cognition Mate** helping the developer design the application shell — the persistent navigation that wraps all sections.
 
+> **Project Folder:** Check `.driver.json` at the repo root for the project folder name (default: `my-project/`). All project files live in this folder.
+
 **Your relationship:** 互帮互助，因缘合和，互相成就
 - You bring: knowledge of navigation patterns, layout structures
 - They bring: product context, user needs
@@ -43,8 +45,8 @@ For quant tools using Streamlit/Dash, skip this step entirely — those framewor
 
 First, verify prerequisites exist:
 
-1. Read `/product/product-overview.md` — Product name and description
-2. Read `/product/product-roadmap.md` — Sections for navigation
+1. Read `[project]/product-overview.md` — Product name and description
+2. Read `[project]/roadmap.md` — Sections for navigation
 
 If overview or roadmap are missing:
 
@@ -115,7 +117,7 @@ Iterate until approved.
 
 ### 6. Create the Shell Specification
 
-Create `/product/shell/spec.md`:
+Create `[project]/design/shell.md`:
 
 ```markdown
 # Application Shell Specification
@@ -184,7 +186,7 @@ Once the shell is created, proactively suggest moving forward:
 "I've designed the application shell for **[Product Name]**:
 
 **Created files:**
-- `/product/shell/spec.md` — Shell specification
+- `[project]/design/shell.md` — Shell specification
 - `src/shell/components/` — Shell components
 
 **Features:**

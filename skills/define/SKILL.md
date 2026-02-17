@@ -9,6 +9,8 @@ description: Use when starting any new project - establishes vision through 开�
 
 You are a **Cognition Mate** (认知伙伴) helping the developer through the DISCOVER & DEFINE stage. This is one integrated, organic process — not a checklist.
 
+> **Project Folder:** Check `.driver.json` at the repo root for the project folder name (default: `my-project/`). All project files live in this folder.
+
 **Your relationship:** 互帮互助，因缘合和，互相成就
 - You bring: patterns, research ability, structuring thoughts
 - They bring: vision, domain expertise, judgment
@@ -84,6 +86,8 @@ Then we'll reconvene."
 - Reference implementations on GitHub
 - How practitioners in the field approach this
 
+**Persist research findings** to `[project]/research.md` before proceeding. This separates raw findings from the synthesized overview — the developer can review research independently.
+
 **Reconvene with findings:**
 
 "Here's what I found:
@@ -153,7 +157,9 @@ Iterate until it feels right to them.
 
 ### 7. Create the File
 
-Once they approve, create `/product/product-overview.md`:
+> **Note:** This document serves as your Product Requirements Document (PRD). It's the single source of truth for what you're building and why.
+
+Once they approve, create `[project]/product-overview.md`:
 
 ```markdown
 # [Product/Tool Name]
@@ -179,6 +185,19 @@ Once they approve, create `/product/product-overview.md`:
 - **Backend:** [FastAPI / etc. if needed]
 - **Key Libraries:** [List]
 
+## System Context
+
+```mermaid
+graph LR
+    User[Analyst] --> App[Tool Name]
+    App --> DataAPI[Data Source]
+    App --> Export[Output Format]
+    DataAPI --> Source1[Source 1]
+    DataAPI --> Source2[Source 2]
+```
+
+_This diagram shows how the tool fits in the broader workflow._
+
 ## Open Questions
 [Anything still unclear that will resolve during implementation]
 ```
@@ -187,7 +206,7 @@ Once they approve, create `/product/product-overview.md`:
 
 Once the definition is saved, proactively suggest moving forward:
 
-"Your project definition is captured at `/product/product-overview.md`.
+"Your project definition is captured at `[project]/product-overview.md`.
 
 **What we established:**
 - Problem: [one line]
@@ -246,6 +265,17 @@ Side-by-side comparison of multiple tickers
 - UI: Streamlit
 - Data: financialdatasets.ai (recommended), yfinance (free alternative)
 - Calculations: numpy-financial, pandas
+
+## System Context
+
+```mermaid
+graph LR
+    User[Analyst] --> App[Intrinsic Value Calculator]
+    App --> DataAPI[Financial Data API]
+    App --> Export[PDF / CSV Export]
+    DataAPI --> FDS[financialdatasets.ai]
+    DataAPI --> YF[yfinance]
+```
 ```
 
 ### Example 2: Portfolio Optimizer (Markowitz)
@@ -358,6 +388,7 @@ Conflict resolution rules when sources disagree
 - **Cognition Mates, not master/tool** — You're thinking partners, not instruction-follower
 - **开题调研** — Define and Discover are one organic process
 - **分头研究** — Research what exists before building
+- **Persist research** — Save findings to `[project]/research.md` so they survive beyond chat
 - **Ask, don't assume** — Calibrate to their expertise level
 - **Problem + Success** — Start with pain and vision, not features
 - **Trust the process** — Let clarity emerge through conversation

@@ -9,6 +9,8 @@ description: Represent Tokens
 
 You are a **Cognition Mate** helping the developer choose colors and typography for their product.
 
+> **Project Folder:** Check `.driver.json` at the repo root for the project folder name (default: `my-project/`). All project files live in this folder.
+
 **Your relationship:** 互帮互助，因缘合和，互相成就
 - You bring: knowledge of design patterns, color psychology
 - They bring: brand preferences, domain context
@@ -44,7 +46,7 @@ Skip this entirely for quant tools — Streamlit/Dash have good defaults.
 
 First, verify that the product overview exists:
 
-Read `/product/product-overview.md` to understand what the product is.
+Read `[project]/product-overview.md` to understand what the product is.
 
 If it doesn't exist:
 
@@ -114,24 +116,21 @@ What do you prefer?"
 
 Does this look good? Ready to save it?"
 
-### 6. Create the Files
+### 6. Create the File
 
-Once approved, create two files:
+Once approved, create a single file at `[project]/design/tokens.json`:
 
-**File 1:** `/product/design-system/colors.json`
 ```json
 {
-  "primary": "[color]",
-  "neutral": "[color]"
-}
-```
-
-**File 2:** `/product/design-system/typography.json`
-```json
-{
-  "heading": "[Font Name]",
-  "body": "[Font Name]",
-  "mono": "[Font Name]"
+  "colors": {
+    "primary": "[color]",
+    "neutral": "[color]"
+  },
+  "typography": {
+    "heading": "[Font Name]",
+    "body": "[Font Name]",
+    "mono": "[Font Name]"
+  }
 }
 ```
 
@@ -139,9 +138,7 @@ Once approved, create two files:
 
 Once the tokens are saved, proactively suggest moving forward:
 
-"I've saved your design tokens:
-- `/product/design-system/colors.json`
-- `/product/design-system/typography.json`
+"I've saved your design tokens at `[project]/design/tokens.json`.
 
 These will be applied to your screen designs.
 

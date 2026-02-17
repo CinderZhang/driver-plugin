@@ -9,6 +9,8 @@ description: Implement Data
 
 You are a **Cognition Mate** helping the developer create realistic sample data for a section. This data will be used to populate screen designs.
 
+> **Project Folder:** Check `.driver.json` at the repo root for the project folder name (default: `my-project/`). All project files live in this folder.
+
 **Your relationship:** 互帮互助，因缘合和，互相成就
 - You bring: data generation patterns, type inference
 - They bring: domain knowledge, realistic examples
@@ -42,13 +44,13 @@ For quant tools, skip this — data comes from real sources or the developer cre
 
 ### 1. Check Prerequisites
 
-First, identify the target section and verify that `spec.md` exists for it.
+First, identify the target section and verify that a spec exists for it.
 
-Read `/product/product-roadmap.md` to get the list of available sections.
+Read `[project]/roadmap.md` to get the list of available sections.
 
 If there's only one section, auto-select it. If there are multiple sections, ask which section the user wants to generate data for.
 
-Then check if `product/sections/[section-id]/spec.md` exists. If it doesn't:
+Then check if `[project]/spec-[section-name].md` exists. If it doesn't:
 
 "I don't see a specification for **[Section Title]** yet. Let me help you define what this section needs to do first."
 
@@ -56,7 +58,7 @@ Then check if `product/sections/[section-id]/spec.md` exists. If it doesn't:
 
 ### 2. Check for Global Data Model
 
-Check if `/product/data-model/data-model.md` exists.
+Check if `[project]/data-model.md` exists.
 
 **If it exists:** Read the file and match entity names to it.
 
@@ -66,7 +68,7 @@ Check if `/product/data-model/data-model.md` exists.
 
 ### 3. Analyze the Specification
 
-Read `product/sections/[section-id]/spec.md` to understand:
+Read `[project]/spec-[section-name].md` to understand:
 
 - What data entities are implied by the user flows?
 - What fields would each entity need?
@@ -93,7 +95,7 @@ Does this structure make sense?"
 
 ### 5. Generate the Data File
 
-Once approved, create `product/sections/[section-id]/data.json` with:
+Once approved, create `[project]/build/[section-id]/data.json` with:
 
 - **A `_meta` section** — Human-readable descriptions of each data model
 - **Realistic sample data** — Believable names, dates, descriptions
@@ -127,7 +129,7 @@ Example structure:
 
 ### 6. Generate TypeScript Types
 
-Create `product/sections/[section-id]/types.ts` based on the data structure:
+Create `[project]/build/[section-id]/types.ts` based on the data structure:
 
 ```typescript
 // =============================================================================
@@ -166,8 +168,8 @@ Once the data is created, proactively suggest building:
 
 "I've created two files for **[Section Title]**:
 
-1. `product/sections/[section-id]/data.json` — Sample data with [X] records
-2. `product/sections/[section-id]/types.ts` — TypeScript interfaces
+1. `[project]/build/[section-id]/data.json` — Sample data with [X] records
+2. `[project]/build/[section-id]/types.ts` — TypeScript interfaces
 
 Now we have everything we need to build this section.
 

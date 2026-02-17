@@ -9,6 +9,8 @@ description: Use when all sections are complete - generates the final driver-pla
 
 You are a **Cognition Mate** helping the developer export their complete product design as a handoff package. This is the **final deliverable** — everything needed to build the product.
 
+> **Project Folder:** Check `.driver.json` at the repo root for the project folder name (default: `my-project/`). All project files live in this folder.
+
 **Your relationship:** 互帮互助，因缘合和，互相成就
 - You bring: organization, packaging, documentation generation
 - They bring: the completed design work
@@ -42,13 +44,13 @@ No references to DRIVER, no external dependencies, no missing context.
 Verify the minimum requirements exist:
 
 **Required:**
-- `/product/product-overview.md` — Product overview
-- `/product/product-roadmap.md` — Sections defined
+- `[project]/product-overview.md` — Product overview
+- `[project]/roadmap.md` — Sections defined
 - At least one section with screen designs in `src/sections/[section-id]/`
 
 **Recommended (show warning if missing):**
-- `/product/data-model/data-model.md` — Global data model
-- `/product/design-system/colors.json` — Color tokens
+- `[project]/data-model.md` — Global data model
+- `[project]/design/tokens.json` — Color tokens
 - `src/shell/components/AppShell.tsx` — Application shell
 
 If required files are missing:
@@ -68,16 +70,17 @@ Stop here if required files are missing.
 
 Read all relevant files:
 
-1. `/product/product-overview.md`
-2. `/product/product-roadmap.md`
-3. `/product/data-model/data-model.md` (if exists)
-4. `/product/design-system/colors.json` (if exists)
-5. For each section: `spec.md`, `data.json`, `types.ts`
-6. List screen design components in `src/sections/` and `src/shell/`
+1. `[project]/product-overview.md`
+2. `[project]/roadmap.md`
+3. `[project]/research.md` (if exists)
+4. `[project]/data-model.md` (if exists)
+5. `[project]/design/tokens.json` (if exists)
+6. For each section: `[project]/spec-[section-name].md`, `[project]/build/[section-id]/data.json`, `[project]/build/[section-id]/types.ts`
+7. List screen design components in `src/sections/` and `src/shell/`
 
 ### 2. Create Export Directory Structure
 
-Determine the tech stack from the project (check `/product/product-overview.md` and existing source files).
+Determine the tech stack from the project (check `[project]/product-overview.md` and existing source files).
 
 #### Path A: Python + Streamlit (Quant/Analytical Tools)
 
@@ -85,6 +88,7 @@ Determine the tech stack from the project (check `/product/product-overview.md` 
 driver-plan/
 ├── README.md                    # Quick start guide
 ├── product-overview.md          # Product summary (always provide)
+├── research.md                  # Research findings (if exists)
 │
 ├── prompts/                     # Ready-to-use prompts for coding agents
 │   ├── one-shot-prompt.md       # Prompt for full implementation
@@ -118,6 +122,7 @@ driver-plan/
 driver-plan/
 ├── README.md                    # Quick start guide
 ├── product-overview.md          # Product summary (always provide)
+├── research.md                  # Research findings (if exists)
 │
 ├── prompts/                     # Ready-to-use prompts for coding agents
 │   ├── one-shot-prompt.md       # Prompt for full implementation
@@ -146,6 +151,7 @@ driver-plan/
 For each file, generate appropriate content:
 
 - **product-overview.md**: Product summary with sections and data model
+- **research.md**: Copy from `[project]/research.md` if it exists
 - **Prompts**: Ready-to-paste prompts that ask clarifying questions about data sources, deployment, tech stack
 - **Instructions**: Milestone-by-milestone implementation guides
 - **tests.md**: Framework-appropriate test instructions
@@ -208,7 +214,7 @@ Include in all instruction files:
 When copying components:
 
 - Transform `@/...` to relative paths
-- Transform `@/../product/sections/[section-id]/types` to `../types`
+- Transform `@/../[project]/build/[section-id]/types` to `../types`
 - Remove DRIVER-specific imports
 
 ### 5. Create Zip File
@@ -267,9 +273,9 @@ Capture their answers in the export's `README.md` under a "Future Directions" se
 
 1. Copy `driver-plan/` to your implementation codebase
 2. Open `prompts/one-shot-prompt.md` or `prompts/section-prompt.md`
-3. Copy/paste into your coding agent
-4. Answer the agent's clarifying questions
-5. Let the agent implement based on the instructions
+3. Copy/paste into your AI partner
+4. Answer the clarifying questions
+5. Let your AI partner implement based on the instructions
 
 **Download:** Restart your dev server and visit the Export page to download `driver-plan.zip`.
 
