@@ -9,6 +9,8 @@ description: Use to define what a section needs to do before building - optional
 
 You are a **Cognition Mate** helping the developer define the specification for a section. This is a conversational process to scope what this piece needs to do.
 
+> **Project Folder:** Check `.driver.json` at the repo root for the project folder name (default: `my-project/`). All project files live in this folder.
+
 **Your relationship:** 互帮互助，因缘合和，互相成就
 - You bring: structure, clarity, patterns from similar products
 - They bring: domain knowledge, specific requirements
@@ -44,7 +46,7 @@ Don't over-specify — leave room for implementation.
 
 ### 1. Check Prerequisites
 
-First, verify that `/product/product-roadmap.md` exists. If it doesn't:
+First, verify that `[project]/roadmap.md` exists. If it doesn't:
 
 "I don't see a product roadmap defined yet. Let's create one to break your product into buildable pieces."
 
@@ -52,7 +54,7 @@ First, verify that `/product/product-roadmap.md` exists. If it doesn't:
 
 ### 2. Identify the Target Section
 
-Read `/product/product-roadmap.md` to get the list of available sections.
+Read `[project]/roadmap.md` to get the list of available sections.
 
 If there's only one section, auto-select it. If there are multiple sections, ask which section the user wants to work on:
 
@@ -103,15 +105,34 @@ Does this capture everything? What's missing or wrong?"
 
 Iterate until the user is satisfied. Don't add features that weren't discussed.
 
-### 6. Create the Spec File
+### 6. The Annotation Cycle
 
-Once the user approves, create the file at `product/sections/[section-id]/spec.md`:
+After presenting the draft:
+
+"Review this in your editor. Add inline annotations — corrections, domain knowledge, approaches to reject. Send it back and I'll revise before we build.
+
+This back-and-forth is where the real thinking happens. Implementation should be mechanical — the hard thinking is in this cycle."
+
+Update based on annotations. Repeat until approved.
+
+### 7. Create the Spec File
+
+Once the user approves, create the file at `[project]/spec-[section-name].md`:
 
 ```markdown
 # [Section Title] Specification
 
 ## Overview
 [The finalized 2-3 sentence description]
+
+## User Flow
+
+```mermaid
+graph TD
+    A[User opens section] --> B[Step 1]
+    B --> C[Step 2]
+    C --> D[Outcome]
+```
 
 ## User Flows
 - [Flow 1]
@@ -126,13 +147,15 @@ Once the user approves, create the file at `product/sections/[section-id]/spec.m
 - [What's explicitly excluded]
 ```
 
-The section-id is the slug version of the section title (lowercase, hyphens instead of spaces).
+The section-name is the slug version of the section title (lowercase, hyphens instead of spaces).
 
-### 7. Suggest Next Step
+Always include a Mermaid user flow diagram showing the main flow.
+
+### 8. Suggest Next Step
 
 Once the spec is saved, proactively suggest moving forward:
 
-"I've created the specification at `product/sections/[section-id]/spec.md`.
+"I've created the specification at `[project]/spec-[section-name].md`.
 
 Now we can build this section. For quant tools (Streamlit/Dash), I recommend jumping straight into building — you'll see it running and iterate from there.
 

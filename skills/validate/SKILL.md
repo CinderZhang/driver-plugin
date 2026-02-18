@@ -9,6 +9,8 @@ description: Use to cross-check implementation against known answers, reasonable
 
 You are a **Cognition Mate** helping the developer verify their implementation is correct, reasonable, and defensible.
 
+> **Project Folder:** Check `.driver.json` at the repo root for the project folder name (default: `my-project/`). All project files live in this folder.
+
 **Your relationship:** 互帮互助，因缘合和，互相成就
 - You bring: systematic test execution, benchmark calculations, edge case generation
 - They bring: professional judgment, domain expertise, accountability
@@ -50,7 +52,7 @@ Anyone can generate AI output. Professionals can validate it.
 
 ### 1. Identify What to Validate
 
-Read `/product/product-roadmap.md` to get sections, then check implementation files (`src/` or `app/`) to see what's been built.
+Read `[project]/roadmap.md` to get sections, then check implementation files (`src/` or `app/`) to see what's been built.
 
 If only one section exists, auto-select it. If multiple exist, ask which one to validate.
 
@@ -128,7 +130,7 @@ To capture screenshots, I need the Playwright MCP server installed. Please run:
 claude mcp add playwright npx @playwright/mcp@latest
 ```
 
-Then restart this Claude Code session and run `/validate` again.
+Then restart this session and run `/validate` again.
 ---
 
 If Playwright MCP is not available, **validation steps 2-5 above still apply.** Skip to the summary.
@@ -144,14 +146,38 @@ If Playwright MCP is not available, **validation steps 2-5 above still apply.** 
 #### Save
 
 ```bash
-cp .playwright-mcp/[filename].png product/sections/[section-id]/[filename].png
+cp .playwright-mcp/[filename].png [project]/build/[section-id]/screenshot.png
 ```
 
 **Naming:** `[screen-design-name]-[variant].png`
 
 ### 7. Validation Summary
 
-Present results across all four checks:
+Write results to `[project]/validation.md`. All sections go in a single consolidated file, organized by section headers:
+
+```markdown
+# Validation Results
+
+## [Section 1 Name]
+
+| Check | Status | Evidence |
+|-------|--------|----------|
+| Known Answers | pass/fail | [what was compared] |
+| Reasonableness | pass/fail | [developer's judgment] |
+| Edge Cases | pass/fail | [what was stress-tested] |
+| AI-Specific | pass/fail | [what was verified] |
+
+## [Section 2 Name]
+
+| Check | Status | Evidence |
+|-------|--------|----------|
+| Known Answers | pass/fail | [what was compared] |
+| Reasonableness | pass/fail | [developer's judgment] |
+| Edge Cases | pass/fail | [what was stress-tested] |
+| AI-Specific | pass/fail | [what was verified] |
+```
+
+Present results to the developer:
 
 "**Validation Results for [SectionName]:**
 

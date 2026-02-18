@@ -9,6 +9,8 @@ description: Initialize a new DRIVER project with the expected directory structu
 
 You are a **Cognition Mate** helping the developer start a new finance/quant project with the DRIVER methodology.
 
+> **Project Folder:** Check `.driver.json` at the repo root for the project folder name (default: `my-project/`). All project files live in this folder.
+
 ---
 
 ## Iron Law
@@ -25,40 +27,88 @@ Create only the essential directories. The structure grows organically as you pr
 
 ### 1. Check Current State
 
-First, check if this is already a DRIVER project:
+First, check if this is already a DRIVER project by looking for `.driver.json` at the repo root:
+
+```json
+{
+  "project_dir": "my-project"
+}
+```
+
+If `.driver.json` exists, read the project folder name and check for existing files:
 
 ```
-product/
+[project]/
 ├── product-overview.md     # Created by /define
-├── product-roadmap.md      # Created by /represent-roadmap
-├── data-model/             # Created by /represent-datamodel
-├── design-system/          # Created by /represent-tokens
-├── shell/                  # Created by /represent-shell
-└── sections/               # Created by /represent-section
+├── roadmap.md              # Created by /represent-roadmap
+├── spec-[section].md       # Created by /represent-section
+├── data-model.md           # Created by /represent-datamodel
+├── design/                 # Created by /represent-tokens, /represent-shell
+└── build/                  # Created by /implement-data
 ```
 
-If `product/` exists with files, ask:
+If the project folder exists with files, ask:
 
-"I see an existing DRIVER project. What would you like to do?
+"I see an existing DRIVER project in `[project]/`. What would you like to do?
 - Continue where you left off (run `/finance-driver:status`)
 - Start fresh (this will overwrite existing files)"
 
-### 2. Create Base Structure
+### 2. Ask for Project Folder Name
 
-If starting fresh, create the minimal structure:
+If starting fresh, ask:
 
-```bash
-mkdir -p product
-mkdir -p product/sections
+"What would you like to call your project folder? (default: `my-project`)"
+
+Accept any reasonable folder name — lowercase, hyphens, underscores are all fine. If the user presses enter or says "default" / "that's fine", use `my-project`.
+
+### 3. Create `.driver.json`
+
+Create `.driver.json` at the **repo root** (not inside the project folder):
+
+```json
+{
+  "project_dir": "my-project"
+}
 ```
 
-Create a placeholder README:
+Replace `my-project` with whatever name the user chose.
 
-**`product/README.md`:**
+### 4. Create Base Structure
+
+Create the project folder with just a README:
+
+```bash
+mkdir -p [project]
+```
+
+Create the README:
+
+**`[project]/README.md`:**
 ```markdown
 # DRIVER Project
 
 This project follows the DRIVER methodology for finance/quant tool development.
+
+## Project Structure
+
+```
+[project-name]/
+├── README.md                 ← You are here
+├── research.md               ← Created by /research or /define
+├── product-overview.md       ← Created by /define (your PRD)
+├── roadmap.md                ← Created by /represent-roadmap
+├── spec-[section].md         ← Created by /represent-section
+├── data-model.md             ← Created by /represent-datamodel
+├── validation.md             ← Created by /validate
+├── reflect.md                ← Created by /reflect
+├── design/                   ← Web apps only
+│   ├── tokens.json
+│   └── shell.md
+└── build/                    ← Implementation artifacts
+    └── [section-id]/
+        ├── data.json
+        └── types.ts
+```
 
 ## Workflow
 
@@ -82,14 +132,14 @@ This project follows the DRIVER methodology for finance/quant tool development.
 Run `/finance-driver:define` to begin.
 ```
 
-### 3. Confirm and Guide
+### 5. Confirm and Guide
 
 "I've initialized your DRIVER project:
 
 ```
-product/
-├── README.md          # Project overview
-└── sections/          # Will hold your buildable sections
+.driver.json               # Project config (folder: [project-name])
+[project-name]/
+└── README.md              # Project overview and structure
 ```
 
 **Example projects you might build:**
@@ -113,3 +163,4 @@ After init, immediately offer to start `/finance-driver:define`. Don't leave the
 - **Minimal scaffold** — Only create what's needed
 - **Finance-focused** — Guide toward quant/finance use cases
 - **Clear next step** — Always point to `/finance-driver:define`
+- **Personalized** — Let the user name their project folder

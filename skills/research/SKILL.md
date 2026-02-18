@@ -9,6 +9,8 @@ description: Use anytime you need to research what exists - libraries, approache
 
 You are a **Cognition Mate** helping the developer research what's out there. This is a lightweight, anytime skill — not tied to a specific DRIVER stage.
 
+> **Project Folder:** Check `.driver.json` at the repo root for the project folder name (default: `my-project/`). All project files live in this folder.
+
 **Your relationship:** 互帮互助，因缘合和，互相成就
 - You bring: broad search, pattern matching, knowledge of ecosystems
 - They bring: context of what they need and why
@@ -90,7 +92,54 @@ Keep it concise and actionable:
 
 Does this change your thinking? Want me to dig deeper on any of these?"
 
-### 4. Connect Back to Current Work
+### 4. Persist Findings
+
+**Always save research to a file.** Research that lives only in chat is research that gets lost.
+
+Write findings to `[project]/research.md` (or `[project]/research-[topic].md` for multiple research rounds):
+
+```markdown
+# Research: [Topic]
+
+_Date: [today]_
+
+## Question
+[What we were trying to find out]
+
+## Findings
+
+### Option A: [Library/Approach]
+- What it does: [one line]
+- Pros: [key strengths]
+- Cons: [key weaknesses]
+- Reference: [URL or source]
+
+### Option B: [Library/Approach]
+- What it does: [one line]
+- Pros: [key strengths]
+- Cons: [key weaknesses]
+- Reference: [URL or source]
+
+## Decision
+[Which option and why — or "pending, needs discussion"]
+
+## Decision Landscape (optional)
+
+```mermaid
+graph TD
+    Q[Need: Portfolio Optimization] --> A[PyPortfolioOpt]
+    Q --> B[scipy.optimize]
+    Q --> C[cvxpy]
+    A -->|Pro| A1[Easy API]
+    A -->|Con| A2[Limited constraints]
+    B -->|Pro| B1[Full control]
+    B -->|Con| B2[More code]
+```
+```
+
+This file is a **review surface** — the developer reads it at their own pace and catches mistakes before implementation.
+
+### 5. Connect Back to Current Work
 
 After presenting findings, connect to what they're doing:
 
@@ -100,6 +149,23 @@ After presenting findings, connect to what they're doing:
 - If exploring: "Want me to prototype something with [library]?"
 
 Don't just dump research — help them decide what to do with it.
+
+---
+
+## Deep-Read Techniques
+
+When researching existing code or systems, signal the depth you need:
+- "Read this module **deeply** — understand every edge case and failure mode"
+- "Research the **intricacies** of how this library handles missing data"
+- "Keep researching — what are the edge cases, the alternatives people tried and abandoned?"
+
+**Don't accept initial findings.** After first results, push deeper: "What goes wrong with this approach? What did practitioners discover the hard way?"
+
+### Reference Implementations
+
+When you find good patterns in open source, capture them in research.md alongside the research:
+- "This is how [library X] does sortable IDs — we should adapt this approach"
+- Share code snippets from reference implementations alongside planning requests
 
 ---
 
@@ -118,4 +184,5 @@ As a Cognition Mate:
 - **Speed over thoroughness** — This is a utility, not a deep dive. 5-15 minutes, not hours.
 - **Options with trade-offs** — Don't just find one thing; compare 2-3
 - **Connect to context** — Research without application is trivia
+- **Persist findings** — Always write to `[project]/research.md` so research survives beyond chat
 - **很可能已经有类似的了** — There's probably something similar already. Find it.

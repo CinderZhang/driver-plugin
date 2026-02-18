@@ -9,6 +9,8 @@ description: Use when ready to build a section - builds and runs code, showing r
 
 You are a **Cognition Mate** doing the heavy lifting on code. Your job: build it and show it running.
 
+> **Project Folder:** Check `.driver.json` at the repo root for the project folder name (default: `my-project/`). All project files live in this folder.
+
 **The philosophy:** Don't explain what you're going to build. Build it. Run it. Let them see it.
 
 ```
@@ -39,6 +41,39 @@ BUILD IT. RUN IT. LET THEM SEE IT.
 | "Should I proceed with this design?" | No — build it, they'll give feedback on what they see |
 | "I'll describe the component structure" | No — create the components and run them |
 | "Let me outline the implementation" | No — implement it |
+
+---
+
+## Execution Protocol
+
+These practical techniques make implementation more effective.
+
+### Standard Execution
+
+When a solid plan exists (from the annotation cycle in REPRESENT), execution should be mechanical:
+
+1. Read the spec or plan
+2. Build it
+3. Run it
+4. Show the result
+5. Iterate on feedback
+
+### Terse Feedback
+
+Once a solid plan exists, corrections collapse to single sentences:
+- "Move the settings to a separate page"
+- "Use vectorized NumPy here"
+- "Wider"
+
+The plan provides enough context. Don't re-explain the whole project with every correction.
+
+### Revert and Re-scope
+
+When implementation heads in the wrong direction — complexity exploding, approach not working, results look wrong — **don't patch**. Discard the changes and narrow the scope. A clean restart with tighter constraints beats incremental fixes on a broken foundation.
+
+### Track Progress
+
+As you build sections, update `[project]/roadmap.md` to mark completed sections. The roadmap is a living document — your progress tracker.
 
 ---
 
@@ -75,8 +110,9 @@ For quant/finance work, default to Path A.
 ### 1. Understand What to Build
 
 Read the context:
-- `/product/product-overview.md` — The problem and unique value
-- `/product/product-roadmap.md` — Which section we're implementing
+- `[project]/product-overview.md` — The problem and unique value
+- `[project]/roadmap.md` — Which section we're implementing
+- `[project]/spec-[section-name].md` — Section spec (if it exists)
 - Any existing code they have
 
 "Which section are we building? Let me see what we're working with."
@@ -145,6 +181,9 @@ As the app grows, organize:
 ```
 project/
 ├── app.py              # Main Streamlit entry
+├── pages/              # Streamlit multi-page convention
+│   ├── 1_Section_One.py
+│   └── 2_Section_Two.py
 ├── calculations/       # Core logic (pure Python, testable)
 │   ├── dcf.py
 │   └── portfolio.py
@@ -193,9 +232,9 @@ For web app interfaces that need portable React components.
 ### 1. Check Prerequisites
 
 Verify these exist:
-- `product/sections/[section-id]/spec.md`
-- `product/sections/[section-id]/data.json`
-- `product/sections/[section-id]/types.ts`
+- `[project]/spec-[section-name].md`
+- `[project]/build/[section-id]/data.json`
+- `[project]/build/[section-id]/types.ts`
 
 If missing, guide them to create these first.
 
@@ -204,7 +243,7 @@ If missing, guide them to create these first.
 Create at `src/sections/[section-id]/components/[ViewName].tsx`:
 
 ```tsx
-import type { Props } from '@/../product/sections/[section-id]/types'
+import type { Props } from '@/../[project]/build/[section-id]/types'
 
 export function ComponentName({
   data,
@@ -232,7 +271,7 @@ export function ComponentName({
 Create at `src/sections/[section-id]/[ViewName].tsx`:
 
 ```tsx
-import data from '@/../product/sections/[section-id]/data.json'
+import data from '@/../[project]/build/[section-id]/data.json'
 import { ComponentName } from './components/ComponentName'
 
 export default function Preview() {

@@ -17,9 +17,9 @@ DRIVER is a methodology for building finance and quantitative analysis tools wit
 
 | Chinese | Pinyin | Meaning |
 |---------|--------|---------|
-| 互帮互助 | hù bāng hù zhù | Mutual help, helping each other |
-| 因缘合和 | yīn yuán hé hé | Causes and conditions coming together (interdependent arising) |
-| 互相成就 | hù xiāng chéng jiù | Accomplishing together, mutual achievement |
+| 互帮互助 | hu bang hu zhu | Mutual help, helping each other |
+| 因缘合和 | yin yuan he he | Causes and conditions coming together (interdependent arising) |
+| 互相成就 | hu xiang cheng jiu | Accomplishing together, mutual achievement |
 
 **What this means in practice:**
 - AI is not a tool you command — it's a thinking partner
@@ -32,48 +32,64 @@ DRIVER is a methodology for building finance and quantitative analysis tools wit
 ## The Six Stages
 
 ```
-┌─────────────────────────────────────────────────────────┐
-│  DEFINE (开题调研)                                        │
-│  "What are we building? What already exists?"            │
-│  开题 = Open the topic  调研 = Research/investigate       │
-└─────────────────────────────────────────────────────────┘
-                           ↓
-┌─────────────────────────────────────────────────────────┐
-│  REPRESENT                                               │
-│  "How do we break this into buildable pieces?"          │
-│  Roadmap, data model, sections                          │
-└─────────────────────────────────────────────────────────┘
-                           ↓
-┌─────────────────────────────────────────────────────────┐
-│  IMPLEMENT                                               │
-│  "Build it, run it, show it"                            │
-│  Show don't tell — code speaks louder than plans        │
-└─────────────────────────────────────────────────────────┘
-                           ↓
-┌─────────────────────────────────────────────────────────┐
-│  VALIDATE                                                │
-│  "Cross-check your instruments"                         │
-│  Known answers, reasonableness, edges, AI blind spots   │
-└─────────────────────────────────────────────────────────┘
-                           ↓
-┌─────────────────────────────────────────────────────────┐
-│  EVOLVE                                                  │
-│  "Package the final deliverable"                        │
-│  Self-contained export, ready for production            │
-└─────────────────────────────────────────────────────────┘
-                           ↓
-┌─────────────────────────────────────────────────────────┐
-│  REFLECT (Optional)                                      │
-│  "What did we learn?"                                   │
-│  Capture tech stack lessons, especially failures        │
-└─────────────────────────────────────────────────────────┘
+DEFINE (开题调研)
+    "What are we building? What already exists?"
+    开题 = Open the topic  调研 = Research/investigate
+                       ↓
+REPRESENT
+    "How do we break this into buildable pieces?"
+    Roadmap, data model, sections
+                       ↓
+IMPLEMENT
+    "Build it, run it, show it"
+    Show don't tell — code speaks louder than plans
+                       ↓
+VALIDATE
+    "Cross-check your instruments"
+    Known answers, reasonableness, edges, AI blind spots
+                       ↓
+EVOLVE
+    "Package the final deliverable"
+    Self-contained export, ready for production
+                       ↓
+REFLECT (Optional)
+    "What did we learn?"
+    Capture tech stack lessons, especially failures
 ```
+
+---
+
+## Project Structure
+
+DRIVER uses a flat, easy-to-navigate file structure. All project files live in a single folder (default: `my-project/`, customizable via `.driver.json`):
+
+```
+.driver.json                      # Project config (folder name)
+my-project/
+├── README.md                     # Project overview and structure
+├── research.md                   # Research findings (分头研究)
+├── product-overview.md           # Product definition (your PRD)
+├── roadmap.md                    # 3-5 buildable sections
+├── data-model.md                 # Core entities and relationships
+├── validation.md                 # Cross-check results (all sections)
+├── reflect.md                    # Learnings and retrospective
+├── spec-[section-name].md        # Section specifications
+├── design/                       # Web apps only
+│   ├── tokens.json               # Colors and typography
+│   └── shell.md                  # Navigation shell spec
+└── build/                        # Implementation artifacts
+    └── [section-id]/
+        ├── data.json             # Sample data
+        └── types.ts              # TypeScript interfaces
+```
+
+Human-readable documents live at the project root. Implementation artifacts live in `build/`.
 
 ---
 
 ## Key Concepts
 
-### 分头研究 (fēn tóu yán jiū)
+### 分头研究 (fen tou yan jiu)
 **"Parallel research"** — Before building anything, research what exists. You focus on your unique needs; AI researches existing libraries, papers, implementations.
 
 很可能已经有类似的了 = "There's probably something similar already"
@@ -87,6 +103,32 @@ The fastest feedback loop: See result → Give feedback → Iterate → See upda
 - Simple and logical beats elegant and fancy
 - Quants need clear data tables, not animations
 - A 500-line Python script beats a 50-file TypeScript project
+
+### Persistent Artifacts
+Every DRIVER stage produces a markdown file — research.md, product-overview.md, roadmap.md, spec files. These are your **shared mutable state**:
+- They survive context window limits (chat history gets compressed; files don't)
+- They enable asynchronous review (read at your own pace, catch mistakes)
+- They serve as review surfaces where you annotate corrections
+
+**Rule:** If research, a plan, or a decision lives only in chat, it will get lost. Write it to a file.
+
+### The Annotation Cycle
+After AI writes a plan or spec, don't just say "looks good." Review it in your editor:
+1. AI writes the plan/spec to a markdown file
+2. You open it and add inline notes (corrections, domain knowledge, rejected approaches)
+3. Send it back: "Update based on my annotations — don't implement yet"
+4. AI revises the document
+5. Repeat 1-6 times until the plan is right
+
+**This is where the real creative work happens.** Implementation should be mechanical.
+
+### Mermaid Diagrams
+DRIVER uses Mermaid diagrams as standard visual documentation:
+- **System context** — in product-overview.md (how the tool fits in the workflow)
+- **Dependencies** — in roadmap.md (build order between sections)
+- **User flows** — in spec files (step-by-step interaction)
+- **ER diagrams** — in data-model.md (entity relationships)
+- **Decision landscapes** — in research.md (comparing options)
 
 ---
 
