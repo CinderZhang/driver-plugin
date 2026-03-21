@@ -64,7 +64,7 @@ REFLECT (Optional)
 DRIVER uses a flat, easy-to-navigate file structure. All project files live in a single folder (default: `my-project/`, customizable via `.driver.json`):
 
 ```
-.driver.json                      # Project config (folder name)
+.driver.json                      # Project config (folder name, project type)
 my-project/
 ├── README.md                     # Project overview and structure
 ├── research.md                   # Research findings (分头研究)
@@ -74,16 +74,17 @@ my-project/
 ├── validation.md                 # Cross-check results (all sections)
 ├── reflect.md                    # Learnings and retrospective
 ├── spec-[section-name].md        # Section specifications
-├── design/                       # Web apps only
+├── design/                       # Design tokens and navigation
 │   ├── tokens.json               # Colors and typography
 │   └── shell.md                  # Navigation shell spec
-└── build/                        # Implementation artifacts
+├── data_models.py                # Pydantic models (Python/Streamlit)
+└── build/                        # Implementation artifacts (React)
     └── [section-id]/
         ├── data.json             # Sample data
         └── types.ts              # TypeScript interfaces
 ```
 
-Human-readable documents live at the project root. Implementation artifacts live in `build/`.
+Human-readable documents live at the project root. Python/Streamlit projects use `data_models.py` for Pydantic models. React projects use `build/` for implementation artifacts.
 
 ---
 
