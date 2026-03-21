@@ -25,7 +25,8 @@ You are a **Cognition Mate** helping the developer create realistic sample data 
 
 Generate believable names, dates, amounts.
 Include edge cases (empty arrays, long text, different statuses).
-For quant tools, skip this — data comes from real sources or the developer creates it directly.
+For Python/Streamlit tools: generate Pydantic models and sample DataFrames.
+For React/web apps: generate TypeScript types and JSON data files.
 </IMPORTANT>
 
 ## Red Flags
@@ -35,7 +36,6 @@ For quant tools, skip this — data comes from real sources or the developer cre
 | "I'll use placeholder text" | Realistic data — real names, real-looking numbers |
 | "One sample record is enough" | 5-10 records to show a realistic list |
 | "All statuses should be the same" | Mix statuses — draft, sent, paid, overdue |
-| "This quant tool needs sample data" | Skip — data comes from real sources or Python |
 | "Perfect data with no edge cases" | Include empty arrays, long text, varied content |
 
 ---
@@ -93,16 +93,125 @@ I'll create [X] realistic records to make the screen designs feel real.
 
 Does this structure make sense?"
 
-### 5. Generate the Data File
+### 5. Generate the Data Files
 
-Once approved, create `[project]/build/[section-id]/data.json` with:
+#### Path A: Python / Streamlit (Primary)
 
-- **A `_meta` section** — Human-readable descriptions of each data model
-- **Realistic sample data** — Believable names, dates, descriptions
-- **Varied content** — Mix short and long text, different statuses
-- **Edge cases** — At least one empty array, one long description
+Create `[project]/build/[section-id]/data_models.py` with Pydantic models and sample DataFrames:
 
-Example structure:
+```python
+# =============================================================================
+# Data Models
+# =============================================================================
+
+from __future__ import annotations
+
+from datetime import date
+from enum import Enum
+from typing import Literal
+
+import pandas as pd
+from pydantic import BaseModel, Field
+
+
+class InvoiceStatus(str, Enum):
+    DRAFT = "draft"
+    SENT = "sent"
+    PAID = "paid"
+    OVERDUE = "overdue"
+
+
+class LineItem(BaseModel):
+    id: str
+    description: str
+    quantity: int = Field(gt=0)
+    unit_price: float = Field(gt=0)
+
+    @property
+    def total(self) -> float:
+        return self.quantity * self.unit_price
+
+
+class Invoice(BaseModel):
+    id: str
+    invoice_number: str
+    client_name: str
+    issue_date: date
+    due_date: date
+    status: InvoiceStatus
+    line_items: list[LineItem] = Field(default_factory=list)
+
+    @property
+    def total(self) -> float:
+        return sum(item.total for item in self.line_items)
+
+
+# =============================================================================
+# Sample DataFrames
+# =============================================================================
+
+SAMPLE_INVOICES = pd.DataFrame([
+    {
+        "id": "inv-001",
+        "invoice_number": "INV-2024-001",
+        "client_name": "Meridian Capital LLC",
+        "issue_date": date(2024, 1, 5),
+        "due_date": date(2024, 2, 5),
+        "status": InvoiceStatus.PAID,
+        "total": 4_250.00,
+    },
+    {
+        "id": "inv-002",
+        "invoice_number": "INV-2024-002",
+        "client_name": "Harborview Asset Mgmt",
+        "issue_date": date(2024, 2, 12),
+        "due_date": date(2024, 3, 12),
+        "status": InvoiceStatus.SENT,
+        "total": 8_900.00,
+    },
+    {
+        "id": "inv-003",
+        "invoice_number": "INV-2024-003",
+        "client_name": "Pinnacle Growth Fund",
+        "issue_date": date(2024, 1, 20),
+        "due_date": date(2024, 2, 20),
+        "status": InvoiceStatus.OVERDUE,
+        "total": 12_750.50,
+    },
+    {
+        "id": "inv-004",
+        "invoice_number": "INV-2024-004",
+        "client_name": "Clearwater Advisors",
+        "issue_date": date(2024, 3, 1),
+        "due_date": date(2024, 4, 1),
+        "status": InvoiceStatus.DRAFT,
+        "total": 3_600.00,
+    },
+    {
+        "id": "inv-005",
+        "invoice_number": "INV-2024-005",
+        "client_name": "Northgate Investments",
+        "issue_date": date(2024, 3, 10),
+        "due_date": date(2024, 4, 10),
+        "status": InvoiceStatus.SENT,
+        "total": 21_000.00,
+    },
+])
+```
+
+**Rules for the Python path:**
+- Use Pydantic v2 `BaseModel` for all entities
+- Use `Enum` (subclassing `str`) for status fields
+- Use `Field(gt=0)` or other validators where relevant
+- Include `@property` for derived fields (totals, labels)
+- Sample DataFrames use realistic finance data: firm names, dollar amounts, real dates
+- 5-10 rows minimum — enough to show a realistic list with mixed statuses
+
+#### Path B: TypeScript / React (Secondary)
+
+Create `[project]/build/[section-id]/data.json` and `[project]/build/[section-id]/types.ts`.
+
+**`data.json` structure:**
 
 ```json
 {
@@ -119,17 +228,15 @@ Example structure:
     {
       "id": "inv-001",
       "invoiceNumber": "INV-2024-001",
-      "clientName": "Acme Corp",
-      "total": 1500.00,
-      "status": "sent"
+      "clientName": "Meridian Capital LLC",
+      "total": 4250.00,
+      "status": "paid"
     }
   ]
 }
 ```
 
-### 6. Generate TypeScript Types
-
-Create `[project]/build/[section-id]/types.ts` based on the data structure:
+**`types.ts` structure:**
 
 ```typescript
 // =============================================================================
@@ -162,9 +269,19 @@ export interface InvoiceListProps {
 }
 ```
 
-### 7. Suggest Next Step
+### 6. Suggest Next Step
 
-Once the data is created, proactively suggest building:
+**Python path — files created:**
+
+"I've created one file for **[Section Title]**:
+
+1. `[project]/build/[section-id]/data_models.py` — Pydantic models + sample DataFrames
+
+Now we have typed data structures and realistic sample data ready to wire into the Streamlit app.
+
+**Want me to build it now?** You'll see it running and can give feedback on what to change."
+
+**TypeScript path — files created:**
 
 "I've created two files for **[Section Title]**:
 
@@ -175,19 +292,15 @@ Now we have everything we need to build this section.
 
 **Want me to build it now?** You'll see it running and can give feedback on what to change."
 
-If they agree, **proceed directly** to building:
-- For quant tools: Build Streamlit app and run it
-- For web apps: Build React components
-
-Don't tell them to run commands — just build.
+If they agree, **proceed directly** to building. Don't tell them to run commands — just build.
 
 ---
 
 ## Proactive Flow
 
 As a Cognition Mate:
-- Suggest skipping for quant tools — data comes from real sources
-- Propose realistic data based on the spec
+- Infer the stack from the project (Python/Streamlit vs. TypeScript/React) and use the right path automatically
+- Propose realistic data based on the spec — finance-domain data for finance tools
 - Suggest building immediately once data is ready
 - Show don't tell — get something running
 
