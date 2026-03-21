@@ -21,21 +21,23 @@ You are a **Cognition Mate** helping the developer design the application shell 
 ## Iron Law
 
 <IMPORTANT>
-**SKIP FOR QUANT TOOLS — STREAMLIT/DASH HANDLE NAVIGATION**
+**TWO PATHS — STREAMLIT AND REACT**
 
-For React web apps, design a simple shell.
-For quant tools using Streamlit/Dash, skip this step entirely — those frameworks handle navigation with `st.sidebar` or similar.
+**Streamlit apps:** Use `st.sidebar` for navigation. For multi-page apps, use `st.navigation` with a `pages/` directory structure.
+**React web apps:** Design a simple shell component with sidebar or top nav.
+
+Both paths are real work — choose the right one for the stack.
 </IMPORTANT>
 
 ## Red Flags
 
 | Thought | Reality |
 |---------|---------|
-| "This Streamlit app needs a shell" | Skip — Streamlit handles navigation |
 | "Let me design complex nested navigation" | Simple sidebar or top nav. KISS. |
 | "We need animated transitions" | No animations — just clear navigation |
 | "Every section needs sub-navigation" | Flat structure. Keep it minimal. |
-| "I'll create a mega-menu" | Quants don't need mega-menus |
+| "I'll create a mega-menu" | Simple nav items only |
+| "Streamlit needs a custom nav component" | Use `st.sidebar` and `st.navigation` — built in |
 
 ---
 
@@ -54,19 +56,148 @@ If overview or roadmap are missing:
 
 **Then proceed directly to the define flow.**
 
-### 2. Ask About Approach
+### 2. Ask About Stack
 
 "I'm preparing to design the shell for **[Product Name]**.
 
-**Quick question:** Is this a web app (React) or a quant tool (Streamlit/Dash)?
+**Quick question:** Is this a Streamlit app or a React web app?
 
-For Streamlit/Dash, you can skip the shell design — those frameworks handle navigation with built-in patterns like `st.sidebar`.
+- **Streamlit** — I'll set up `st.sidebar` navigation (or `st.navigation` for multi-page)
+- **React** — I'll design a shell component with sidebar or top nav
 
-For React web apps, I'll help you design the navigation structure."
+Which are you using?"
 
-### 3. Analyze Product Structure
+---
 
-If they're building a React web app:
+## Path A: Streamlit Navigation (Primary)
+
+### A1. Analyze Product Structure
+
+"Based on your roadmap, you have [N] sections:
+
+1. **[Section 1]** — [Description]
+2. **[Section 2]** — [Description]
+3. **[Section 3]** — [Description]
+
+For Streamlit, there are two navigation patterns:
+
+**A. `st.navigation` (multi-page)** — Streamlit's native multi-page app structure
+   Best for: Apps with distinct pages, clean URL routing
+   Uses a `pages/` directory, Streamlit handles the nav automatically
+
+**B. `st.sidebar` (single-file)** — Manual navigation with `st.sidebar.radio` or buttons
+   Best for: Simpler apps, tightly coupled sections, single `app.py`
+
+Which pattern fits **[Product Name]**?"
+
+### A2. Gather Design Details
+
+Ask clarifying questions one at a time:
+
+- "Do you want section icons in the sidebar?"
+- "Should there be a logo or app title at the top of the sidebar?"
+- "Any utility links? (Settings, Help, About)"
+- "What should the default view be when the app loads?"
+
+### A3. Present Shell Specification
+
+"Here's the shell design for **[Product Name]**:
+
+**Pattern:** [st.navigation multi-page / st.sidebar single-file]
+
+**Navigation:**
+- [Nav Item 1] → [Section]
+- [Nav Item 2] → [Section]
+- [Nav Item 3] → [Section]
+
+**Sidebar header:** [Logo / title / none]
+
+Does this match what you had in mind?"
+
+Iterate until approved.
+
+### A4. Create the Shell Specification
+
+Create `[project]/design/shell.md`:
+
+```markdown
+# Application Shell Specification
+
+## Stack
+Streamlit
+
+## Pattern
+[st.navigation multi-page / st.sidebar single-file]
+
+## Navigation Structure
+- [Nav Item 1] → [Section 1]
+- [Nav Item 2] → [Section 2]
+- [Nav Item 3] → [Section 3]
+
+## Sidebar Header
+[Description]
+
+## Default View
+[Which section loads first]
+```
+
+### A5. Implement the Shell
+
+**For `st.navigation` (multi-page):**
+
+Create the pages directory structure:
+
+```
+app.py                  # Entry point
+pages/
+  section_one.py
+  section_two.py
+  section_three.py
+```
+
+`app.py` pattern:
+
+```python
+import streamlit as st
+
+pages = [
+    st.Page("pages/section_one.py", title="[Section 1]", icon="[icon]"),
+    st.Page("pages/section_two.py", title="[Section 2]", icon="[icon]"),
+    st.Page("pages/section_three.py", title="[Section 3]", icon="[icon]"),
+]
+
+pg = st.navigation(pages)
+pg.run()
+```
+
+**For `st.sidebar` (single-file):**
+
+Navigation pattern inside `app.py`:
+
+```python
+import streamlit as st
+
+with st.sidebar:
+    st.title("[Product Name]")
+    section = st.radio(
+        "Navigate",
+        ["[Section 1]", "[Section 2]", "[Section 3]"],
+        label_visibility="collapsed"
+    )
+
+if section == "[Section 1]":
+    show_section_one()
+elif section == "[Section 2]":
+    show_section_two()
+elif section == "[Section 3]":
+    show_section_three()
+```
+
+---
+
+## Path B: React Shell (Alternative)
+
+### B1. Analyze Product Structure
 
 "Based on your roadmap, you have [N] sections:
 
@@ -87,7 +218,7 @@ Common shell patterns:
 
 Which pattern fits **[Product Name]**?"
 
-### 4. Gather Design Details
+### B2. Gather Design Details
 
 Ask clarifying questions one at a time:
 
@@ -96,7 +227,7 @@ Ask clarifying questions one at a time:
 - "Any additional items? (Settings, Help, etc.)"
 - "What should the default view be when the app loads?"
 
-### 5. Present Shell Specification
+### B3. Present Shell Specification
 
 "Here's the shell design for **[Product Name]**:
 
@@ -115,15 +246,15 @@ Does this match what you had in mind?"
 
 Iterate until approved.
 
-### 6. Create the Shell Specification
+### B4. Create the Shell Specification
 
 Create `[project]/design/shell.md`:
 
 ```markdown
 # Application Shell Specification
 
-## Overview
-[Description of the shell design]
+## Stack
+React
 
 ## Navigation Structure
 - [Nav Item 1] → [Section 1]
@@ -141,7 +272,7 @@ Create `[project]/design/shell.md`:
 - **Mobile:** [Behavior]
 ```
 
-### 7. Create Shell Components
+### B5. Create Shell Components
 
 Create the shell components at `src/shell/components/`:
 
@@ -175,11 +306,13 @@ Export all components.
 - Use Tailwind CSS
 - Use lucide-react for icons
 
-### 8. Create Shell Preview
+### B6. Create Shell Preview
 
 Create `src/shell/ShellPreview.tsx` for viewing the shell in DRIVER.
 
-### 9. Suggest Next Step
+---
+
+### 3. Suggest Next Step
 
 Once the shell is created, proactively suggest moving forward:
 
@@ -187,15 +320,12 @@ Once the shell is created, proactively suggest moving forward:
 
 **Created files:**
 - `[project]/design/shell.md` — Shell specification
-- `src/shell/components/` — Shell components
+- [Implementation files based on stack]
 
 **Features:**
-- [Layout pattern] layout
+- [Pattern] navigation
 - Navigation for all [N] sections
-- User menu
-- Mobile responsive
-
-**Important:** Restart your dev server to see the shell.
+- [Additional features]
 
 Now let's work on the sections. **Which section would you like to tackle first?**
 
@@ -210,7 +340,7 @@ If they choose, **proceed directly** to that work.
 ## Proactive Flow
 
 As a Cognition Mate:
-- Suggest skipping for quant tools — Streamlit/Dash handle navigation
+- Ask about stack early — Streamlit and React have different navigation patterns
 - Recommend the simplest pattern that fits
 - Suggest next steps after shell is created
 - If they agree, continue directly — don't say "run /command"
@@ -220,6 +350,6 @@ As a Cognition Mate:
 ## Guiding Principles
 
 - **KISS** — Simple navigation, don't over-engineer
-- **Skip for quant tools** — Streamlit/Dash handle this
-- **Props-based** — Components are portable
+- **Streamlit: use native patterns** — `st.navigation` and `st.sidebar` are purpose-built
+- **React: props-based** — Components are portable
 - **Trust their judgment** — They know their users
