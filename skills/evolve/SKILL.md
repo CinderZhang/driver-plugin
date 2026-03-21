@@ -41,19 +41,56 @@ No references to DRIVER, no external dependencies, no missing context.
 
 ## Prerequisites
 
+### Step 0: Detect Project Type
+
+Before checking prerequisites, determine which tech stack this project uses:
+
+1. **Check `.driver.json`** — look for a `"project_type"` field:
+   - `"streamlit"` → Path A (Python + Streamlit)
+   - `"react"` → Path B (React + TypeScript)
+2. **If not set in `.driver.json`**, detect from the filesystem:
+   - If `app.py` exists at the repo root → **Path A (Streamlit)**
+   - If `src/` directory exists with `.tsx` files → **Path B (React)**
+   - If `pages/` directory exists with `.py` files → **Path A (Streamlit)**
+3. **If still ambiguous**, default to **Path A (Streamlit)** — this is the primary path for quant/analytical tools.
+
+---
+
+### Step 1: Verify Prerequisites
+
 Verify the minimum requirements exist:
 
-**Required:**
+**Required (all projects):**
 - `[project]/product-overview.md` — Product overview
 - `[project]/roadmap.md` — Sections defined
+
+**Required (Path A — Streamlit, PRIMARY):**
+- At least one of the following exists with implementation work:
+  - `app.py` — Main Streamlit entry point, OR
+  - `pages/` — Streamlit multi-page directory with at least one `.py` file, OR
+  - `calculations/` — Core logic modules
+
+**Required (Path B — React):**
 - At least one section with screen designs in `src/sections/[section-id]/`
 
 **Recommended (show warning if missing):**
 - `[project]/data-model.md` — Global data model
 - `[project]/design/tokens.json` — Color tokens
-- `src/shell/components/AppShell.tsx` — Application shell
+- Path A: `calculations/` — Core logic (pure Python, testable)
+- Path B: `src/shell/components/AppShell.tsx` — Application shell
 
 If required files are missing:
+
+**Path A (Streamlit):**
+
+"To export your Streamlit product, you need at minimum:
+- A product overview (`/define`)
+- A roadmap with sections (`/represent-roadmap`)
+- At least one of: `app.py`, a `pages/` directory, or a `calculations/` module
+
+Please complete these first (`/implement-screen`)."
+
+**Path B (React):**
 
 "To export your product, you need at minimum:
 - A product overview (`/define`)
@@ -76,13 +113,14 @@ Read all relevant files:
 4. `[project]/data-model.md` (if exists)
 5. `[project]/design/tokens.json` (if exists)
 6. For each section: `[project]/spec-[section-name].md`, `[project]/build/[section-id]/data.json`, `[project]/build/[section-id]/types.ts`
-7. List screen design components in `src/sections/` and `src/shell/`
+7. **Path A (Streamlit):** List implemented files in `app.py`, `pages/`, and `calculations/`
+   **Path B (React):** List screen design components in `src/sections/` and `src/shell/`
 
 ### 2. Create Export Directory Structure
 
-Determine the tech stack from the project (check `[project]/product-overview.md` and existing source files).
+Use the project type detected in Step 0. If still unclear, check `[project]/product-overview.md` for tech stack clues.
 
-#### Path A: Python + Streamlit (Quant/Analytical Tools)
+#### Path A: Python + Streamlit (Quant/Analytical Tools) — PRIMARY
 
 ```
 driver-plan/
