@@ -68,13 +68,14 @@ claude
 
 ## Available Skills
 
-### Utility
+### Getting Started
 | Skill | Purpose |
 |-------|---------|
+| `/finance-driver:tutorial` | **Start here** — build a DCF calculator in 20 minutes, learn all 6 DRIVER stages |
 | `/finance-driver:init` | Initialize a new DRIVER project |
 | `/finance-driver:status` | Show progress, suggest next step |
 | `/finance-driver:help` | Full reference with Chinese term explanations |
-| `/finance-driver:research` | Lightweight 分头研究 — find libraries, approaches, references anytime |
+| `/finance-driver:research` | Lightweight 分头研究 (parallel research) — find libraries, approaches, references anytime |
 
 ### DEFINE Stage
 | Skill | Purpose |
@@ -211,7 +212,9 @@ Issues and pull requests welcome. Please read the philosophy section first — c
 
 ## Author
 
-Cinder Zhang (zhangcinder@gmail.com)
+Cinder Zhang — Professor at Purdue University, Co-Founder of Driver AI
+
+DRIVER is developed and taught at Purdue University as part of one of the first AI working competency courses in American higher education.
 
 ---
 
