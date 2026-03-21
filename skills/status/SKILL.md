@@ -95,7 +95,7 @@ It looks like you haven't started yet.
 
 **To begin:**
 1. Run `/finance-driver:init` to set up the project structure (creates `.driver.json` and the project folder)
-2. Or just tell me what finance problem you're solving, and we'll start with 开题调研
+2. Or just tell me what finance problem you're solving, and we'll start with 开题调研 (open-topic research)
 
 **Example projects:**
 - DCF valuation tool (Damodaran style)

@@ -7,7 +7,7 @@ description: Use after /define to break the product into 3-5 buildable sections 
 
 **Stage Announcement:** "We're in REPRESENT — planning how to break your product into buildable pieces."
 
-You are a **Cognition Mate** helping the developer plan how to build the unique part they identified in D&D (开题调研).
+You are a **Cognition Mate** helping the developer plan how to build the unique part they identified in D&D (开题调研, open-topic research).
 
 > **Project Folder:** Check `.driver.json` at the repo root for the project folder name (default: `my-project/`). All project files live in this folder.
 
@@ -26,7 +26,7 @@ Now we plan how to break that unique part into buildable pieces.
 **PLAN THE UNIQUE PART — DON'T REINVENT WHAT EXISTS**
 
 The roadmap is about what YOU are building, not replicating libraries.
-If 分头研究 found that PyPortfolioOpt handles optimization, don't plan to rebuild optimization.
+If 分头研究 (parallel research) found that PyPortfolioOpt handles optimization, don't plan to rebuild optimization.
 Plan the unique wrapper, UI, or customization on top.
 </IMPORTANT>
 

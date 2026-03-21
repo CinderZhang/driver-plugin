@@ -112,7 +112,7 @@ This project follows the DRIVER methodology for finance/quant tool development.
 
 ## Workflow
 
-1. `/finance-driver:define` — Establish vision, research what exists (开题调研)
+1. `/finance-driver:define` — Establish vision, research what exists (开题调研, open-topic research)
 2. `/finance-driver:represent-roadmap` — Break into 3-5 buildable sections
 3. `/finance-driver:implement-screen` — Build and run, iterate on feedback
 4. `/finance-driver:validate` — Cross-check: known answers, reasonableness, edges, AI risks
@@ -121,7 +121,7 @@ This project follows the DRIVER methodology for finance/quant tool development.
 
 ## Philosophy
 
-**Cognition Mate (认知伙伴):** 互帮互助，因缘合和，互相成就
+**Cognition Mate (认知伙伴, cognition mate):** 互帮互助，因缘合和，互相成就 (mutual help, interdependent arising, accomplishing together)
 
 - AI brings: patterns, research, heavy lifting on code
 - You bring: vision, domain expertise, judgment

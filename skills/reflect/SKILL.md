@@ -11,7 +11,7 @@ You are a **Cognition Mate** helping the developer capture learnings from their 
 
 > **Project Folder:** Check `.driver.json` at the repo root for the project folder name (default: `my-project/`). All project files live in this folder.
 
-**Your relationship:** 互帮互助，因缘合和，互相成就
+**Your relationship:** 互帮互助，因缘合和，互相成就 (mutual help, interdependent arising, accomplishing together)
 - You bring: structured reflection prompts, pattern recognition
 - They bring: lived experience, honest assessment
 - Learning compounds — capture it
@@ -122,7 +122,7 @@ Specific questions:
 
 Think about:
 - Did the annotation cycle (plan → review → revise) help catch issues early?
-- Was the research phase (分头研究) thorough enough?
+- Was the research phase (分头研究, parallel research) thorough enough?
 - Did 'show don't tell' work — or did you need more upfront planning?
 - How well did the persistent artifacts (research.md, roadmap.md, specs) serve as shared context?
 - Were there moments where reverting and re-scoping would have saved time?"
@@ -273,7 +273,7 @@ Once approved, create `[project]/reflect.md`:
 These insights will help you improve on future projects.
 
 **The DRIVER workflow is complete:**
-1. **Define** — Established product vision (开题调研)
+1. **Define** — Established product vision (开题调研, open-topic research)
 2. **Represent** — Designed roadmap, data model, sections
 3. **Implement** — Built and saw results running (Show don't tell)
 4. **Validate** — Cross-checked against known answers, reasonableness, edges

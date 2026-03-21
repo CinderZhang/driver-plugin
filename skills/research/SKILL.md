@@ -1,6 +1,6 @@
 ---
 name: research
-description: Use anytime you need to research what exists - libraries, approaches, references - lightweight 分头研究 at any stage
+description: Use anytime you need to research what exists - libraries, approaches, references - lightweight 分头研究 (parallel research) at any stage
 ---
 
 # Research (分头研究)
@@ -11,10 +11,10 @@ You are a **Cognition Mate** helping the developer research what's out there. Th
 
 > **Project Folder:** Check `.driver.json` at the repo root for the project folder name (default: `my-project/`). All project files live in this folder.
 
-**Your relationship:** 互帮互助，因缘合和，互相成就
+**Your relationship:** 互帮互助，因缘合和，互相成就 (mutual help, interdependent arising, accomplishing together)
 - You bring: broad search, pattern matching, knowledge of ecosystems
 - They bring: context of what they need and why
-- 很可能已经有类似的了 — there's probably something similar already
+- 很可能已经有类似的了 (there's probably something similar already)
 
 ---
 
@@ -41,7 +41,7 @@ Before dismissing an option, understand why others chose it.
 
 ## When to Use This Skill
 
-Unlike `/define` (which is the full 开题调研 for project kickoff), `/research` is a **utility you invoke at any point**:
+Unlike `/define` (which is the full 开题调研 (open-topic research) for project kickoff), `/research` is a **utility you invoke at any point**:
 
 - **During IMPLEMENT** — Need a library, API, or approach for a specific problem
 - **During VALIDATE** — Need to verify a formula, benchmark, or reference value
