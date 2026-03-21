@@ -7,45 +7,6 @@ A methodology for AI-augmented finance and quantitative tool development.
 
 ---
 
-## ⚠️ Renamed: `driver` → `finance-driver`
-
-**If you installed before this change**, the plugin name has been updated from `driver` to `finance-driver` and the marketplace from `driver-plugin` to `driver`. All skill prefixes changed from `/driver:` to `/finance-driver:`.
-
-**To update:**
-
-```bash
-# 1. Remove the old plugin and marketplace
-/plugin uninstall driver@driver-plugin
-/plugin marketplace remove driver-plugin
-
-# 2. Add the renamed marketplace and install
-/plugin marketplace add https://github.com/CinderZhang/driver-plugin
-/plugin install finance-driver@driver
-```
-
-Restart Claude Code after updating.
-
-**Why the rename?** The `driver` marketplace is now an umbrella for domain-specific DRIVER plugins. `finance-driver` is the first — future plugins like `accounting-driver`, `marketing-driver`, etc. will live under the same marketplace.
-
----
-
-## ⚠️ Disclaimer
-
-**DRIVER is a development methodology, not financial software.**
-
-- This plugin provides a **workflow framework** for building tools — it does not execute trades, manage portfolios, or provide financial advice
-- Any financial tools you build using DRIVER require **your own validation and testing**
-- The authors assume **no liability** for financial decisions made using tools developed with this methodology
-- This is **not investment advice** — consult qualified financial professionals for investment decisions
-- Sample code and examples are for **educational purposes only**
-
-**By using this plugin, you acknowledge that:**
-1. You are responsible for validating any financial calculations in tools you build
-2. You understand the risks of financial software development
-3. You will not hold the authors liable for any financial losses
-
----
-
 ## What is DRIVER?
 
 DRIVER guides you through six stages from concept to completion:
@@ -251,6 +212,23 @@ Issues and pull requests welcome. Please read the philosophy section first — c
 ## Author
 
 Cinder Zhang (zhangcinder@gmail.com)
+
+---
+
+## Disclaimer
+
+**DRIVER is a development methodology, not financial software.**
+
+- This plugin provides a **workflow framework** for building tools — it does not execute trades, manage portfolios, or provide financial advice
+- Any financial tools you build using DRIVER require **your own validation and testing**
+- The authors assume **no liability** for financial decisions made using tools developed with this methodology
+- This is **not investment advice** — consult qualified financial professionals for investment decisions
+- Sample code and examples are for **educational purposes only**
+
+**By using this plugin, you acknowledge that:**
+1. You are responsible for validating any financial calculations in tools you build
+2. You understand the risks of financial software development
+3. You will not hold the authors liable for any financial losses
 
 ---
 
