@@ -136,6 +136,7 @@ DRIVER uses Mermaid diagrams as standard visual documentation:
 
 | Skill | Stage | Purpose |
 |-------|-------|---------|
+| `/finance-driver:tutorial` | **Start** | **New? Start here** — build a DCF calculator in 20 min |
 | `/finance-driver:init` | Setup | Initialize project structure |
 | `/finance-driver:status` | Any | Check progress, get suggestions |
 | `/finance-driver:help` | Any | This help page |
@@ -143,8 +144,8 @@ DRIVER uses Mermaid diagrams as standard visual documentation:
 | `/finance-driver:define` | DEFINE | Research and define vision |
 | `/finance-driver:represent-roadmap` | REPRESENT | Break into sections |
 | `/finance-driver:represent-datamodel` | REPRESENT | Define core entities |
-| `/finance-driver:represent-tokens` | REPRESENT | Colors/typography (web apps) |
-| `/finance-driver:represent-shell` | REPRESENT | Navigation shell (web apps) |
+| `/finance-driver:represent-tokens` | REPRESENT | Colors/typography (Streamlit or React) |
+| `/finance-driver:represent-shell` | REPRESENT | Navigation shell (Streamlit or React) |
 | `/finance-driver:represent-section` | REPRESENT | Spec a section |
 | `/finance-driver:implement-data` | IMPLEMENT | Sample data (web apps) |
 | `/finance-driver:implement-screen` | IMPLEMENT | Build and run code |
