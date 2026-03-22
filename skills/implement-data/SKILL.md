@@ -1,13 +1,15 @@
 ---
 name: implement-data
-description: Use when a Python/finance project needs realistic sample data — generates CSV files, Pydantic models, and a data loader module. For React projects, generates data.json and TypeScript types instead.
+description: Use when a Python project needs realistic sample data — generates CSV files, Pydantic models, and a data loader module for any financial domain (equities, FX, futures, options, crypto, fixed income, etc.). For React projects, generates data.json and TypeScript types instead.
 ---
 
 # Implement Data
 
 **Stage Announcement:** "We're in IMPLEMENT — creating realistic financial data for your project."
 
-You are a **Cognition Mate** helping the developer create realistic sample data for a finance/quant project. This data populates screens, validates calculations, and provides a swappable foundation for real data sources later.
+You are a **Cognition Mate** helping the developer create realistic sample data for any financial domain — equities, FX, futures, options, crypto, fixed income, commodities, or multi-asset. This data populates screens, validates calculations, and provides a swappable foundation for real data sources later.
+
+> **The code examples below are samples, not rules.** They show an equity analysis pattern. Adapt the entities, fields, and sample values to whatever domain the developer is building in. The *pattern* (Pydantic models + CSV + loader) is universal; the specific fields change per domain.
 
 > **Project Folder:** Check `.driver.json` at the repo root for the project folder name (default: `my-project/`). All project files live in this folder.
 
@@ -114,6 +116,8 @@ Wait for approval or modifications before generating.
 
 ### 6. Generate Pydantic Models
 
+> **Example below is equity analysis.** For FX, replace Company/FinancialStatement with CurrencyPair/ExchangeRate. For options, use OptionChain/Greeks. The pattern is the same — only the fields change.
+
 Create `data/models.py` at the **repo root** (not inside the project folder — source code lives at repo root, docs live in `[project]/`):
 
 ```python
@@ -166,6 +170,8 @@ class PriceHistory(BaseModel):
 - Docstrings on every model explaining what it represents
 
 ### 7. Generate Sample CSV Files
+
+> **Sample data below uses fictional equities.** For your domain, generate equivalent data — e.g., 10 currency pairs for FX, an option chain for 3 underlyings, or 5 crypto tokens with OHLCV bars.
 
 Create sample data files in `data/samples/` at the repo root:
 
@@ -423,13 +429,19 @@ If they agree, **proceed directly** to building via the implement-screen flow.
 
 The equity analysis example above is the default. Adapt the entities and sample data to match whatever the developer is building:
 
-| Project Type | Key Entities | Sample Data Focus |
-|--------------|-------------|-------------------|
+| Domain | Key Entities | Sample Data Focus |
+|--------|-------------|-------------------|
 | **Equity Valuation** | Company, FinancialStatement, PriceHistory | Revenue, margins, multiples |
-| **Fixed Income** | Bond, Issuer, YieldCurve | Coupon, maturity, credit rating |
-| **Portfolio Optimization** | Asset, Returns, Constraints | Historical returns, correlations |
+| **FX Trading** | CurrencyPair, ExchangeRate, ForwardRate | Bid/ask, cross rates, carry |
+| **Futures** | FuturesContract, MarginRequirement, RollSchedule | Expiry, settlement, contango/backwardation |
+| **Options** | OptionChain, Greeks, UnderlyingPrice | Strike, expiry, IV, delta/gamma/theta/vega |
+| **Crypto** | Token, OHLCVBar, OnChainMetric | Price, volume, market cap, hash rate, TVL |
+| **Fixed Income** | Bond, Issuer, YieldCurve | Coupon, maturity, credit rating, duration |
+| **Portfolio Optimization** | Asset, Returns, Constraints | Historical returns, correlations, weights |
 | **Risk Management** | Position, RiskFactor, Scenario | Greeks, VaR inputs, stress tests |
 | **Credit Analysis** | Borrower, Loan, CreditScore | Default rates, LTV, debt service |
+| **Commodities** | Commodity, SpotPrice, SeasonalPattern | Supply/demand, storage costs, weather |
+| **Multi-Asset** | Asset, AssetClass, Allocation | Cross-asset returns, rebalancing rules |
 
 The pattern is always the same:
 1. Pydantic models define the schema
