@@ -77,6 +77,13 @@ As you build sections, update `[project]/roadmap.md` to mark completed sections.
 
 ---
 
+### Path Selection
+
+Check `.driver.json` for the `type` field:
+- If `"python"` → follow Path A (Streamlit)
+- If `"react"` → follow Path B (React components)
+- If `type` is missing (legacy projects) → ask: "Is this a data/analytical tool (Streamlit) or a web app UI (React)?"
+
 ## Two Paths
 
 ### Path A: Quant/Analytical Tools (Recommended)
@@ -119,6 +126,18 @@ Read the context:
 
 ### 2. Build and Run
 
+**File location:** Create `app.py` at the **repo root** (not inside the project folder). The `[project]/` folder holds documentation and specs; source code lives at the repo root.
+
+```
+repo-root/
+├── .driver.json
+├── [project]/          ← Docs: product-overview.md, roadmap.md, specs
+├── app.py              ← Streamlit entry point
+├── pages/              ← Section pages
+├── calculations/       ← Core logic
+└── data/               ← Data loading
+```
+
 Create a Streamlit app that implements the section:
 
 ```python
@@ -131,13 +150,15 @@ import numpy as np
 st.title("[Section Name]")
 
 # Build the UI and logic
-# Use the libraries we identified in D&D
+# Use the libraries identified in DEFINE (开题调研)
 # Implement the unique part
 ```
 
 **Then run it:**
 
 ```bash
+# Install dependencies if needed
+pip install streamlit pandas numpy numpy-financial plotly
 streamlit run app.py
 ```
 
@@ -179,7 +200,7 @@ This loop continues until it works.
 As the app grows, organize:
 
 ```
-project/
+repo-root/
 ├── app.py              # Main Streamlit entry
 ├── pages/              # Streamlit multi-page convention
 │   ├── 1_Section_One.py

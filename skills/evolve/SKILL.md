@@ -46,12 +46,14 @@ Verify the minimum requirements exist:
 **Required:**
 - `[project]/product-overview.md` — Product overview
 - `[project]/roadmap.md` — Sections defined
-- At least one section with screen designs in `src/sections/[section-id]/`
+- At least one built section:
+  - **Python/Streamlit:** `app.py` or `pages/*.py` files exist
+  - **React:** `src/sections/[section-id]/` directories exist
 
 **Recommended (show warning if missing):**
 - `[project]/data-model.md` — Global data model
-- `[project]/design/tokens.json` — Color tokens
-- `src/shell/components/AppShell.tsx` — Application shell
+- `[project]/validation.md` — Validation results
+- **React only:** `[project]/design/tokens.json`, `src/shell/components/AppShell.tsx`
 
 If required files are missing:
 
@@ -75,12 +77,13 @@ Read all relevant files:
 3. `[project]/research.md` (if exists)
 4. `[project]/data-model.md` (if exists)
 5. `[project]/design/tokens.json` (if exists)
-6. For each section: `[project]/spec-[section-name].md`, `[project]/build/[section-id]/data.json`, `[project]/build/[section-id]/types.ts`
-7. List screen design components in `src/sections/` and `src/shell/`
+6. For each section: `[project]/spec-[section-name].md`
+7. **Python/Streamlit:** List `.py` files in `app.py`, `pages/`, `calculations/`, `data/`
+8. **React:** List components in `src/sections/` and `src/shell/`; read `[project]/build/[section-id]/data.json` and `types.ts`
 
 ### 2. Create Export Directory Structure
 
-Determine the tech stack from the project (check `[project]/product-overview.md` and existing source files).
+Check `.driver.json` for the `type` field (`"python"` or `"react"`). If `type` is missing, infer from `[project]/product-overview.md` and existing source files.
 
 #### Path A: Python + Streamlit (Quant/Analytical Tools)
 
@@ -204,10 +207,69 @@ Include in all instruction files:
 
 #### Path A (Python + Streamlit)
 
-- Copy `.py` files with clean imports (no DRIVER-specific paths)
-- Generate `requirements.txt` from imports used in the project (pin versions)
-- Ensure `calculations/` modules are pure Python (no Streamlit imports)
-- Include sample data as CSV/JSON if applicable
+When preparing the Python export:
+
+1. **Copy source files with clean structure:**
+   - `app.py` → `driver-plan/app.py` (main entry point)
+   - `pages/*.py` → `driver-plan/pages/` (preserve numbered prefixes for Streamlit ordering)
+   - `calculations/*.py` → `driver-plan/calculations/` (pure logic, no Streamlit imports)
+   - `data/*.py` → `driver-plan/data/` (data loading/processing)
+
+2. **Generate `requirements.txt`** from all imports used in the project:
+   ```
+   streamlit>=1.30.0
+   pandas>=2.0.0
+   numpy>=1.24.0
+   numpy-financial>=1.0.0
+   plotly>=5.18.0
+   pydantic>=2.0.0
+   # Add project-specific libraries (PyPortfolioOpt, scipy, etc.)
+   ```
+   Pin minimum versions based on what was used during development.
+
+3. **Ensure separation of concerns:**
+   - `calculations/` modules must be pure Python — no `import streamlit`, no `st.` calls
+   - `data/` modules handle fetching/loading — no calculation logic
+   - `pages/` files wire UI to calculations — import from `calculations/` and `data/`
+
+4. **Include sample data:**
+   - CSV/JSON files used during development → `driver-plan/data/samples/`
+   - Include a `data/README.md` noting which data sources are sample vs. live
+
+5. **Generate section reference docs** for each section:
+   ```
+   driver-plan/sections/[section-id]/
+   ├── README.md        # What this section does, key calculations, inputs/outputs
+   ├── tests.md         # pytest test instructions with example test cases
+   └── logic.py         # Copy of the calculation module for this section
+   ```
+
+7. **Verify import paths:** Ensure all Python imports within exported files work relative to `driver-plan/` root. Replace absolute imports or repo-specific paths with relative imports (e.g., `from calculations.dcf import ...` should work when `driver-plan/` is the working directory).
+
+8. **Create `tests.md` for each section** with concrete pytest examples:
+   ````markdown
+   ## Testing [Section Name]
+
+   ### Known Answer Tests
+   ```python
+   def test_npv_known_answer():
+       """Verify NPV matches textbook example (Damodaran Ch.5)"""
+       result = calculate_npv(cash_flows=[-1000, 400, 500, 600], rate=0.10)
+       assert abs(result - 227.65) < 0.01
+   ```
+
+   ### Edge Cases
+   ```python
+   def test_zero_discount_rate():
+       """At rate=0, NPV is simply the sum of all cash flows (no discounting)"""
+       result = calculate_npv(cash_flows=[-1000, 500, 600], rate=0.0)
+       assert result == 100.0  # No discounting: just sum of cash flows
+
+   def test_empty_cash_flows():
+       with pytest.raises(ValueError):
+           calculate_npv(cash_flows=[], rate=0.10)
+   ```
+   ````
 
 #### Path B (React + TypeScript)
 
@@ -263,11 +325,20 @@ Capture their answers in the export's `README.md` under a "Future Directions" se
 - `instructions/one-shot-instructions.md` — All milestones combined
 - `instructions/incremental/` — [N] milestone instructions
 
-**Design Assets:**
+**Path A (Python) — Project Files:**
+- `app.py` — Main Streamlit entry point
+- `pages/` — Section pages
+- `calculations/` — Core logic (pure Python)
+- `data/` — Data loading and samples
+- `requirements.txt` — Pinned dependencies
+
+**Path B (React) — Design Assets:**
 - `design-system/` — Colors, fonts, tokens
 - `data-model/` — Entity types and sample data
 - `shell/` — Application shell components
 - `sections/` — [N] section component packages with test instructions
+
+> Contents vary by project type. See `driver-plan/README.md` for the full listing.
 
 **How to Use:**
 

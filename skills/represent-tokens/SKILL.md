@@ -1,6 +1,6 @@
 ---
 name: represent-tokens
-description: Represent Tokens
+description: Use when building a web app that needs custom colors and typography - picks from Tailwind palette and Google Fonts. Skip entirely for quant tools using Streamlit or Dash.
 ---
 
 # Represent Tokens

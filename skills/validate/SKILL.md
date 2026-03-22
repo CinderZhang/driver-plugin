@@ -52,7 +52,7 @@ Anyone can generate AI output. Professionals can validate it.
 
 ### 1. Identify What to Validate
 
-Read `[project]/roadmap.md` to get sections, then check implementation files (`src/` or `app/`) to see what's been built.
+Read `[project]/roadmap.md` to get sections, then check implementation files to see what's been built. For Python projects, look for `app.py`, `pages/`, `calculations/` at the repo root. For React projects, look for `src/sections/`.
 
 If only one section exists, auto-select it. If multiple exist, ask which one to validate.
 
@@ -113,45 +113,7 @@ If only one section exists, auto-select it. If multiple exist, ask which one to 
 
 **Developer does:** Spot-check facts against authoritative sources. Don't use AI alone to validate AI output.
 
-### 6. Capture Evidence (Screenshots)
-
-After validation passes, capture visual documentation for the export package.
-
-#### Prerequisites: Check for Playwright MCP
-
-Verify access to Playwright MCP tool (`browser_take_screenshot` or `mcp__playwright__browser_take_screenshot`).
-
-If not available:
-
----
-To capture screenshots, I need the Playwright MCP server installed. Please run:
-
-```
-claude mcp add playwright npx @playwright/mcp@latest
-```
-
-Then restart this session and run `/validate` again.
----
-
-If Playwright MCP is not available, **validation steps 2-5 above still apply.** Skip to the summary.
-
-#### Capture Process
-
-1. Start the dev server yourself using Bash (run in background). **Do NOT ask the user to start it.**
-2. Wait a few seconds for it to be ready
-3. Navigate to the screen design URL
-4. For web apps: click "Hide" link (`data-hide-header` attribute) to hide navigation
-5. Capture full-page screenshot (`fullPage: true`, 1280px viewport, PNG)
-
-#### Save
-
-```bash
-cp .playwright-mcp/[filename].png [project]/build/[section-id]/screenshot.png
-```
-
-**Naming:** `[screen-design-name]-[variant].png`
-
-### 7. Validation Summary
+### 6. Validation Summary
 
 Write results to `[project]/validation.md`. All sections go in a single consolidated file, organized by section headers:
 
@@ -194,6 +156,43 @@ Present results to the developer:
 - Capture more visual variants (dark mode, mobile)
 - Build another section: [list remaining]
 - Generate the export package (if all sections done)"
+
+### 7. Capture Evidence (Optional)
+
+This step is **not required** for validation to pass. Screenshots are supplemental documentation for the export package. If Playwright MCP is unavailable, skip this step entirely — your validation results from the Validation Summary are complete.
+
+#### Prerequisites: Check for Playwright MCP
+
+Verify access to Playwright MCP tool (`browser_take_screenshot` or `mcp__playwright__browser_take_screenshot`).
+
+If not available:
+
+---
+To capture screenshots, install the Playwright MCP server:
+
+```
+claude mcp add playwright npx @playwright/mcp@latest
+```
+
+Then restart this session and run `/validate` again to capture evidence.
+
+---
+
+#### Capture Process
+
+1. Start the dev server yourself using Bash (run in background). **Do NOT ask the user to start it.**
+2. Wait a few seconds for it to be ready
+3. Navigate to the screen design URL
+4. For web apps: click "Hide" link (`data-hide-header` attribute) to hide navigation
+5. Capture full-page screenshot (`fullPage: true`, 1280px viewport, PNG)
+
+#### Save
+
+```bash
+cp .playwright-mcp/[filename].png [project]/build/[section-id]/screenshot.png
+```
+
+**Naming:** `[screen-design-name]-[variant].png`
 
 ---
 

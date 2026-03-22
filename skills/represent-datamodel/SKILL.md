@@ -1,6 +1,6 @@
 ---
 name: represent-datamodel
-description: Represent Data Model
+description: Use after /define to establish the core entities (nouns) of your system - names, descriptions, and relationships only, not database schemas. Optional for simple quant tools.
 ---
 
 # Represent Data Model

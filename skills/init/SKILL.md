@@ -31,9 +31,12 @@ First, check if this is already a DRIVER project by looking for `.driver.json` a
 
 ```json
 {
-  "project_dir": "my-project"
+  "project_dir": "my-project",
+  "type": "python"
 }
 ```
+
+> Legacy projects may omit `type` — other skills handle this gracefully.
 
 If `.driver.json` exists, read the project folder name and check for existing files:
 
@@ -61,19 +64,31 @@ If starting fresh, ask:
 
 Accept any reasonable folder name — lowercase, hyphens, underscores are all fine. If the user presses enter or says "default" / "that's fine", use `my-project`.
 
-### 3. Create `.driver.json`
+### 3. Ask About Project Type
+
+"What kind of tool are you building?
+
+**A. Quant/Analytical Tool** (Recommended for finance) — Python + Streamlit
+**B. Web Application** — React + TypeScript
+
+Most finance projects should go with A."
+
+Default to A if they're unsure.
+
+### 4. Create `.driver.json`
 
 Create `.driver.json` at the **repo root** (not inside the project folder):
 
 ```json
 {
-  "project_dir": "my-project"
+  "project_dir": "my-project",
+  "type": "python"
 }
 ```
 
-Replace `my-project` with whatever name the user chose.
+Replace `my-project` with the user's chosen name. Set `type` to `"python"` (Path A) or `"react"` (Path B). This tells other DRIVER skills which workflow path to follow automatically.
 
-### 4. Create Base Structure
+### 5. Create Base Structure
 
 Create the project folder with just a README:
 
@@ -81,10 +96,60 @@ Create the project folder with just a README:
 mkdir -p [project]
 ```
 
-Create the README:
+Create the README. Use the project `type` from `.driver.json` to generate the appropriate README template.
 
 **`[project]/README.md`:**
-```markdown
+
+**If `type` is `"python"` (default):**
+````markdown
+# DRIVER Project
+
+This project follows the DRIVER methodology for finance/quant tool development.
+
+## Project Structure
+
+```
+repo-root/
+├── .driver.json                  ← Project config
+├── [project-name]/               ← DRIVER docs and specs
+│   ├── README.md                 ← You are here
+│   ├── research.md               ← Created by /research or /define
+│   ├── product-overview.md       ← Created by /define (your PRD)
+│   ├── roadmap.md                ← Created by /represent-roadmap
+│   ├── spec-[section].md         ← Created by /represent-section
+│   ├── data-model.md             ← Created by /represent-datamodel
+│   ├── validation.md             ← Created by /validate
+│   └── reflect.md                ← Created by /reflect
+├── app.py                        ← Main Streamlit entry point
+├── pages/                        ← Section pages (auto-discovered by Streamlit)
+├── calculations/                 ← Core logic (pure Python, testable)
+└── data/                         ← Data loading and samples
+```
+
+## Workflow
+
+1. `/finance-driver:define` — Establish vision, research what exists (开题调研)
+2. `/finance-driver:represent-roadmap` — Break into 3-5 buildable sections
+3. `/finance-driver:implement-screen` — Build and run, iterate on feedback
+4. `/finance-driver:validate` — Cross-check: known answers, reasonableness, edges, AI risks
+5. `/finance-driver:evolve` — Generate final export package
+6. `/finance-driver:reflect` — Capture lessons learned
+
+## Philosophy
+
+**Cognition Mate (认知伙伴):** 互帮互助，因缘合和，互相成就
+
+- AI brings: patterns, research, heavy lifting on code
+- You bring: vision, domain expertise, judgment
+- Neither creates alone. Meaning emerges from interaction.
+
+## Next Step
+
+Run `/finance-driver:define` to begin.
+````
+
+**If `type` is `"react"`:**
+````markdown
 # DRIVER Project
 
 This project follows the DRIVER methodology for finance/quant tool development.
@@ -130,9 +195,9 @@ This project follows the DRIVER methodology for finance/quant tool development.
 ## Next Step
 
 Run `/finance-driver:define` to begin.
-```
+````
 
-### 5. Confirm and Guide
+### 6. Confirm and Guide
 
 "I've initialized your DRIVER project:
 
@@ -141,6 +206,12 @@ Run `/finance-driver:define` to begin.
 [project-name]/
 └── README.md              # Project overview and structure
 ```
+
+**Prerequisites (Python projects):**
+```bash
+pip install streamlit pandas numpy numpy-financial plotly
+```
+Install additional libraries as needed during development. A `requirements.txt` will be generated when you export.
 
 **Example projects you might build:**
 - **Valuation Tool** — DCF models, comparable analysis (Damodaran style)

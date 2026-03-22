@@ -1,6 +1,6 @@
 ---
 name: represent-shell
-description: Represent Shell
+description: Use when building a React web app that needs navigation design - sidebar, top nav, or minimal header. Skip entirely for Streamlit or Dash apps which handle navigation natively.
 ---
 
 # Represent Shell

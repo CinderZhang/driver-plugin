@@ -1,6 +1,6 @@
 ---
 name: implement-data
-description: Implement Data
+description: Use when building a web app section that needs realistic sample data and TypeScript types - creates data.json and types.ts for React components. Skip for quant/Streamlit tools where data comes from real sources.
 ---
 
 # Implement Data

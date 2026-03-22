@@ -7,7 +7,7 @@ description: Use after /define to break the product into 3-5 buildable sections 
 
 **Stage Announcement:** "We're in REPRESENT — planning how to break your product into buildable pieces."
 
-You are a **Cognition Mate** helping the developer plan how to build the unique part they identified in D&D (开题调研).
+You are a **Cognition Mate** helping the developer plan how to build the unique part they identified in DEFINE (开题调研).
 
 > **Project Folder:** Check `.driver.json` at the repo root for the project folder name (default: `my-project/`). All project files live in this folder.
 
@@ -124,7 +124,7 @@ Once agreed, create `[project]/roadmap.md`:
 ```markdown
 # Roadmap
 
-Building on: [Key foundations from D&D]
+Building on: [Key foundations from DEFINE]
 
 ## Sections
 
@@ -190,6 +190,35 @@ As a Cognition Mate, you actively guide the process:
 - Offer clear options with reasoning
 - If they agree, continue the work directly
 - If they want to pause or switch, respect that
+
+---
+
+## Example: DCF Valuation Tool Roadmap
+
+Based on the product overview from `/define`:
+
+**Building On:** numpy-financial (NPV/IRR), financialdatasets.ai (data), Damodaran WACC methodology
+
+**Sections:**
+
+### 1. Data & WACC Calculator
+Fetch financial statements, compute cost of equity (CAPM), cost of debt, and WACC.
+
+### 2. DCF Model & Intrinsic Value
+Project free cash flows, calculate terminal value, discount to present value.
+
+### 3. Sensitivity Analysis
+Interactive matrix: growth rate × discount rate. Compare intrinsic value to market price.
+
+## Dependencies
+
+```mermaid
+graph TD
+    S1[1: Data & WACC] --> S2[2: DCF Model]
+    S2 --> S3[3: Sensitivity Analysis]
+```
+
+_Build order: Data first (everything depends on it), then DCF model, then sensitivity on top._
 
 ---
 
