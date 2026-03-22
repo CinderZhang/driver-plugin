@@ -1,6 +1,7 @@
 #!/bin/bash
 # DRIVER Session Start Hook
-# Injects the using-driver skill at the start of every session
+# Injects the using-driver skill context at session start.
+# Checks for .driver.json to determine if this is a DRIVER project.
 
 # Derive plugin root from this script's location if not set
 if [ -z "$CLAUDE_PLUGIN_ROOT" ]; then

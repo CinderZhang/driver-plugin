@@ -1,5 +1,6 @@
 # DRIVER Session Start Hook (PowerShell)
-# Injects the using-driver skill at the start of every session
+# Injects the using-driver skill context at session start.
+# Checks for .driver.json to determine if this is a DRIVER project.
 
 # Derive plugin root from this script's location if not set
 if (-not $env:CLAUDE_PLUGIN_ROOT) {
