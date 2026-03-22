@@ -56,7 +56,26 @@ Read `[project]/roadmap.md` to get sections, then check implementation files to 
 
 If only one section exists, auto-select it. If multiple exist, ask which one to validate.
 
-### 2. Test Against Known Answers
+### 2. Review the Data Itself
+
+**The question: Can you trust what's feeding your calculations?**
+
+Before validating outputs, validate inputs. If real data has replaced sample data, this is the first time it's being scrutinized.
+
+**You (AI) do:**
+- Run `df.describe()` on key data tables and present summary stats
+- Check for nulls, duplicates, and unexpected data types
+- Flag date range gaps, survivorship bias signals, or suspicious uniformity
+- Compare row counts and value ranges to what the data source claims
+
+**Developer reviews:**
+- "Do these summary stats match your expectations for this dataset?"
+- "Any tickers missing that should be there? Any that shouldn't?"
+- "Does the date range cover the period you need?"
+
+**This matters because:** a tool can produce confident-looking wrong answers if the data is bad. `df.describe()` takes 10 seconds and catches problems that hours of debugging won't.
+
+### 3. Test Against Known Answers
 
 **The question: Does output match what we can independently verify?**
 
@@ -69,7 +88,7 @@ If only one section exists, auto-select it. If multiple exist, ask which one to 
 
 **Developer judges:** Match or mismatch? Acceptable tolerance?
 
-### 3. Check for Reasonableness
+### 4. Check for Reasonableness
 
 **The question: Would you bet your own money on this?**
 
@@ -85,7 +104,7 @@ If only one section exists, auto-select it. If multiple exist, ask which one to 
 
 **This step requires human judgment.** The AI presents evidence; the developer — as Pilot-in-Command — decides if it's reasonable.
 
-### 4. Stress Test the Edges
+### 5. Stress Test the Edges
 
 **The question: What breaks it?**
 
@@ -99,7 +118,7 @@ If only one section exists, auto-select it. If multiple exist, ask which one to 
 
 **Developer judges:** Which edge cases matter for their use case? Which are acceptable limitations?
 
-### 5. AI-Specific Checks
+### 6. AI-Specific Checks
 
 **The question: What did the AI get confidently wrong?**
 
@@ -113,7 +132,7 @@ If only one section exists, auto-select it. If multiple exist, ask which one to 
 
 **Developer does:** Spot-check facts against authoritative sources. Don't use AI alone to validate AI output.
 
-### 6. Validation Summary
+### 7. Validation Summary
 
 Write results to `[project]/validation.md`. All sections go in a single consolidated file, organized by section headers:
 
@@ -124,6 +143,7 @@ Write results to `[project]/validation.md`. All sections go in a single consolid
 
 | Check | Status | Evidence |
 |-------|--------|----------|
+| Data Review | pass/fail | [summary stats checked, nulls, date range] |
 | Known Answers | pass/fail | [what was compared] |
 | Reasonableness | pass/fail | [developer's judgment] |
 | Edge Cases | pass/fail | [what was stress-tested] |
@@ -133,6 +153,7 @@ Write results to `[project]/validation.md`. All sections go in a single consolid
 
 | Check | Status | Evidence |
 |-------|--------|----------|
+| Data Review | pass/fail | [summary stats checked, nulls, date range] |
 | Known Answers | pass/fail | [what was compared] |
 | Reasonableness | pass/fail | [developer's judgment] |
 | Edge Cases | pass/fail | [what was stress-tested] |
@@ -145,6 +166,7 @@ Present results to the developer:
 
 | Check | Status | Evidence |
 |-------|--------|----------|
+| Data Review | pass/fail | [summary stats checked, nulls, date range] |
 | Known Answers | pass/fail | [what was compared] |
 | Reasonableness | pass/fail | [developer's judgment] |
 | Edge Cases | pass/fail | [what was stress-tested] |
@@ -157,7 +179,7 @@ Present results to the developer:
 - Build another section: [list remaining]
 - Generate the export package (if all sections done)"
 
-### 7. Capture Evidence (Optional)
+### 8. Capture Evidence (Optional)
 
 This step is **not required** for validation to pass. Screenshots are supplemental documentation for the export package. If Playwright MCP is unavailable, skip this step entirely — your validation results from the Validation Summary are complete.
 

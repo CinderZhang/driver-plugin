@@ -391,9 +391,41 @@ if __name__ == "__main__":
     validate()
 ```
 
-### 10. Suggest Next Step
+### 10. Review the Data (Before Moving On)
 
-Once the data is created, proactively suggest building:
+After generating sample data, **the developer should look at it** — not just trust it. This is a professional habit: never compute on data you haven't eyeballed.
+
+"Before we build on this data, take a quick look:
+
+```python
+import pandas as pd
+
+companies = pd.read_csv('data/samples/companies.csv')
+financials = pd.read_csv('data/samples/financials.csv')
+
+# Summary stats — do the numbers look plausible?
+print(financials.describe())
+
+# Any nulls or weird values?
+print(financials.info())
+
+# Spot-check: pick one company, read its 3 years
+print(financials[financials['ticker'] == 'NVEX'])
+```
+
+**What to look for:**
+- Do revenue/earnings magnitudes make sense for the sector?
+- Are there any nulls, zeros, or negative values that shouldn't be there?
+- Does the growth trajectory look realistic (not too smooth, not too wild)?
+- Are the relationships sensible? (e.g., EBITDA < Revenue, Cash > 0)
+
+Anything look off? Tell me and I'll fix the sample data."
+
+**This step matters.** If bad data enters the pipeline here, every calculation downstream will look right but be wrong. Five minutes of review now prevents hours of debugging later.
+
+### 11. Suggest Next Step
+
+Once the data is created and reviewed, proactively suggest building:
 
 "I've created the data foundation for **[Section Title]**:
 
