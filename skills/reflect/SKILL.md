@@ -255,7 +255,7 @@ Once approved, create `[project]/reflect.md`:
 
 ---
 
-*Captured using DRIVER*
+*Captured using DRIVER™*
 ```
 
 ### 6. Confirm Completion

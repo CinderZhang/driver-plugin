@@ -3,11 +3,11 @@ name: help
 description: DRIVER overview, available skills, and philosophy explanation
 ---
 
-# DRIVER Help
+# DRIVER™ Help
 
-## What is DRIVER?
+## What is DRIVER™?
 
-DRIVER is a methodology for building finance and quantitative analysis tools with AI assistance. It guides you from concept to completion through six stages.
+DRIVER™ is a methodology for building finance and quantitative analysis tools with AI assistance. It guides you from concept to completion through six stages.
 
 ---
 

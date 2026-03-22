@@ -1,4 +1,4 @@
-# DRIVER Plugin for Claude Code
+# DRIVER™ Plugin for Claude Code
 
 A methodology for AI-augmented finance and quantitative tool development.
 
@@ -7,7 +7,7 @@ A methodology for AI-augmented finance and quantitative tool development.
 
 ---
 
-## What is DRIVER?
+## What is DRIVER™?
 
 DRIVER guides you through six stages from concept to completion:
 
@@ -243,15 +243,17 @@ Issues and pull requests welcome. Please read the philosophy section first — c
 
 ---
 
-## Author
+## Authors
 
-Cinder Zhang (zhangcinder@gmail.com)
+DRIVER™ was created by **Cinder Zhang** and **Leo Zhang**.
+
+Contact: zhangcinder@gmail.com
 
 ---
 
 ## Disclaimer
 
-**DRIVER is a development methodology, not financial software.**
+**DRIVER™ is a development methodology, not financial software.**
 
 - This plugin provides a **workflow framework** for building tools — it does not execute trades, manage portfolios, or provide financial advice
 - Any financial tools you build using DRIVER require **your own validation and testing**
@@ -266,4 +268,4 @@ Cinder Zhang (zhangcinder@gmail.com)
 
 ---
 
-*DRIVER was developed through the practice it teaches — human vision and AI collaboration, accomplishing together.*
+*DRIVER™ was developed through the practice it teaches — human vision and AI collaboration, accomplishing together.*

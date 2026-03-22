@@ -3,7 +3,7 @@
   "description": "DRIVER methodology for AI-augmented professional work — marketplace for domain-specific DRIVER plugins",
   "owner": {
     "name": "Cinder Zhang",
-    "email": "cinderzhang@gmail.com"
+    "email": "zhangcinder@gmail.com"
   },
   "plugins": [
     {
@@ -13,7 +13,7 @@
       "source": "./",
       "author": {
         "name": "Cinder Zhang",
-        "email": "cinderzhang@gmail.com"
+        "email": "zhangcinder@gmail.com"
       }
     }
   ]
