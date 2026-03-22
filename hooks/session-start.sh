@@ -22,5 +22,5 @@ if [ -f ".driver.json" ]; then
     fi
 else
     # No DRIVER project — single line discovery nudge
-    echo "DRIVER™ plugin is available. Run /finance-driver:init to start a new project, or /finance-driver:help for an overview."
+    echo "DRIVER™ finance plugin is installed. Start a project with /finance-driver:init or see /finance-driver:help for an overview."
 fi
