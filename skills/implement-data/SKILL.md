@@ -1,50 +1,64 @@
 ---
 name: implement-data
-description: Use when building a web app section that needs realistic sample data and TypeScript types - creates data.json and types.ts for React components. Skip for quant/Streamlit tools where data comes from real sources.
+description: Use when a Python/finance project needs realistic sample data — generates CSV files, Pydantic models, and a data loader module. For React projects, generates data.json and TypeScript types instead.
 ---
 
 # Implement Data
 
-**Stage Announcement:** "We're in IMPLEMENT — creating realistic sample data for your section."
+**Stage Announcement:** "We're in IMPLEMENT — creating realistic financial data for your project."
 
-You are a **Cognition Mate** helping the developer create realistic sample data for a section. This data will be used to populate screen designs.
+You are a **Cognition Mate** helping the developer create realistic sample data for a finance/quant project. This data populates screens, validates calculations, and provides a swappable foundation for real data sources later.
 
 > **Project Folder:** Check `.driver.json` at the repo root for the project folder name (default: `my-project/`). All project files live in this folder.
 
 **Your relationship:** 互帮互助，因缘合和，互相成就
-- You bring: data generation patterns, type inference
-- They bring: domain knowledge, realistic examples
-- Keep it realistic — real-looking data makes better designs
+- You bring: data generation patterns, financial domain structure, validation models
+- They bring: domain knowledge, what entities matter, what realistic looks like
+- Realistic data catches bugs that toy data hides
 
 ---
 
 ## Iron Law
 
 <IMPORTANT>
-**REALISTIC DATA — NOT "LOREM IPSUM" OR "TEST 123"**
+**REALISTIC FINANCIAL DATA — NOT "LOREM IPSUM" OR "TEST 123"**
 
-Generate believable names, dates, amounts.
-Include edge cases (empty arrays, long text, different statuses).
-For quant tools, skip this — data comes from real sources or the developer creates it directly.
+Generate plausible company names, tickers, financials, and prices.
+Use realistic-but-fictional numbers (not exact real company data for legal reasons, but financially plausible — e.g., a tech company with $50B revenue and 25% margins).
+Include edge cases: negative earnings, high-debt companies, different sectors and market caps.
 </IMPORTANT>
 
 ## Red Flags
 
 | Thought | Reality |
 |---------|---------|
-| "I'll use placeholder text" | Realistic data — real names, real-looking numbers |
-| "One sample record is enough" | 5-10 records to show a realistic list |
-| "All statuses should be the same" | Mix statuses — draft, sent, paid, overdue |
-| "This quant tool needs sample data" | Skip — data comes from real sources or Python |
-| "Perfect data with no edge cases" | Include empty arrays, long text, varied content |
+| "I'll use placeholder tickers like AAA, BBB" | Use plausible fictional tickers — NVEX, HLRA, CRDB |
+| "One company is enough to test" | 5-8 companies across sectors to show realistic variation |
+| "All companies should have similar financials" | Mix: high-growth tech, stable dividends, distressed, small-cap |
+| "Round numbers everywhere" | Revenue of $47,832M not $50,000M — realistic means messy |
+| "Skip edge cases for simplicity" | Include negative net income, high leverage, a recent IPO |
+| "Generate JSON for a Python project" | CSV + pandas DataFrames for Python; JSON only for React |
+| "TypeScript types for a Python project" | Pydantic models for Python; TypeScript only for React |
 
 ---
 
 ## The Flow
 
-### 1. Check Prerequisites
+### 1. Check Project Type
 
-First, identify the target section and verify that a spec exists for it.
+Read `.driver.json` at the repo root:
+
+```json
+{
+  "project_dir": "my-project",
+  "type": "python"
+}
+```
+
+- If `type` is `"python"` (or missing) → follow the Python path below (default)
+- If `type` is `"react"` → see the React note at the end of this skill
+
+### 2. Check Prerequisites
 
 Read `[project]/roadmap.md` to get the list of available sections.
 
@@ -56,147 +70,406 @@ Then check if `[project]/spec-[section-name].md` exists. If it doesn't:
 
 **Then proceed directly to the represent-section flow.**
 
-### 2. Check for Global Data Model
+### 3. Check for Global Data Model
 
 Check if `[project]/data-model.md` exists.
 
-**If it exists:** Read the file and match entity names to it.
+**If it exists:** Read the file and align entity names to it.
 
 **If it doesn't exist:** Show a warning but continue:
 
-"Note: A global data model hasn't been defined yet. I'll create entity structures based on the section spec."
+"Note: A global data model hasn't been defined yet. I'll create entity structures based on the section spec and standard financial data patterns."
 
-### 3. Analyze the Specification
+### 4. Analyze the Specification
 
 Read `[project]/spec-[section-name].md` to understand:
 
-- What data entities are implied by the user flows?
-- What fields would each entity need?
-- What sample values would be realistic?
-- What actions can be taken? (These become callback props)
+- What financial entities are implied by the user flows?
+- What fields would each entity need for the calculations?
+- What sample values would be financially plausible?
+- What edge cases matter (negative earnings, high leverage, different sectors)?
 
-### 4. Present Data Structure
+### 5. Present Data Structure
 
 Present your proposed data structure in plain language:
 
 "Based on the specification for **[Section Title]**, here's how I'm organizing the data:
 
 **Entities:**
-- **[Entity1]** — [Description]
-- **[Entity2]** — [Description]
-
-**What You Can Do:**
-- [Actions from the spec]
+- **Company** — Universe of companies with sector and market cap
+- **FinancialStatement** — Annual income statement and balance sheet items
+- **PriceHistory** — Daily closing prices and volume
 
 **Sample Data:**
-I'll create [X] realistic records to make the screen designs feel real.
+I'll create 5-8 fictional companies across sectors (tech, healthcare, financials, consumer) with 3 years of financials and recent price history. Numbers will be plausible but not real.
 
-Does this structure make sense?"
+**Edge Cases Included:**
+- A company with negative net income (growth-stage or turnaround)
+- A highly-leveraged company (stress-tests debt ratios)
+- A small-cap with limited history
 
-### 5. Generate the Data File
+Does this structure make sense for what you're building?"
 
-Once approved, create `[project]/build/[section-id]/data.json` with:
+Wait for approval or modifications before generating.
 
-- **A `_meta` section** — Human-readable descriptions of each data model
-- **Realistic sample data** — Believable names, dates, descriptions
-- **Varied content** — Mix short and long text, different statuses
-- **Edge cases** — At least one empty array, one long description
+### 6. Generate Pydantic Models
 
-Example structure:
+Create `data/models.py` at the **repo root** (not inside the project folder — source code lives at repo root, docs live in `[project]/`):
 
-```json
-{
-  "_meta": {
-    "models": {
-      "invoices": "Each invoice represents a bill you send to a client.",
-      "lineItems": "Line items are the individual charges on each invoice."
-    },
-    "relationships": [
-      "Each Invoice contains one or more Line Items"
-    ]
-  },
-  "invoices": [
-    {
-      "id": "inv-001",
-      "invoiceNumber": "INV-2024-001",
-      "clientName": "Acme Corp",
-      "total": 1500.00,
-      "status": "sent"
-    }
-  ]
-}
+```python
+"""
+Pydantic models for financial data validation.
+
+These models validate data at the boundary — when loading from CSV,
+API, or any external source. If data doesn't match the schema,
+you'll get a clear error instead of a silent bug in your calculations.
+"""
+
+from pydantic import BaseModel, Field
+from datetime import date
+from typing import Optional
+
+
+class Company(BaseModel):
+    """A company in the analysis universe."""
+    ticker: str = Field(..., description="Stock ticker symbol")
+    name: str = Field(..., description="Company name")
+    sector: str = Field(..., description="Industry sector")
+    market_cap_billions: float = Field(..., description="Market cap in $B")
+
+
+class FinancialStatement(BaseModel):
+    """Annual financial data for a company (income statement + balance sheet items)."""
+    ticker: str
+    year: int
+    revenue_millions: float = Field(..., description="Total revenue in $M")
+    ebitda_millions: float = Field(..., description="EBITDA in $M")
+    net_income_millions: float = Field(..., description="Net income in $M (can be negative)")
+    total_debt_millions: float = Field(..., description="Total debt in $M")
+    cash_millions: float = Field(..., description="Cash and equivalents in $M")
+    shares_outstanding_millions: float = Field(..., description="Diluted shares in millions")
+
+
+class PriceHistory(BaseModel):
+    """Daily price and volume data for a company."""
+    ticker: str
+    date: date
+    close: float = Field(..., description="Closing price in $")
+    volume: int = Field(..., description="Daily trading volume")
 ```
 
-### 6. Generate TypeScript Types
+**Adapt models to the spec.** The example above is for equity analysis. If the project is about fixed income, portfolio optimization, or something else, adjust the entities accordingly. The pattern stays the same:
 
-Create `[project]/build/[section-id]/types.ts` based on the data structure:
+- Pydantic `BaseModel` subclasses
+- `Field(...)` with descriptions for key fields
+- Type hints that match the actual data (float for money, int for counts, date for dates)
+- Docstrings on every model explaining what it represents
 
-```typescript
-// =============================================================================
-// Data Types
-// =============================================================================
+### 7. Generate Sample CSV Files
 
-export interface Invoice {
-  id: string
-  invoiceNumber: string
-  clientName: string
-  total: number
-  status: 'draft' | 'sent' | 'paid' | 'overdue'
-}
+Create sample data files in `data/samples/` at the repo root:
 
-// =============================================================================
-// Component Props
-// =============================================================================
+**`data/samples/companies.csv`**
 
-export interface InvoiceListProps {
-  /** The list of invoices to display */
-  invoices: Invoice[]
-  /** Called when user wants to view an invoice */
-  onView?: (id: string) => void
-  /** Called when user wants to edit an invoice */
-  onEdit?: (id: string) => void
-  /** Called when user wants to delete an invoice */
-  onDelete?: (id: string) => void
-  /** Called when user wants to create new */
-  onCreate?: () => void
-}
+```csv
+ticker,name,sector,market_cap_billions
+NVEX,Novex Technologies,Technology,142.5
+HLRA,Haloran Healthcare,Healthcare,68.3
+CRDB,Crestwood Bancorp,Financials,31.7
+PKVL,Peakville Consumer Brands,Consumer Staples,54.2
+ZYNQ,Zynquo Systems,Technology,23.8
+MRDN,Meridian Energy Partners,Energy,87.6
+FLXM,Flexium Therapeutics,Healthcare,12.4
+ATWR,Atlas Tower REIT,Real Estate,19.1
 ```
 
-### 7. Suggest Next Step
+**`data/samples/financials.csv`** — 3 years per company:
+
+```csv
+ticker,year,revenue_millions,ebitda_millions,net_income_millions,total_debt_millions,cash_millions,shares_outstanding_millions
+NVEX,2023,51432,14901,10287,8200,22500,1250
+NVEX,2024,58920,17676,12480,7800,28100,1255
+NVEX,2025,67158,20820,14728,7200,35400,1260
+HLRA,2023,24180,5803,3264,12400,4800,890
+HLRA,2024,26112,6267,3524,11900,5200,895
+HLRA,2025,27918,6980,3908,11200,5800,900
+CRDB,2023,8940,3308,2234,45200,3200,520
+CRDB,2024,9387,3474,2346,44800,3500,525
+CRDB,2025,9856,3646,2464,44100,3900,528
+PKVL,2023,32100,5778,3531,9800,6200,780
+PKVL,2024,33384,5675,3338,10200,5800,785
+PKVL,2025,34385,6189,3610,9900,6400,788
+ZYNQ,2023,8420,1263,-842,4200,2100,340
+ZYNQ,2024,12630,2526,126,3800,3400,355
+ZYNQ,2025,17682,4420,1946,3200,5800,370
+MRDN,2023,41200,12360,7208,18500,8200,680
+MRDN,2024,38140,10678,5721,19200,7100,680
+MRDN,2025,43260,12978,8220,17800,9400,685
+FLXM,2023,3240,162,-1296,2800,1800,210
+FLXM,2024,4536,680,-454,2600,1400,225
+FLXM,2025,6350,1524,508,2200,1900,240
+ATWR,2023,4820,2892,1205,14200,1200,380
+ATWR,2024,5060,3036,1265,14800,1100,382
+ATWR,2025,5313,3188,1329,15400,1000,385
+```
+
+**`data/samples/prices.csv`** — Recent daily prices (generate 20-30 trading days per company):
+
+Generate realistic price series with:
+- Prices consistent with market cap and shares outstanding
+- Daily moves of -3% to +3% (normal variation)
+- Volume in the millions for large-caps, hundreds of thousands for small-caps
+
+**Key characteristics of the sample data:**
+
+| Company | Story | Why It's Useful |
+|---------|-------|-----------------|
+| NVEX | Large-cap tech, strong growth, high margins | Base case — healthy company |
+| HLRA | Mid-cap healthcare, steady growth | Defensive sector comparison |
+| CRDB | Regional bank, high leverage (normal for financials) | Tests debt-heavy analysis |
+| PKVL | Consumer staples, stable but flat margins | Low-growth value stock |
+| ZYNQ | Small-cap tech, recently turned profitable | Tests negative-to-positive earnings |
+| MRDN | Energy, cyclical revenue | Tests volatility in fundamentals |
+| FLXM | Biotech, burning cash, just turned profitable | Edge case: negative earnings history |
+| ATWR | REIT, high debt, stable income | Tests capital-intensive model |
+
+### 8. Generate Data Loader Module
+
+Create `data/loader.py` at the repo root:
+
+```python
+"""
+Data loader module.
+
+Loads sample financial data from CSV files. Designed to be swapped
+for real API sources later — just change the implementation inside
+each function while keeping the same return types.
+
+Swap guide:
+- Replace pd.read_csv(...) with your API call
+- Validate with Pydantic models before returning
+- Keep the same function signatures so downstream code doesn't break
+"""
+
+import pandas as pd
+from pathlib import Path
+from typing import Optional
+
+# Sample data lives here during development.
+# Swap this path (or the whole function) for real data sources.
+SAMPLE_DIR = Path(__file__).parent / "samples"
+
+
+def load_companies() -> pd.DataFrame:
+    """
+    Load the company universe.
+
+    Returns DataFrame with columns:
+        ticker, name, sector, market_cap_billions
+
+    To swap for real data:
+        return your_api.get_company_list()
+    """
+    return pd.read_csv(SAMPLE_DIR / "companies.csv")
+
+
+def load_financials(ticker: Optional[str] = None) -> pd.DataFrame:
+    """
+    Load financial statements.
+
+    Args:
+        ticker: Filter to a single company. None returns all.
+
+    Returns DataFrame with columns:
+        ticker, year, revenue_millions, ebitda_millions,
+        net_income_millions, total_debt_millions, cash_millions,
+        shares_outstanding_millions
+
+    To swap for real data:
+        return your_api.get_financials(ticker)
+    """
+    df = pd.read_csv(SAMPLE_DIR / "financials.csv")
+    if ticker:
+        df = df[df["ticker"] == ticker]
+    return df
+
+
+def load_prices(ticker: Optional[str] = None) -> pd.DataFrame:
+    """
+    Load price history.
+
+    Args:
+        ticker: Filter to a single company. None returns all.
+
+    Returns DataFrame with columns:
+        ticker, date, close, volume
+
+    To swap for real data:
+        return yfinance.download(ticker)
+    """
+    df = pd.read_csv(SAMPLE_DIR / "prices.csv", parse_dates=["date"])
+    if ticker:
+        df = df[df["ticker"] == ticker]
+    return df
+```
+
+Also create `data/__init__.py`:
+
+```python
+"""Financial data loading and validation."""
+
+from data.loader import load_companies, load_financials, load_prices
+from data.models import Company, FinancialStatement, PriceHistory
+
+__all__ = [
+    "load_companies",
+    "load_financials",
+    "load_prices",
+    "Company",
+    "FinancialStatement",
+    "PriceHistory",
+]
+```
+
+### 9. Create a Validation Example
+
+Create `data/validate_sample.py` — a quick script that loads sample data and validates it against Pydantic models:
+
+```python
+"""
+Quick validation: loads sample CSVs and validates every row against Pydantic models.
+Run this after editing sample data to catch schema issues early.
+
+Usage: python -m data.validate_sample
+"""
+
+from data.loader import load_companies, load_financials, load_prices
+from data.models import Company, FinancialStatement, PriceHistory
+
+
+def validate():
+    errors = []
+
+    companies = load_companies()
+    for _, row in companies.iterrows():
+        try:
+            Company(**row.to_dict())
+        except Exception as e:
+            errors.append(f"Company {row.get('ticker', '?')}: {e}")
+
+    financials = load_financials()
+    for _, row in financials.iterrows():
+        try:
+            FinancialStatement(**row.to_dict())
+        except Exception as e:
+            errors.append(f"Financial {row.get('ticker', '?')} {row.get('year', '?')}: {e}")
+
+    prices = load_prices()
+    for _, row in prices.iterrows():
+        try:
+            PriceHistory(**row.to_dict())
+        except Exception as e:
+            errors.append(f"Price {row.get('ticker', '?')} {row.get('date', '?')}: {e}")
+
+    if errors:
+        print(f"VALIDATION FAILED — {len(errors)} error(s):")
+        for err in errors:
+            print(f"  - {err}")
+        return False
+    else:
+        print(f"ALL VALID — {len(companies)} companies, {len(financials)} financial records, {len(prices)} price records")
+        return True
+
+
+if __name__ == "__main__":
+    validate()
+```
+
+### 10. Suggest Next Step
 
 Once the data is created, proactively suggest building:
 
-"I've created two files for **[Section Title]**:
+"I've created the data foundation for **[Section Title]**:
 
-1. `[project]/build/[section-id]/data.json` — Sample data with [X] records
-2. `[project]/build/[section-id]/types.ts` — TypeScript interfaces
+```
+data/
+├── __init__.py              # Package exports
+├── models.py                # Pydantic models (Company, FinancialStatement, PriceHistory)
+├── loader.py                # Data loading functions (swap CSV for API later)
+├── validate_sample.py       # Validation script
+└── samples/
+    ├── companies.csv        # 8 companies across 5 sectors
+    ├── financials.csv       # 3 years of financials per company
+    └── prices.csv           # Recent daily price history
+```
 
-Now we have everything we need to build this section.
+**Quick test:**
+```bash
+python -m data.validate_sample
+```
 
-**Want me to build it now?** You'll see it running and can give feedback on what to change."
+**Key design decisions:**
+- CSV format (not JSON) — works naturally with pandas
+- Pydantic models validate at the boundary — catch bad data before it hits calculations
+- `loader.py` functions are the swap point — replace CSV reads with API calls later, same interface
 
-If they agree, **proceed directly** to building:
-- For quant tools: Build Streamlit app and run it
-- For web apps: Build React components
+**Want me to build the analysis tool now?** I'll create the Streamlit app that uses this data and you can see it running."
 
-Don't tell them to run commands — just build.
+If they agree, **proceed directly** to building via the implement-screen flow.
+
+---
+
+## Adapting to the Project Domain
+
+The equity analysis example above is the default. Adapt the entities and sample data to match whatever the developer is building:
+
+| Project Type | Key Entities | Sample Data Focus |
+|--------------|-------------|-------------------|
+| **Equity Valuation** | Company, FinancialStatement, PriceHistory | Revenue, margins, multiples |
+| **Fixed Income** | Bond, Issuer, YieldCurve | Coupon, maturity, credit rating |
+| **Portfolio Optimization** | Asset, Returns, Constraints | Historical returns, correlations |
+| **Risk Management** | Position, RiskFactor, Scenario | Greeks, VaR inputs, stress tests |
+| **Credit Analysis** | Borrower, Loan, CreditScore | Default rates, LTV, debt service |
+
+The pattern is always the same:
+1. Pydantic models define the schema
+2. CSV files hold sample data
+3. `loader.py` provides the swap point
+4. A validation script confirms everything is consistent
 
 ---
 
 ## Proactive Flow
 
 As a Cognition Mate:
-- Suggest skipping for quant tools — data comes from real sources
-- Propose realistic data based on the spec
-- Suggest building immediately once data is ready
+- Propose data entities and sample companies based on the spec
+- Generate data immediately once structure is approved
+- Include edge cases without being asked — that's your job
+- Suggest building the tool once data is ready
 - Show don't tell — get something running
 
 ---
 
 ## Guiding Principles
 
-- **Realistic data** — Not "Lorem ipsum" or "Test 123"
-- **5-10 sample records** — Enough to show a realistic list
-- **Include edge cases** — Empty arrays, long text, different statuses
-- **Match the global data model** — If it exists
-- **KISS** — Don't over-engineer the data structure
+- **Realistic data** — Plausible financials, not round-number placeholders
+- **5-8 sample companies** — Enough to show variation across sectors, cap sizes, and financial health
+- **3 years of history** — Minimum to calculate growth rates and trends
+- **Edge cases built in** — Negative earnings, high leverage, cyclical revenue
+- **CSV + pandas** — The natural format for Python/finance work
+- **Pydantic at the boundary** — Validate when data enters, trust it downstream
+- **Swappable loaders** — Same interface whether data comes from CSV or Bloomberg
+- **Match the global data model** — If `data-model.md` exists, align entity names
+- **KISS** — Don't over-engineer the data layer; it's a foundation, not a final product
+
+---
+
+## React Projects
+
+For React projects (`type: "react"` in `.driver.json`), generate `data.json` and TypeScript types instead of CSV and Pydantic models:
+
+- Sample data goes in `[project]/build/[section-id]/data.json`
+- Types go in `[project]/build/[section-id]/types.ts`
+- Use the React data generation pattern described in the evolve skill
+
+The React path follows the same principles (realistic data, edge cases, varied content) but outputs JSON with a `_meta` section and TypeScript interfaces with component props.
