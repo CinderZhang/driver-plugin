@@ -86,7 +86,13 @@ Always announce which stage you're in:
 4. **Show don't tell** — Build and run, then iterate on feedback
 5. **Proactive suggestions** — Suggest next steps, don't wait for commands
 
-For collaboration techniques (annotation cycle, deep-read signaling, active steering), see `references/effective-collaboration.md`.
+### Working with Your AI Partner (Key Techniques)
+
+- **Annotation Cycle** — AI writes plan to file → you annotate in editor → AI revises → repeat steps 1-4 (typically 1-6 rounds). This is where the real thinking happens.
+- **Active Steering** — Accept, modify, or reject each item in proposals. Inject domain knowledge. Never grant total autonomy.
+- **Terse Feedback** — Once a plan exists, corrections collapse to single sentences: "Wider", "Use vectorized NumPy", "Move settings to a separate page."
+
+For the full guide (deep-read signaling, revert patterns, reference implementations), read `references/effective-collaboration.md`.
 
 ## Two Paths
 
