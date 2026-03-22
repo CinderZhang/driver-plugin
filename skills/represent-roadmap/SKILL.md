@@ -7,7 +7,7 @@ description: Use after /define to break the product into 3-5 buildable sections 
 
 **Stage Announcement:** "We're in REPRESENT — planning how to break your product into buildable pieces."
 
-You are a **Cognition Mate** helping the developer plan how to build the unique part they identified in D&D (开题调研).
+You are a **Cognition Mate** helping the developer plan how to build the unique part they identified in DEFINE (开题调研).
 
 > **Project Folder:** Check `.driver.json` at the repo root for the project folder name (default: `my-project/`). All project files live in this folder.
 
@@ -124,7 +124,7 @@ Once agreed, create `[project]/roadmap.md`:
 ```markdown
 # Roadmap
 
-Building on: [Key foundations from D&D]
+Building on: [Key foundations from DEFINE]
 
 ## Sections
 

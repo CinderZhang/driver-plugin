@@ -52,7 +52,7 @@ Anyone can generate AI output. Professionals can validate it.
 
 ### 1. Identify What to Validate
 
-Read `[project]/roadmap.md` to get sections, then check implementation files (`src/` or `app/`) to see what's been built.
+Read `[project]/roadmap.md` to get sections, then check implementation files to see what's been built. For Python projects, look for `app.py`, `pages/`, `calculations/` at the repo root. For React projects, look for `src/sections/`.
 
 If only one section exists, auto-select it. If multiple exist, ask which one to validate.
 
@@ -159,7 +159,7 @@ Present results to the developer:
 
 ### 7. Capture Evidence (Optional)
 
-This step is **not required** for validation to pass. Screenshots are supplemental documentation for the export package. If Playwright MCP is unavailable, skip this step entirely — your validation results from Step 6 are complete.
+This step is **not required** for validation to pass. Screenshots are supplemental documentation for the export package. If Playwright MCP is unavailable, skip this step entirely — your validation results from the Validation Summary are complete.
 
 #### Prerequisites: Check for Playwright MCP
 

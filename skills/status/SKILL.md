@@ -23,7 +23,7 @@ Read `.driver.json` at the repo root to find the project folder name and project
 ```
 
 - `project_dir` — the folder containing all project files
-- `type` — `"python"` (Streamlit) or `"react"` (Next.js/React). May be missing in legacy projects.
+- `type` — `"python"` (Streamlit) or `"react"` (React + TypeScript). May be missing in legacy projects.
 
 If `.driver.json` doesn't exist, fall back to looking for common folder names (`my-project/`, `project/`, `product/`) or any folder containing `product-overview.md`.
 

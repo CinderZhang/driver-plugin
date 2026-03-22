@@ -63,6 +63,28 @@ REFLECT (Optional)
 
 DRIVER uses a flat, easy-to-navigate file structure. All project files live in a single folder (default: `my-project/`, customizable via `.driver.json`):
 
+**Python (Streamlit) — Recommended for quant/finance:**
+
+```
+repo-root/
+├── .driver.json                  # Project config
+├── [project-name]/               # DRIVER docs and specs
+│   ├── README.md                 # You are here
+│   ├── research.md               # Created by /research or /define
+│   ├── product-overview.md       # Created by /define (your PRD)
+│   ├── roadmap.md                # Created by /represent-roadmap
+│   ├── spec-[section].md         # Created by /represent-section
+│   ├── data-model.md             # Created by /represent-datamodel
+│   ├── validation.md             # Created by /validate
+│   └── reflect.md                # Created by /reflect
+├── app.py                        # Main Streamlit entry point
+├── pages/                        # Section pages (auto-discovered by Streamlit)
+├── calculations/                 # Core logic (pure Python, testable)
+└── data/                         # Data loading and samples
+```
+
+**React + TypeScript — For web app UIs:**
+
 ```
 .driver.json                      # Project config (folder name, project type)
 my-project/
@@ -83,7 +105,7 @@ my-project/
         └── types.ts              # TypeScript interfaces
 ```
 
-Human-readable documents live at the project root. Implementation artifacts live in `build/`.
+Human-readable documents live at the project root. Implementation artifacts live in `build/` (React) or at the repo root (Python).
 
 ---
 
@@ -118,7 +140,7 @@ After AI writes a plan or spec, don't just say "looks good." Review it in your e
 2. You open it and add inline notes (corrections, domain knowledge, rejected approaches)
 3. Send it back: "Update based on my annotations — don't implement yet"
 4. AI revises the document
-5. Repeat 1-6 times until the plan is right
+5. Repeat steps 1-4 until the plan is right (typically 1-6 rounds)
 
 **This is where the real creative work happens.** Implementation should be mechanical.
 

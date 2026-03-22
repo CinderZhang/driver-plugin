@@ -93,7 +93,7 @@ For collaboration techniques (annotation cycle, deep-read signaling, active stee
 **Path A: Quant/Analytical Tools (Recommended for finance)**
 ```
 Stack:      Python + Streamlit/Dash
-UI:         st.run() — see it immediately
+UI:         streamlit run app.py — see it immediately
 Iteration:  Modify code, rerun, see changes
 ```
 

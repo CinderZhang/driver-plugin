@@ -244,8 +244,10 @@ When preparing the Python export:
    └── logic.py         # Copy of the calculation module for this section
    ```
 
-6. **Create `tests.md` for each section** with concrete pytest examples:
-   ```markdown
+7. **Verify import paths:** Ensure all Python imports within exported files work relative to `driver-plan/` root. Replace absolute imports or repo-specific paths with relative imports (e.g., `from calculations.dcf import ...` should work when `driver-plan/` is the working directory).
+
+8. **Create `tests.md` for each section** with concrete pytest examples:
+   ````markdown
    ## Testing [Section Name]
 
    ### Known Answer Tests
@@ -259,14 +261,15 @@ When preparing the Python export:
    ### Edge Cases
    ```python
    def test_zero_discount_rate():
-       result = calculate_npv(cash_flows=[-1000, 500, 500], rate=0.0)
-       assert result == 0.0
+       """At rate=0, NPV is simply the sum of all cash flows (no discounting)"""
+       result = calculate_npv(cash_flows=[-1000, 500, 600], rate=0.0)
+       assert result == 100.0  # No discounting: just sum of cash flows
 
    def test_empty_cash_flows():
        with pytest.raises(ValueError):
            calculate_npv(cash_flows=[], rate=0.10)
    ```
-   ```
+   ````
 
 #### Path B (React + TypeScript)
 
