@@ -1,7 +1,6 @@
 #!/bin/bash
 # DRIVER Session Start Hook
-# Injects the using-driver skill context at session start.
-# Checks for .driver.json to determine if this is a DRIVER project.
+# Conditional injection based on whether a DRIVER project exists.
 
 # Derive plugin root from this script's location if not set
 if [ -z "$CLAUDE_PLUGIN_ROOT" ]; then
@@ -11,8 +10,17 @@ fi
 
 SKILL_PATH="${CLAUDE_PLUGIN_ROOT}/skills/using-driver/SKILL.md"
 
-if [ -f "$SKILL_PATH" ]; then
-    echo "<EXTREMELY-IMPORTANT>"
-    cat "$SKILL_PATH"
-    echo "</EXTREMELY-IMPORTANT>"
+# Check if this is a DRIVER project
+if [ -f ".driver.json" ]; then
+    # Active DRIVER project — inject full context
+    if [ -f "$SKILL_PATH" ]; then
+        echo "<EXTREMELY-IMPORTANT>"
+        cat "$SKILL_PATH"
+        echo ""
+        echo "A DRIVER project exists here. Read .driver.json and check project status."
+        echo "</EXTREMELY-IMPORTANT>"
+    fi
+else
+    # No DRIVER project — single line discovery nudge
+    echo "DRIVER™ plugin is available. Run /finance-driver:init to start a new project, or /finance-driver:help for an overview."
 fi
