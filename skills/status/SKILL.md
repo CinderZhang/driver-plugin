@@ -17,10 +17,13 @@ You are a **Cognition Mate** helping the developer understand their current prog
 
 ### 0. Discover Project Folder
 
-Read `.driver.json` at the repo root to find the project folder name:
+Read `.driver.json` at the repo root to find the project folder name and project type:
 ```json
-{"project_dir": "my-project"}
+{"project_dir": "my-project", "type": "python"}
 ```
+
+- `project_dir` — the folder containing all project files
+- `type` — `"python"` (Streamlit) or `"react"` (Next.js/React). May be missing in legacy projects.
 
 If `.driver.json` doesn't exist, fall back to looking for common folder names (`my-project/`, `project/`, `product/`) or any folder containing `product-overview.md`.
 
@@ -40,10 +43,15 @@ Check for the existence of these files/directories:
 | `[project]/design/shell.md` | REPRESENT | check (optional) |
 | `[project]/spec-*.md` | REPRESENT | Count sections |
 | `[project]/build/*/data.json` | IMPLEMENT | Count with data |
-| `src/sections/*/` or `app.py` | IMPLEMENT | Count built |
+| *(type-dependent, see below)* | IMPLEMENT | Count built |
 | `[project]/validation.md` | VALIDATE | check |
 | `driver-plan/` | EVOLVE | check |
 | `[project]/reflect.md` | REFLECT | check |
+
+**IMPLEMENT detection by project type:**
+- **`"python"`**: check for `app.py` and `pages/*.py` (Streamlit multi-page apps)
+- **`"react"`**: check for `src/sections/*/`
+- **type missing (legacy)**: check both patterns and infer whichever has matches
 
 ### 2. Present Status
 
@@ -84,6 +92,31 @@ You're in the middle of building. The **Risk Dashboard** section has no spec or 
 - Create a spec for Risk Dashboard?
 - Continue building the Portfolio Optimizer?
 - Run cross-check validation on what's done?"
+
+**Python project example (Streamlit):**
+
+"**DRIVER Project Status**
+
+**Project:** DCF Valuation Tool
+**Type:** Python (Streamlit)
+
+**Progress:**
+```
+DEFINE      [check] Research documented
+            [check] Product overview (PRD) defined
+REPRESENT   [check] Roadmap: 2 sections planned
+            [~] Sections: 1/2 specified
+IMPLEMENT   [~] app.py exists, 1/2 pages built (pages/assumptions.py)
+VALIDATE    [x] Not validated
+EVOLVE      [x] Export not generated
+REFLECT     [x] Learnings not captured
+```
+
+**Sections:**
+| Section | Spec | Built | Validated |
+|---------|------|-------|-----------|
+| Assumptions | spec-assumptions.md check | pages/assumptions.py check | x |
+| Valuation | x | x | x |"
 
 ### 3. Handle Empty Project
 

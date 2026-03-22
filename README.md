@@ -34,17 +34,51 @@ DRIVER guides you through six stages from concept to completion:
 
 ### From GitHub (Recommended)
 
+In Claude Code, run these two commands:
+
 ```bash
-# Step 1: In Claude Code
-/plugin marketplace add https://github.com/CinderZhang/driver-plugin
+# Step 1: Add the DRIVER marketplace
+/plugin marketplace add CinderZhang/driver-plugin
 ```
 
 ```bash
-# Step 2: In Claude Code
+# Step 2: Install the finance-driver plugin
 /plugin install finance-driver@driver
 ```
 
-Restart Claude Code after installing.
+Then **restart Claude Code** to activate the plugin.
+
+### Verify Installation
+
+After restarting, run:
+
+```bash
+/finance-driver:help
+```
+
+You should see the full DRIVER reference with all available skills.
+
+### Manual Installation (Alternative)
+
+If the plugin commands aren't available in your version of Claude Code, you can clone and reference the repo directly:
+
+```bash
+git clone https://github.com/CinderZhang/driver-plugin.git ~/.claude/plugins/driver-plugin
+```
+
+Then add to your `~/.claude/settings.json`:
+
+```json
+{
+  "plugins": {
+    "driver-plugin": {
+      "source": "~/.claude/plugins/driver-plugin"
+    }
+  }
+}
+```
+
+Restart Claude Code after adding.
 
 ---
 

@@ -64,7 +64,7 @@ REFLECT (Optional)
 DRIVER uses a flat, easy-to-navigate file structure. All project files live in a single folder (default: `my-project/`, customizable via `.driver.json`):
 
 ```
-.driver.json                      # Project config (folder name)
+.driver.json                      # Project config (folder name, project type)
 my-project/
 ├── README.md                     # Project overview and structure
 ├── research.md                   # Research findings (分头研究)

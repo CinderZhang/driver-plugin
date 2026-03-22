@@ -119,6 +119,18 @@ Read the context:
 
 ### 2. Build and Run
 
+**File location:** Create `app.py` at the **repo root** (not inside the project folder). The `[project]/` folder holds documentation and specs; source code lives at the repo root.
+
+```
+repo-root/
+├── .driver.json
+├── [project]/          ← Docs: product-overview.md, roadmap.md, specs
+├── app.py              ← Streamlit entry point
+├── pages/              ← Section pages
+├── calculations/       ← Core logic
+└── data/               ← Data loading
+```
+
 Create a Streamlit app that implements the section:
 
 ```python
@@ -138,6 +150,8 @@ st.title("[Section Name]")
 **Then run it:**
 
 ```bash
+# Install dependencies if needed
+pip install streamlit pandas numpy numpy-financial plotly
 streamlit run app.py
 ```
 
