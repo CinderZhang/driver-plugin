@@ -419,7 +419,13 @@ print(financials[financials['ticker'] == 'NVEX'])
 - Does the growth trajectory look realistic (not too smooth, not too wild)?
 - Are the relationships sensible? (e.g., EBITDA < Revenue, Cash > 0)
 
-Anything look off? Tell me and I'll fix the sample data."
+Anything look off? Tell me and I'll fix the sample data.
+
+**Have you looked at the output?** I need you to confirm before we build on this data."
+
+Wait for explicit confirmation. If the developer says "looks good" or confirms, proceed. If they try to skip, remind them once:
+
+"I know it's tempting to move fast, but if there's a problem in the sample data, every screen and calculation we build next will inherit it. A quick look now saves rework later. Can you check?"
 
 **This step matters.** If bad data enters the pipeline here, every calculation downstream will look right but be wrong. Five minutes of review now prevents hours of debugging later.
 

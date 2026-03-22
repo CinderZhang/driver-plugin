@@ -68,12 +68,29 @@ Before validating outputs, validate inputs. If real data has replaced sample dat
 - Flag date range gaps, survivorship bias signals, or suspicious uniformity
 - Compare row counts and value ranges to what the data source claims
 
-**Developer reviews:**
-- "Do these summary stats match your expectations for this dataset?"
-- "Any tickers missing that should be there? Any that shouldn't?"
-- "Does the date range cover the period you need?"
+**Developer reviews — and you must ask:**
 
-**This matters because:** a tool can produce confident-looking wrong answers if the data is bad. `df.describe()` takes 10 seconds and catches problems that hours of debugging won't.
+"I've printed the summary stats above. Before we continue:
+1. Have you looked at the output of `df.describe()`?
+2. Do the value ranges match what you'd expect?
+3. Any tickers, dates, or fields that look wrong or missing?
+
+**I need you to confirm before we proceed.** I can't validate calculations on data that hasn't been reviewed."
+
+Wait for explicit confirmation. If the developer says "looks good" or "yes", proceed. If they skip or say "just continue", remind them once:
+
+"I understand you want to move fast. But here's the risk: **if the data is wrong, every calculation downstream will look right but be wrong.** A confident-looking wrong answer is worse than an obvious error — it gets acted on. Five minutes now prevents decisions based on bad numbers. Can you take a quick look?"
+
+<IMPORTANT>
+**For automated/end-to-end pipelines:** If the developer is building a fully automated workflow (no human in the loop), this data review step becomes a **programmatic gate**, not a visual check. The tool MUST include:
+- Automated schema validation (Pydantic)
+- Range checks (e.g., revenue > 0, dates within expected window)
+- Completeness checks (expected row counts, no null keys)
+- Drift detection (flag if today's data looks significantly different from historical patterns)
+- Logging of all checks with pass/fail — so a human can audit after the fact
+
+**Warn the developer explicitly:** "You're building an automated pipeline. Without a human reviewing each run, you need programmatic guardrails that catch what eyes would catch. Silent data failures in automated systems have caused real financial losses. Let's build those checks in."
+</IMPORTANT>
 
 ### 3. Test Against Known Answers
 
@@ -181,38 +198,30 @@ Present results to the developer:
 
 ### 8. Capture Evidence (Optional)
 
-This step is **not required** for validation to pass. Screenshots are supplemental documentation for the export package. If Playwright MCP is unavailable, skip this step entirely — your validation results from the Validation Summary are complete.
+This step is **not required** for validation to pass. Screenshots are supplemental documentation for the export package. If no screenshot tool is available, skip this step — your validation results from the Validation Summary are complete.
 
-#### Prerequisites: Check for Playwright MCP
+#### Screenshot Tools
 
-Verify access to Playwright MCP tool (`browser_take_screenshot` or `mcp__playwright__browser_take_screenshot`).
+Use whichever browser automation tool is available:
 
-If not available:
+| Tool | How to check | Install |
+|------|-------------|---------|
+| **Playwright MCP** | `mcp__playwright__browser_take_screenshot` | `claude mcp add playwright npx @playwright/mcp@latest` |
+| **Chrome DevTools MCP** | `mcp__chrome-devtools__take_screenshot` | `claude mcp add chrome-devtools npx @anthropic/chrome-devtools-mcp@latest` |
+| **Manual** | Take a screenshot yourself and save it | No install needed |
 
----
-To capture screenshots, install the Playwright MCP server:
-
-```
-claude mcp add playwright npx @playwright/mcp@latest
-```
-
-Then restart this session and run `/validate` again to capture evidence.
-
----
+Any tool that can capture a browser screenshot works. The goal is visual evidence, not a specific tool.
 
 #### Capture Process
 
-1. Start the dev server yourself using Bash (run in background). **Do NOT ask the user to start it.**
+1. Start the dev server using Bash (run in background). **Do NOT ask the user to start it.**
 2. Wait a few seconds for it to be ready
-3. Navigate to the screen design URL
-4. For web apps: click "Hide" link (`data-hide-header` attribute) to hide navigation
-5. Capture full-page screenshot (`fullPage: true`, 1280px viewport, PNG)
+3. Navigate to the app URL
+4. Capture a full-page screenshot (1280px viewport, PNG)
 
 #### Save
 
-```bash
-cp .playwright-mcp/[filename].png [project]/build/[section-id]/screenshot.png
-```
+Save to `[project]/build/[section-id]/screenshot.png`
 
 **Naming:** `[screen-design-name]-[variant].png`
 
