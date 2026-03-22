@@ -421,11 +421,11 @@ print(financials[financials['ticker'] == 'NVEX'])
 
 Anything look off? Tell me and I'll fix the sample data.
 
-**Have you looked at the output?** I need you to confirm before we build on this data."
+Please review the output and confirm before we proceed — everything we build next depends on this data being correct."
 
-Wait for explicit confirmation. If the developer says "looks good" or confirms, proceed. If they try to skip, remind them once:
+Wait for explicit confirmation. If the developer confirms, proceed. If they ask to skip, note the risk once:
 
-"I know it's tempting to move fast, but if there's a problem in the sample data, every screen and calculation we build next will inherit it. A quick look now saves rework later. Can you check?"
+"Understood. Flagging that any issues in the sample data will propagate into every calculation and screen we build from here. This is a conscious decision to proceed without review."
 
 **This step matters.** If bad data enters the pipeline here, every calculation downstream will look right but be wrong. Five minutes of review now prevents hours of debugging later.
 

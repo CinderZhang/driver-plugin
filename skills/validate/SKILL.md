@@ -70,16 +70,16 @@ Before validating outputs, validate inputs. If real data has replaced sample dat
 
 **Developer reviews — and you must ask:**
 
-"I've printed the summary stats above. Before we continue:
-1. Have you looked at the output of `df.describe()`?
-2. Do the value ranges match what you'd expect?
-3. Any tickers, dates, or fields that look wrong or missing?
+"Summary stats are above. Please review before we continue:
+1. Do the value ranges match expectations for this dataset?
+2. Are all expected tickers, dates, and fields present?
+3. Anything that looks inconsistent or out of range?
 
-**I need you to confirm before we proceed.** I can't validate calculations on data that hasn't been reviewed."
+Please confirm once you've reviewed — validation results are only meaningful if the underlying data is sound."
 
-Wait for explicit confirmation. If the developer says "looks good" or "yes", proceed. If they skip or say "just continue", remind them once:
+Wait for explicit confirmation. If the developer confirms, proceed. If they ask to skip, note the risk once:
 
-"I understand you want to move fast. But here's the risk: **if the data is wrong, every calculation downstream will look right but be wrong.** A confident-looking wrong answer is worse than an obvious error — it gets acted on. Five minutes now prevents decisions based on bad numbers. Can you take a quick look?"
+"Understood. Worth noting: if there's an issue in the data, downstream calculations will produce plausible but incorrect results — and those are harder to catch than obvious errors. Flagging this so it's a conscious decision, not an oversight."
 
 <IMPORTANT>
 **For automated/end-to-end pipelines:** If the developer is building a fully automated workflow (no human in the loop), this data review step becomes a **programmatic gate**, not a visual check. The tool MUST include:
@@ -89,7 +89,7 @@ Wait for explicit confirmation. If the developer says "looks good" or "yes", pro
 - Drift detection (flag if today's data looks significantly different from historical patterns)
 - Logging of all checks with pass/fail — so a human can audit after the fact
 
-**Warn the developer explicitly:** "You're building an automated pipeline. Without a human reviewing each run, you need programmatic guardrails that catch what eyes would catch. Silent data failures in automated systems have caused real financial losses. Let's build those checks in."
+**State clearly:** "This is an automated pipeline with no human reviewing each run. Programmatic guardrails are required to catch what manual review would catch. Silent data failures in production systems have led to significant financial losses. These checks should be part of the pipeline, not optional."
 </IMPORTANT>
 
 ### 3. Test Against Known Answers
