@@ -9,24 +9,21 @@ A methodology for AI-augmented finance and quantitative tool development.
 
 ## What is DRIVER™?
 
-DRIVER guides you through six stages from concept to completion:
+DRIVER™ is a metacognitive framework that structures development into a bracketed flow: **$D \cdot [R\text{-}I\text{-}V\text{-}E] \cdot R$**, enforcing "slow edges" (human reflection and problem formulation) and a "fast middle" (machine-assisted build cycles).
 
-| Stage | Purpose | Iron Law |
-|-------|---------|----------|
-| **D**efine | Discover + define vision | No building without 分头研究 first |
-| **R**epresent | Plan part by part | Don't reinvent what exists |
-| **I**mplement | Build and run | Show don't tell |
-| **V**alidate | Cross-check your instruments | Known answers, reasonableness, edges, AI risks |
-| **E**volve | Package deliverable | Self-contained export |
-| **R**eflect | Capture learnings | Document what didn't work |
+| Stage | Focus | Command | Ratio (Human/AI) |
+|-------|-------|---------|------------------|
+| **$D$ — Define** | External problem space and success criteria | `/finance-driver:define` | 80% / 20% (Human Edge) |
+| **$D$ — Discover** | Internal knowledge inventory, gaps, and assumptions | `/finance-driver:discover` | 80% / 20% (Human Edge) |
+| **$[R\text{-}I\text{-}V\text{-}E]$** | Machine middle: Roadmap, Specs, Implementation, Validation, Evolve | `/finance-driver:represent-*`, `/finance-driver:implement-*`, `/finance-driver:validate`, `/finance-driver:evolve` | 20% / 80% (Machine Middle) |
+| **$R$ — Reflect** | Spoken/Video Presentation and Live Oral Defense | `/finance-driver:reflect` | 80% / 20% (Human Edge) |
 
-## The Philosophy
+## The Philosophy: Cognition Mate (认知伙伴)
 
 **AI is not a tool you command — it's a thinking partner.**
 
-- **You bring**: vision, domain expertise, judgment
-- **AI brings**: patterns, research ability, heavy lifting on code
-- **Neither creates alone** — meaning emerges from interaction
+* **The Edges ($D$ and $R$):** The human leads. You bound the problem space and map your gaps to avoid the **Timing Problem** (AI answering before you formulate the question) and the **Deskilling Paradox** (AI replacing human judgment).
+* **The Middle ($[R\text{-}I\text{-}V\text{-}E]$):** The AI does the heavy lifting of code drafting and testing while you steer. Optimize for execution speed here.
 
 ---
 
@@ -91,10 +88,10 @@ claude
 # Initialize a DRIVER project
 /finance-driver:init
 
-# Check available commands
-/finance-driver:help
+# Check status in the bracketed flow
+/finance-driver:status
 
-# Begin with research and definition
+# Begin by bounding the problem space
 /finance-driver:define
 ```
 
@@ -106,44 +103,33 @@ claude
 | Skill | Purpose |
 |-------|---------|
 | `/finance-driver:init` | Initialize a new DRIVER project |
-| `/finance-driver:status` | Show progress, suggest next step |
+| `/finance-driver:status` | Show progress, suggest next step in the bracketed flow |
 | `/finance-driver:help` | Full reference with Chinese term explanations |
-| `/finance-driver:research` | Lightweight 分头研究 — find libraries, approaches, references anytime |
+| `/finance-driver:research` | Lightweight 分头研究 — resolve knowledge gaps anytime |
 
-### DEFINE Stage
+### D: Define & Discover Stage (Human Edges)
 | Skill | Purpose |
 |-------|---------|
-| `/finance-driver:define` | Research and define product vision (开题调研) |
+| `/finance-driver:define` | Bounding the external problem space & success criteria |
+| `/finance-driver:discover` | Mapping knowledge inventory, assumptions, and gaps |
 
-### REPRESENT Stage
+### [R-I-V-E] Stage (Machine Middle)
 | Skill | Purpose |
 |-------|---------|
-| `/finance-driver:represent-roadmap` | Break into 3-5 buildable sections |
-| `/finance-driver:represent-datamodel` | Define core entities |
-| `/finance-driver:represent-tokens` | Choose colors and typography |
-| `/finance-driver:represent-shell` | Design navigation shell |
+| `/finance-driver:represent-roadmap` | Break the unique part into buildable sections |
+| `/finance-driver:represent-datamodel` | Define core entities and database schemas |
+| `/finance-driver:represent-tokens` | Choose colors and typography (web apps) |
+| `/finance-driver:represent-shell` | Design navigation shell (web apps) |
 | `/finance-driver:represent-section` | Spec a section |
-
-### IMPLEMENT Stage
-| Skill | Purpose |
-|-------|---------|
 | `/finance-driver:implement-data` | Create sample data |
-| `/finance-driver:implement-screen` | Build and run code |
-
-### VALIDATE Stage
-| Skill | Purpose |
-|-------|---------|
+| `/finance-driver:implement-screen` | Build and run code (Show Don't Tell) |
 | `/finance-driver:validate` | Cross-check: known answers, reasonableness, edges, AI risks |
+| `/finance-driver:evolve` | Generate final production-ready export package |
 
-### EVOLVE Stage
+### R: Reflect Stage (Human Edge)
 | Skill | Purpose |
 |-------|---------|
-| `/finance-driver:evolve` | Generate final export package |
-
-### REFLECT Stage
-| Skill | Purpose |
-|-------|---------|
-| `/finance-driver:reflect` | Capture learnings and tech stack lessons |
+| `/finance-driver:reflect` | Spoken/Video Presentation guidelines & Live Oral Defense |
 
 ---
 
