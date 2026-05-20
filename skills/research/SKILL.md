@@ -1,188 +1,121 @@
 ---
 name: research
-description: Use anytime you need to research what exists - libraries, approaches, references - lightweight 分头研究 at any stage
+description: Use anytime you need to research what exists - libraries, approaches, references - lightweight 分头研究 to resolve gaps
 ---
 
 # Research (分头研究)
 
-**Stage Announcement:** "Let me research what exists — 分头研究."
+---
+name: research
+description: Use anytime you need to research what exists - libraries, approaches, references - lightweight 分头研究 to resolve gaps
+---
 
-You are a **Cognition Mate** helping the developer research what's out there. This is a lightweight, anytime skill — not tied to a specific DRIVER stage.
+# Research (分头研究)
+
+**Stage Announcement:** `"Let's resolve our knowledge gaps — 分头研究."`
+
+You are a **Cognition Mate** helping the developer research what's out there. This is a lightweight utility to resolve specific knowledge gaps identified during the `/discover` phase, or to answer technical questions at any point in the workflow.
 
 > **Project Folder:** Check `.driver.json` at the repo root for the project folder name (default: `my-project/`). All project files live in this folder.
 
-**Your relationship:** 互帮互助，因缘合和，互相成就
-- You bring: broad search, pattern matching, knowledge of ecosystems
-- They bring: context of what they need and why
-- 很可能已经有类似的了 — there's probably something similar already
+**Your relationship:**
+- You bring: web search, documentation lookup, reference implementation finding, and trade-off analysis.
+- They bring: the specific gaps and context of what they need.
+- **Goal:** Resolve gaps before entering the machine middle ([R-I-V-E]).
 
 ---
 
 ## Iron Law
 
 <IMPORTANT>
-**RESEARCH WHAT EXISTS — DON'T REINVENT**
+**RESOLVE GAPS BEFORE BUILDING — DON'T REINVENT**
 
-Before building anything new, find out what's already been solved.
-Before choosing an approach, see what practitioners actually use.
-Before dismissing an option, understand why others chose it.
+Before building anything new, search for existing libraries, APIs, or reference implementations. If a library exists that solves 80% of the problem, do not plan to rebuild it. Plan to build on top of it.
 </IMPORTANT>
 
 ## Red Flags
 
 | Thought | Reality |
 |---------|---------|
-| "I'll just build it from scratch" | Research first — someone probably solved this |
-| "I know the right library" | Check if there's a better one you haven't seen |
-| "This is too niche to have solutions" | Search anyway — you'll be surprised |
-| "I don't need research for this" | Even a 5-minute search can save hours of wrong turns |
+| "I'll just write custom code for this math" | Check if numpy-financial, scipy, or QuantLib solves it first |
+| "This library looks correct, I'll use it" | Audit the library's trade-offs, limitations, and alternatives first |
+| "I don't need to document this search" | Persist findings to research.md so they serve as a shared context for planning |
 
 ---
 
 ## When to Use This Skill
 
-Unlike `/define` (which is the full 开题调研 for project kickoff), `/research` is a **utility you invoke at any point**:
+While `/define` and `/discover` kickoff the project, `/research` is a **utility you invoke at any point**:
 
-- **During IMPLEMENT** — Need a library, API, or approach for a specific problem
-- **During VALIDATE** — Need to verify a formula, benchmark, or reference value
-- **V-D Loop** — Validation revealed the wrong problem; research alternatives
-- **R-I Loop** — Implementation hit a wall; research different approaches
-- **Anytime** — "What's the best way to do X?" or "What exists for Y?"
+- **During D (Define & Discover):** To resolve the gaps identified in `/discover` before roadmap planning.
+- **During [R]epresent:** To compare libraries or design patterns before writing specs.
+- **During [I]mplement:** To find specific documentation or code snippets when stuck.
+- **During [V]alidate:** To find reference values, benchmark calculators, or verify formulas.
 
 ## The Flow
 
-### 1. Understand the Question
+### 1. Identify the Target Gap
 
-Ask one focused question:
+Read the `Gaps to Resolve` section in `[project]/product-overview.md` (or ask the developer directly if invoking mid-project):
 
-"What do you need to find? Give me the context — what you're trying to do and what stage you're in."
+"What specific gap or question are we researching? Let's search broadly, identify top options, and compare trade-offs."
 
-If the context is already clear from conversation, skip this and start researching.
+If the target is clear from recent conversation, skip this prompt and begin searching.
 
-### 2. Do the Research
+### 2. Parallel Research (分头研究)
 
-Use WebSearch to find:
-- **Libraries and tools** — What packages solve this problem?
-- **Reference implementations** — How do practitioners approach this?
-- **Benchmarks and data** — What are the standard values or approaches?
-- **Pitfalls** — What goes wrong with common approaches?
+Use WebSearch to investigate:
+- **Libraries & Repos:** What tools solve this?
+- **Practitioner Approaches:** How do professionals solve this?
+- **Trade-offs:** What are the limits, performance concerns, or license issues?
 
-**Research pattern:**
-```
-Search broadly → Identify top 2-3 options → Compare trade-offs
-```
+### 3. Present Findings & Recommendations
 
-### 3. Present Findings
+Structure findings clearly:
+- **Option A:** [Name] — [1-sentence description, pros, cons]
+- **Option B:** [Name] — [1-sentence description, pros, cons]
+- **Recommendation:** Which option to choose and why.
 
-Keep it concise and actionable:
+### 4. Persist to research.md
 
-"Here's what I found:
-
-**Option A: [Library/Approach]**
-- What it does: [one line]
-- Pros: [key strengths]
-- Cons: [key weaknesses]
-
-**Option B: [Library/Approach]**
-- What it does: [one line]
-- Pros: [key strengths]
-- Cons: [key weaknesses]
-
-**My read:** [recommendation with reasoning]
-
-Does this change your thinking? Want me to dig deeper on any of these?"
-
-### 4. Persist Findings
-
-**Always save research to a file.** Research that lives only in chat is research that gets lost.
-
-Write findings to `[project]/research.md` (or `[project]/research-[topic].md` for multiple research rounds):
+Save findings to `[project]/research.md` (or `[project]/research-[topic].md` for multiple topics):
 
 ```markdown
 # Research: [Topic]
 
 _Date: [today]_
 
-## Question
-[What we were trying to find out]
+## Target Gap
+[What knowledge gap or question we resolved]
 
 ## Findings
 
-### Option A: [Library/Approach]
-- What it does: [one line]
-- Pros: [key strengths]
-- Cons: [key weaknesses]
-- Reference: [URL or source]
+### Option A: [Name]
+- Description: [summary]
+- Pros: [strengths]
+- Cons: [limits]
+- Reference: [Link or source]
 
-### Option B: [Library/Approach]
-- What it does: [one line]
-- Pros: [key strengths]
-- Cons: [key weaknesses]
-- Reference: [URL or source]
+### Option B: [Name]
+- Description: [summary]
+- Pros: [strengths]
+- Cons: [limits]
+- Reference: [Link or source]
 
-## Decision
-[Which option and why — or "pending, needs discussion"]
-
-## Decision Landscape (optional)
-
-```mermaid
-graph TD
-    Q[Need: Portfolio Optimization] --> A[PyPortfolioOpt]
-    Q --> B[scipy.optimize]
-    Q --> C[cvxpy]
-    A -->|Pro| A1[Easy API]
-    A -->|Con| A2[Limited constraints]
-    B -->|Pro| B1[Full control]
-    B -->|Con| B2[More code]
-```
+## Recommendation
+[Which option we recommend using and why]
 ```
 
-This file is a **review surface** — the developer reads it at their own pace and catches mistakes before implementation.
+### 5. Suggest Next Step
 
-### 5. Connect Back to Current Work
-
-After presenting findings, connect to what they're doing:
-
-- If in IMPLEMENT: "Should I use [library] in the current section?"
-- If in VALIDATE: "This reference confirms/contradicts what we built."
-- If in V-D loop: "Based on this, should we revisit the product definition?"
-- If exploring: "Want me to prototype something with [library]?"
-
-Don't just dump research — help them decide what to do with it.
-
----
-
-## Deep-Read Techniques
-
-When researching existing code or systems, signal the depth you need:
-- "Read this module **deeply** — understand every edge case and failure mode"
-- "Research the **intricacies** of how this library handles missing data"
-- "Keep researching — what are the edge cases, the alternatives people tried and abandoned?"
-
-**Don't accept initial findings.** After first results, push deeper: "What goes wrong with this approach? What did practitioners discover the hard way?"
-
-### Reference Implementations
-
-When you find good patterns in open source, capture them in research.md alongside the research:
-- "This is how [library X] does sortable IDs — we should adapt this approach"
-- Share code snippets from reference implementations alongside planning requests
-
----
-
-## Proactive Flow
-
-As a Cognition Mate:
-- Research quickly, present clearly, suggest next action
-- Don't over-research — 2-3 good options beats 10 mediocre ones
-- If research reveals the current approach is wrong, say so honestly
-- Connect findings back to the project context
+Connect findings back to the workflow:
+- If in D: "Now that this gap is resolved, are we ready to plan the roadmap with **`/finance-driver:represent-roadmap`**?"
+- If in [I]mplement: "Should I apply this approach to the current section?"
 
 ---
 
 ## Guiding Principles
 
-- **Speed over thoroughness** — This is a utility, not a deep dive. 5-15 minutes, not hours.
-- **Options with trade-offs** — Don't just find one thing; compare 2-3
-- **Connect to context** — Research without application is trivia
-- **Persist findings** — Always write to `[project]/research.md` so research survives beyond chat
-- **很可能已经有类似的了** — There's probably something similar already. Find it.
+- **Speed over Thoroughness:** 5-15 minutes of targeted search beats hours of reading. Present 2-3 quality options.
+- **No Reinvention:** Strongly guide the developer to use established libraries (e.g. PyPortfolioOpt) rather than writing custom math from scratch.
+- **Document Decisions:** Always write to a file so decisions are part of the persistent shared state.
