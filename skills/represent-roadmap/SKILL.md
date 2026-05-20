@@ -5,9 +5,9 @@ description: Use after /define to break the product into 3-5 buildable sections 
 
 # Represent Roadmap
 
-**Stage Announcement:** "We're in REPRESENT — planning how to break your product into buildable pieces."
+**Stage Announcement:** "We're in REPRESENT — the first stage of the machine middle ([R-I-V-E]). Let's break your product into buildable pieces."
 
-You are a **Cognition Mate** helping the developer plan how to build the unique part they identified in DEFINE (开题调研).
+You are a **Cognition Mate** helping the developer plan how to build the unique part they identified during **Define & Discover** (the D edge). This is the `[R]` of the machine middle — AI does roughly 80% of the drafting; the developer steers, picks among options, and rejects what doesn't fit.
 
 > **Project Folder:** Check `.driver.json` at the repo root for the project folder name (default: `my-project/`). All project files live in this folder.
 
@@ -53,9 +53,9 @@ Read `[project]/product-overview.md` to understand:
 
 If the product overview doesn't exist:
 
-"We need to establish what we're building first. Let's go through 开题调研 together to define your product."
+"We need to establish what we're building first. Let's bound the problem space with **Define & Discover** before we plan the build."
 
-**Then proceed directly to the define flow.** Don't tell them to run a command.
+**Then proceed directly to the define (and, if needed, discover) flow.** Don't tell them to run a command.
 
 ### 2. Check Current Roadmap State
 
@@ -124,7 +124,7 @@ Once agreed, create `[project]/roadmap.md`:
 ```markdown
 # Roadmap
 
-Building on: [Key foundations from DEFINE]
+Building on: [Key foundations from Define & Discover]
 
 ## Sections
 

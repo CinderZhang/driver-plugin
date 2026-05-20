@@ -150,7 +150,7 @@ import numpy as np
 st.title("[Section Name]")
 
 # Build the UI and logic
-# Use the libraries identified in DEFINE (开题调研)
+# Use the libraries identified during Define & Discover and Research
 # Implement the unique part
 ```
 

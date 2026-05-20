@@ -124,7 +124,7 @@ claude
 | `/finance-driver:implement-data` | Create sample data |
 | `/finance-driver:implement-screen` | Build and run code (Show Don't Tell) |
 | `/finance-driver:validate` | Cross-check: known answers, reasonableness, edges, AI risks |
-| `/finance-driver:evolve` | Generate final production-ready export package |
+| `/finance-driver:evolve` | Four beats — improve workflow, refine artifact, extract patterns, push into new domains — then package the export |
 
 ### R: Reflect Stage (Human Edge)
 | Skill | Purpose |

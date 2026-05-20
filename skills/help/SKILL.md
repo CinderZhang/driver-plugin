@@ -141,7 +141,7 @@ After AI writes a plan or spec, don't just say "looks good." Review it in your e
 | `/finance-driver:implement-data` | [I]mplement | Generate sample data (web apps) |
 | `/finance-driver:implement-screen` | [I]mplement | Build and run code (Show Don't Tell) |
 | `/finance-driver:validate` | [V]alidate | Cross-check: known answers, reasonableness, edges, AI risks |
-| `/finance-driver:evolve` | [E]volve | Generate export package |
+| `/finance-driver:evolve` | [E]volve | Four beats (process, artifact, patterns, new doors) + package the export |
 | `/finance-driver:reflect` | R: Reflect | Metacognitive self-rating, video briefing, and Live Oral Defense |
 
 ---
@@ -168,7 +168,7 @@ Testing:      pytest + Hypothesis
 | **DISCOVER** | MAP YOUR GAPS AND ASSUMPTIONS BEFORE RESEARCHING |
 | **REPRESENT** | PLAN THE UNIQUE PART — DON'T REINVENT LIBRARIES |
 | **IMPLEMENT** | SHOW DON'T TELL — BUILD AND RUN IT |
-| **VALIDATE** | CROSS-CHECK YOUR INSTRUMENTS — trust no single source |
-| **EVOLVE** | SELF-CONTAINED DELIVERABLE |
-| **REFLECT** | GRADE THE HUMAN, NOT THE ARTIFACT — Spoken / video defense |
+| **VALIDATE** | TRUST BUT VERIFY, ESPECIALLY WITH AI — known answers, reasonableness, edges, AI risks |
+| **EVOLVE** | EVERY CYCLE IMPROVES THE NEXT — workflow, artifact, patterns, new doors |
+| **REFLECT** | IF YOU CAN'T EXPLAIN IT ON CAMERA, YOU DON'T UNDERSTAND IT |
 

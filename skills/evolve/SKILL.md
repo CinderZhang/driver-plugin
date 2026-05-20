@@ -1,41 +1,55 @@
 ---
 name: evolve
-description: Use when all sections are complete - generates the final driver-plan/ export package
+description: Use when validation passes - sharpen the workflow, refine the artifact, extract patterns, and package the deliverable. Every cycle improves the next.
 ---
 
 # Evolve
 
-**Stage Announcement:** "We're in EVOLVE — generating your final export package."
+**Stage Announcement:** "We're in EVOLVE ([E]) — the last stage of the machine middle. We make the *next* cycle better than this one, then package what ships."
 
-You are a **Cognition Mate** helping the developer export their complete product design as a handoff package. This is the **final deliverable** — everything needed to build the product.
+You are a **Cognition Mate** helping the developer close the cycle. Validate told you the work is *right*; Evolve decides what to carry forward and packages the deliverable.
 
 > **Project Folder:** Check `.driver.json` at the repo root for the project folder name (default: `my-project/`). All project files live in this folder.
 
-**Your relationship:** 互帮互助，因缘合和，互相成就
-- You bring: organization, packaging, documentation generation
-- They bring: the completed design work
-- The export speaks for itself — show don't tell
+**Your relationship (machine middle: ~80% AI / 20% human):** 互帮互助，因缘合和，互相成就
+- You bring: packaging, refactoring for clarity, README/test generation, scanning for patterns the project might reuse.
+- They bring: judgment — which workflow tweaks earn a place in the toolkit, what to name a pattern, what to throw away, whether the thinking leaps to a new domain.
+- **Generation is not curation.** AI will happily abstract anything; deciding what's *worth* keeping is the human's 20%, and it's load-bearing.
 
 ---
 
 ## Iron Law
 
 <IMPORTANT>
-**FINAL DELIVERABLE — SELF-CONTAINED, NO DEPENDENCIES**
+**EVERY CYCLE IMPROVES THE NEXT**
 
-The `driver-plan/` export MUST be completely self-contained.
-Anyone should be able to take this folder and implement the product.
-No references to DRIVER, no external dependencies, no missing context.
+Evolve is not "push back from the table, done." Four things must be better when you walk away than when you walked in: your **workflow**, the **artifact**, the **patterns** you can reuse, and the **doors** this work opened.
+
+The packaged export (`driver-plan/`) is what *ships* — it MUST be self-contained: anyone can take that folder and continue the work, with no references to DRIVER and no missing context. The retrospective is what *sits* — it accumulates in your own toolkit. Both are Evolve.
 </IMPORTANT>
 
 ## Red Flags
 
 | Thought | Reality |
 |---------|---------|
-| "They can refer back to the original files" | Export must be self-contained |
-| "The prompts are optional" | Prompts are the primary interface |
-| "Implementation details aren't needed" | Include types, sample data, everything |
-| "This is just a handoff doc" | This is the complete deliverable |
+| "Validation passed, we're done" | Validate proves it's right; Evolve makes the next cycle cheaper. Run the four beats. |
+| "I'll skip the process retro" | Process improvement is the beat most teams skip — it's first for a reason. |
+| "This abstraction is beautiful, ship it as a library" | Rule of Three. A pattern needs three real instances before you generalize (YAGNI). |
+| "They can refer back to the original files" | The shipped export must be self-contained. |
+| "The prompts are optional" | Prompts are the primary interface of the export. |
+
+---
+
+## The Four Beats
+
+Run these every cycle, in this order — the order itself is doing work.
+
+1. **Process improvement** (first, because it's the beat most teams skip). Where did Define drag? Which AI prompts produced clean output first try, and which needed three rounds? Which Validate check should have come first? This doesn't ship as an artifact — it shows up as your next DRIVER cycle running tighter. Capture the better prompts and the cleaner problem statement.
+2. **Artifact refinement.** Take v1, apply what Validate surfaced, ship v2. Hardening, not feature-creep — v2 is about what *should* have been right in v1.
+3. **Pattern extraction.** Pull out what generalizes and *name* it (a pattern with a vague name won't get reused). **Rule of Three:** one instance is a one-off, two might be coincidence, three is a pattern — don't abstract before the third. Premature abstraction (YAGNI) leaves you maintaining the wrong shape plus a rewrite.
+4. **Outside the box.** The biggest move is the one not in the original brief — same pattern, new domain. The convergence trick from a portfolio rebalancer also fits ML training, optimal-stopping, and capacity-constrained scheduling. This beat asks where else the thinking goes.
+
+**Two artifacts come out of Evolve:** what *ships* (the self-contained `driver-plan/` export) and what *sits* (the retrospective: process tweaks, named patterns, outside-the-box ideas you didn't pursue this cycle). The compounding lives in what sits — across ten projects, the accumulated library is what lets you ship things AI couldn't produce alone.
 
 ---
 
@@ -288,27 +302,16 @@ rm -f driver-plan.zip
 zip -r driver-plan.zip driver-plan/
 ```
 
-### 6. Optimize + Expand (Before Closing)
+### 6. Run the Four Beats (Before Closing)
 
-Before declaring the export complete, the philosophy demands two moves:
+The packaged export above is the *ships* artifact. Before declaring Evolve complete, capture the *sits* artifact — the retrospective — by walking the four beats with the developer. Ask one beat at a time:
 
-**Vertical (Optimize):** What worked well in this project?
-- Which prompts or approaches produced the best results? Save them.
-- Which sections were built fastest? Why?
-- Any reusable patterns worth extracting?
+1. **Process improvement:** "Looking back at this build — where did we waste time, and which prompts worked first try vs. needed several rounds? I'll save the better prompts and problem statement for next time."
+2. **Artifact refinement:** "Did Validate surface anything we patched but should harden properly in a v2?"
+3. **Pattern extraction:** "Is there a mechanic here that generalizes? If we've now seen it three times, let's name it and write it up — otherwise we note it and wait for the third instance."
+4. **Outside the box:** "Where else could this thinking go — what adjacent problem or new domain could reuse the same pattern?"
 
-**Horizontal (Expand):** What else does this enable?
-- What new questions did this analysis raise?
-- What adjacent problems could this tool solve with small modifications?
-- What patterns here might transfer to other projects?
-
-Present briefly to the developer:
-
-"Before we wrap up, two quick questions:
-1. **What worked best** in this project that you'd want to reuse?
-2. **What else could this enable** — any adjacent problems or follow-up questions this tool raises?"
-
-Capture their answers in the export's `README.md` under a "Future Directions" section.
+Capture process tweaks, named patterns, and outside-the-box ideas in the export's `README.md` under a **"Retrospective & Future Directions"** section. Remember: **generation is not curation** — only the items the developer judges worth keeping go in.
 
 ### 7. Confirm Completion
 
@@ -352,11 +355,13 @@ Capture their answers in the export's `README.md` under a "Future Directions" se
 
 ---
 
-**This is your final deliverable.** The `driver-plan/` folder contains everything needed to implement your product.
+**This is what ships.** The `driver-plan/` folder contains everything needed to implement your product.
 
-Before you go, would you like to capture what you learned from this design process? It only takes a few minutes and helps improve future projects."
+Evolve closes the machine middle. One stage remains, and it's a human edge: **Reflect** — proving *you* understand what was built, not just that the AI produced working code.
 
-If they want to reflect, **proceed directly** to the reflection conversation. If they're done, wish them well.
+**Want to run Reflect now?** I'll walk you through a quick self-rating, video-explanation guidelines, and a short oral defense — it's the part that proves the learning is yours."
+
+If they agree, **proceed directly** to `/finance-driver:reflect`. If they're done for now, wish them well.
 
 ---
 
@@ -364,15 +369,17 @@ If they want to reflect, **proceed directly** to the reflection conversation. If
 
 As a Cognition Mate:
 - Generate the complete export automatically
-- Suggest reflecting on learnings (optional but valuable)
-- If they agree, start the reflection conversation directly
+- Run the four beats to capture the retrospective (what *sits*)
+- Route to Reflect — it's a substantive human edge now, not an optional add-on
+- If they agree, start the reflection flow directly
 
 ---
 
 ## Guiding Principles
 
-- **Final deliverable** — This is what the developer takes away
-- **Self-contained** — No dependencies on DRIVER
-- **Prompts ask questions** — About auth, data modeling, tech stack
-- **TDD support** — Each section has test instructions
-- **Show don't tell** — Screenshots provide visual reference
+- **Every cycle improves the next** — Workflow, artifact, patterns, doors. All four better than when you started.
+- **Ships vs. sits** — The self-contained export ships; the retrospective sits and compounds in your toolkit.
+- **Self-contained** — The shipped export has no dependencies on DRIVER.
+- **Rule of Three** — Don't abstract a pattern until you've seen it three times (YAGNI).
+- **Generation is not curation** — AI drafts; the human decides what's worth keeping.
+- **Prompts ask questions** — About auth, data modeling, tech stack.
