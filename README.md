@@ -9,21 +9,21 @@ A methodology for AI-augmented finance and quantitative tool development.
 
 ## What is DRIVER™?
 
-DRIVER™ is a metacognitive framework that structures development into a bracketed flow: **$D \cdot [R\text{-}I\text{-}V\text{-}E] \cdot R$**, enforcing "slow edges" (human reflection and problem formulation) and a "fast middle" (machine-assisted build cycles).
+DRIVER™ is a metacognitive framework that structures development into a bracketed flow: **D · [R-I-V-E] · R**, enforcing "slow edges" (human reflection and problem formulation) and a "fast middle" (machine-assisted build cycles).
 
 | Stage | Focus | Command | Ratio (Human/AI) |
 |-------|-------|---------|------------------|
-| **$D$ — Define** | External problem space and success criteria | `/finance-driver:define` | 80% / 20% (Human Edge) |
-| **$D$ — Discover** | Internal knowledge inventory, gaps, and assumptions | `/finance-driver:discover` | 80% / 20% (Human Edge) |
-| **$[R\text{-}I\text{-}V\text{-}E]$** | Machine middle: Roadmap, Specs, Implementation, Validation, Evolve | `/finance-driver:represent-*`, `/finance-driver:implement-*`, `/finance-driver:validate`, `/finance-driver:evolve` | 20% / 80% (Machine Middle) |
-| **$R$ — Reflect** | Spoken/Video Presentation and Live Oral Defense | `/finance-driver:reflect` | 80% / 20% (Human Edge) |
+| **D — Define** | External problem space and success criteria | `/finance-driver:define` | 80% / 20% (Human Edge) |
+| **D — Discover** | Internal knowledge inventory, gaps, and assumptions | `/finance-driver:discover` | 80% / 20% (Human Edge) |
+| **[R-I-V-E]** | Machine middle: Roadmap, Specs, Implementation, Validation, Evolve | `/finance-driver:represent-*`, `/finance-driver:implement-*`, `/finance-driver:validate`, `/finance-driver:evolve` | 20% / 80% (Machine Middle) |
+| **R — Reflect** | Spoken/Video Presentation and Live Oral Defense | `/finance-driver:reflect` | 80% / 20% (Human Edge) |
 
 ## The Philosophy: Cognition Mate (认知伙伴)
 
 **AI is not a tool you command — it's a thinking partner.**
 
-* **The Edges ($D$ and $R$):** The human leads. You bound the problem space and map your gaps to avoid the **Timing Problem** (AI answering before you formulate the question) and the **Deskilling Paradox** (AI replacing human judgment).
-* **The Middle ($[R\text{-}I\text{-}V\text{-}E]$):** The AI does the heavy lifting of code drafting and testing while you steer. Optimize for execution speed here.
+* **The Edges (D and R):** The human leads. You bound the problem space and map your gaps to avoid the **Timing Problem** (AI answering before you formulate the question) and the **Deskilling Paradox** (AI replacing human judgment).
+* **The Middle ([R-I-V-E]):** The AI does the heavy lifting of code drafting and testing while you steer. Optimize for execution speed here.
 
 ---
 

@@ -42,7 +42,7 @@ If `.driver.json` exists, read the project folder name and check for existing fi
 
 ```
 [project]/
-├── product-overview.md     # Created by /define
+├── product-overview.md     # Created by /define & /discover
 ├── roadmap.md              # Created by /represent-roadmap
 ├── spec-[section].md       # Created by /represent-section
 ├── data-model.md           # Created by /represent-datamodel
@@ -113,8 +113,8 @@ repo-root/
 ├── .driver.json                  ← Project config
 ├── [project-name]/               ← DRIVER docs and specs
 │   ├── README.md                 ← You are here
-│   ├── research.md               ← Created by /research or /define
-│   ├── product-overview.md       ← Created by /define (your PRD)
+│   ├── research.md               ← Created by /research, /define, or /discover
+│   ├── product-overview.md       ← Created by /define & /discover (your PRD)
 │   ├── roadmap.md                ← Created by /represent-roadmap
 │   ├── spec-[section].md         ← Created by /represent-section
 │   ├── data-model.md             ← Created by /represent-datamodel
@@ -128,12 +128,12 @@ repo-root/
 
 ## Workflow
 
-1. `/finance-driver:define` — Establish vision, research what exists (开题调研)
-2. `/finance-driver:represent-roadmap` — Break into 3-5 buildable sections
+1. `/finance-driver:define` & `/finance-driver:discover` — Bounding the problem space & mapping gaps (Human Edges)
+2. `/finance-driver:represent-roadmap` — Break into 3-5 buildable sections (Machine Middle)
 3. `/finance-driver:implement-screen` — Build and run, iterate on feedback
 4. `/finance-driver:validate` — Cross-check: known answers, reasonableness, edges, AI risks
 5. `/finance-driver:evolve` — Generate final export package
-6. `/finance-driver:reflect` — Capture lessons learned
+6. `/finance-driver:reflect` — Spoken presentation & Live Oral Defense (Human Edge)
 
 ## Philosophy
 
@@ -159,8 +159,8 @@ This project follows the DRIVER methodology for finance/quant tool development.
 ```
 [project-name]/
 ├── README.md                 ← You are here
-├── research.md               ← Created by /research or /define
-├── product-overview.md       ← Created by /define (your PRD)
+├── research.md               ← Created by /research, /define, or /discover
+├── product-overview.md       ← Created by /define & /discover (your PRD)
 ├── roadmap.md                ← Created by /represent-roadmap
 ├── spec-[section].md         ← Created by /represent-section
 ├── data-model.md             ← Created by /represent-datamodel
@@ -177,12 +177,12 @@ This project follows the DRIVER methodology for finance/quant tool development.
 
 ## Workflow
 
-1. `/finance-driver:define` — Establish vision, research what exists (开题调研)
-2. `/finance-driver:represent-roadmap` — Break into 3-5 buildable sections
+1. `/finance-driver:define` & `/finance-driver:discover` — Bounding the problem space & mapping gaps (Human Edges)
+2. `/finance-driver:represent-roadmap` — Break into 3-5 buildable sections (Machine Middle)
 3. `/finance-driver:implement-screen` — Build and run, iterate on feedback
 4. `/finance-driver:validate` — Cross-check: known answers, reasonableness, edges, AI risks
 5. `/finance-driver:evolve` — Generate final export package
-6. `/finance-driver:reflect` — Capture lessons learned
+6. `/finance-driver:reflect` — Spoken presentation & Live Oral Defense (Human Edge)
 
 ## Philosophy
 
@@ -233,5 +233,5 @@ After init, immediately offer to start `/finance-driver:define`. Don't leave the
 
 - **Minimal scaffold** — Only create what's needed
 - **Finance-focused** — Guide toward quant/finance use cases
-- **Clear next step** — Always point to `/finance-driver:define`
+- **Clear next step** — Always point to `/finance-driver:define` or `/finance-driver:discover`
 - **Personalized** — Let the user name their project folder

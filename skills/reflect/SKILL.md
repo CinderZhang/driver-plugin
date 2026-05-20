@@ -1,5 +1,7 @@
 ---
 name: reflect
+---
+name: reflect
 description: Use after /evolve to evaluate human understanding, capture learnings, and run the Spoken/Video Defense
 ---
 
@@ -7,7 +9,7 @@ description: Use after /evolve to evaluate human understanding, capture learning
 
 **Stage Announcement:** `"We're in REFLECT (R) — validating human understanding, not just the code artifacts."`
 
-You are a **Cognition Mate** helping the developer consolidate their learning. This is the final **Human Edge ($R$)** stage.
+You are a **Cognition Mate** helping the developer consolidate their learning. This is the final **Human Edge (R)** stage.
 
 > **Project Folder:** Check `.driver.json` at the repo root for the project folder name (default: `my-project/`). All project files live in this folder.
 
@@ -23,7 +25,7 @@ You are a **Cognition Mate** helping the developer consolidate their learning. T
 <IMPORTANT>
 **GRADE THE HUMAN, NOT THE ARTIFACT**
 
-Do not assume because the app runs, the developer understands it. The objective is to solidfy the developer's mental models through Spoken Explanation, Video Presentation, and the Live Oral Defense.
+Do not assume because the app runs, the developer understands it. The objective is to solidify the developer's mental models through Spoken Explanation, Video Presentation, and the Live Oral Defense.
 </IMPORTANT>
 
 ## Red Flags
@@ -40,12 +42,13 @@ Do not assume because the app runs, the developer understands it. The objective 
 
 ### 1. Check Prerequisites
 
-Verify that the project has completed the machine middle:
+Verify that the project has completed the machine middle and packaging stages:
 - Does `[project]/product-overview.md` exist?
 - Does `[project]/roadmap.md` exist?
 - Does `[project]/validation.md` exist?
+- Does `driver-plan/` exist (export package from Evolve)?
 - If not:
-  "It looks like you haven't completed the build or validation stages yet. The reflection stage is run after the build is fully validated."
+  "It looks like you haven't completed the validation or evolve stages yet. The reflection stage is run after the build is fully validated and packaged."
 
 ### 2. Pre- & Post-Project Self-Rating
 
@@ -114,10 +117,10 @@ Once they answer the defense questions and complete their self-rating, summarize
 
 "I've saved your reflections and oral defense answers to `[project]/reflect.md`.
 
-**The $D \cdot [R-I-V-E] \cdot R$ workflow is complete:**
-1. **$D$ — Define & Discover:** Problem space locked, gaps mapped, and research persisted.
-2. **$[R-I-V-E]$ — Represent, Implement, Validate, Evolve:** Roadmap spec'd, pages implemented, cross-checked, and export package generated.
-3. **$R$ — Reflect:** Self-ratings recorded, video guidelines reviewed, and oral defense completed.
+**The D · [R-I-V-E] · R workflow is complete:**
+1. **D — Define & Discover:** Problem space locked, gaps mapped, and research persisted.
+2. **[R-I-V-E] — Represent, Implement, Validate, Evolve:** Roadmap spec'd, pages implemented, cross-checked, and export package generated.
+3. **R — Reflect:** Self-ratings recorded, video guidelines reviewed, and oral defense completed.
 
 You have successfully validated both your software artifact and your conceptual understanding! Excellent work."
 

@@ -7,7 +7,7 @@ description: DRIVER overview, available skills, and philosophy explanation
 
 ## What is DRIVER™?
 
-DRIVER™ is a metacognitive framework for building finance and quantitative analysis tools with AI assistance. It organizes development into a bracketed flow: **$D \cdot [R\text{-}I\text{-}V\text{-}E] \cdot R$**, enforcing "slow edges" (deliberate human thinking) and a "fast middle" (machine-assisted build cycles).
+DRIVER™ is a metacognitive framework for building finance and quantitative analysis tools with AI assistance. It organizes development into a bracketed flow: **D · [R-I-V-E] · R**, enforcing "slow edges" (deliberate human thinking) and a "fast middle" (machine-assisted build cycles).
 
 ---
 
@@ -17,36 +17,36 @@ DRIVER™ is a metacognitive framework for building finance and quantitative ana
 
 Rather than treating the AI as an autonomous agent or a simple code generator, DRIVER™ establishes a **thinking partnership** where cognitive burden is strategically shifted:
 
-* **Human Edges ($D$ and $R$):** 80% human / 20% AI. The human leads critical planning, problem bounding, gap assessment, and final conceptual comprehension. The AI acts as a boundary regulator (collar harness) asking challenging questions.
-* **Machine Middle ($[R\text{-}I\text{-}V\text{-}E]$):** 80% AI / 20% human. The AI does the heavy lifting of code generation and drafting; the human steers, reviews code, and runs tests.
+* **Human Edges (D and R):** 80% human / 20% AI. The human leads critical planning, problem bounding, gap assessment, and final conceptual comprehension. The AI acts as a boundary regulator (collar harness) asking challenging questions.
+* **Machine Middle ([R-I-V-E]):** 80% AI / 20% human. The AI does the heavy lifting of code generation and drafting; the human steers, reviews code, and runs tests.
 
 ---
 
-## The Bracketed Stages: $D \cdot [R\text{-}I\text{-}V\text{-}E] \cdot R$
+## The Bracketed Stages: D · [R-I-V-E] · R
 
 ```
           HUMAN EDGE: 80% Human / 20% AI (Slow & Deliberate)
-         ┌──────────────────────────────────────────────────────────┐
-         │ D - DEFINE & DISCOVER                                    │
-         │   /define   -> Define the external problem space         │
-         │   /discover -> Map internal knowledge gaps & assumptions │
-         └────────────────────────────┬─────────────────────────────┘
+         ┌──────────────────────────────────────────────────────────────┐
+         │ D - DEFINE & DISCOVER                                        │
+         │   /define   -> Define the external problem space             │
+         │   /discover -> Map internal knowledge gaps & assumptions     │
+         └────────────────────────────┬─────────────────────────────────┘
                                       │
                                       ▼
-         ┌──────────────────────────────────────────────────────────┐
-         │ [R-I-V-E] - MACHINE MIDDLE (80% AI / 20% Human - Fast)   │
-         │   [R]epresent -> Plan buildable roadmap & specs          │
-         │   [I]mplement -> Build and run (Show Don't Tell)         │
-         │   [V]alidate  -> Cross-check data, answers & edges       │
-         │   [E]volve    -> Package production-ready deliverable    │
-         └────────────────────────────┬─────────────────────────────┘
+         ┌──────────────────────────────────────────────────────────────┐
+         │ [R-I-V-E] - MACHINE MIDDLE (80% AI / 20% Human - Fast)       │
+         │   [R]epresent -> Plan buildable roadmap & specs              │
+         │   [I]mplement -> Build and run (Show Don't Tell)             │
+         │   [V]alidate  -> Cross-check data, answers & edges           │
+         │   [E]volve    -> Package production-ready deliverable        │
+         └────────────────────────────┬─────────────────────────────────┘
                                       │
                                       ▼
-         ┌──────────────────────────────────────────────────────────┐
-         │ R - REFLECT                                              │
-         │   /reflect  -> Self-rating & Spoken/Video Explanation   │
-         │             -> Live Oral Defense fallback                │
-         └──────────────────────────────────────────────────────────┘
+         ┌──────────────────────────────────────────────────────────────┐
+         │ R - REFLECT                                                  │
+         │   /reflect  -> Self-rating & Spoken/Video Explanation        │
+         │             -> Live Oral Defense fallback                    │
+         └──────────────────────────────────────────────────────────────┘
           HUMAN EDGE: 80% Human / 20% AI (Refining Understanding)
 ```
 
@@ -102,11 +102,11 @@ my-project/
 
 ## Key Concepts
 
-### Bounding the Problem vs. Mapping Gaps ($D$)
+### Bounding the Problem vs. Mapping Gaps (D)
 * **Define (External):** Clarifying requirements and success criteria before letting AI write code. Prevents the **Timing Problem** (AI filling the analytical void too fast with plausible but generic answers).
 * **Discover (Internal):** Auditing what you already know vs. what you need to learn. Enforces metacognition before starting research.
 
-### The Reflection Mechanisms ($R$)
+### The Reflection Mechanisms (R)
 To counter the **Artifact-Authenticity Collapse** (where working code does not prove human capability), the Reflection stage uses three cognitive mechanisms:
 1. **Compression:** Boiling down a complex codebase into a 2-5 minute overview.
 2. **Audience Pressure:** Presenting to another human (or video recorder) forces the brain to internalize concepts.
@@ -128,21 +128,21 @@ After AI writes a plan or spec, don't just say "looks good." Review it in your e
 | Skill | Stage | Purpose |
 |-------|-------|---------|
 | `/finance-driver:init` | Setup | Initialize project structure |
-| `/finance-driver:status` | Any | Check progress, get suggestions in $D \cdot [R-I-V-E] \cdot R$ |
+| `/finance-driver:status` | Any | Check progress, get suggestions in D · [R-I-V-E] · R |
 | `/finance-driver:help` | Any | This help page |
 | `/finance-driver:research` | Any | Lightweight 分头研究 — resolve knowledge gaps |
-| `/finance-driver:define` | $D$: Define | Bounding the problem space and success criteria |
-| `/finance-driver:discover` | $D$: Discover | Mapping knowledge inventory, assumptions, and gaps |
-| `/finance-driver:represent-roadmap` | $[R]$esource | Break the unique part into buildable sections |
-| `/finance-driver:represent-datamodel` | $[R]$esource | Define core entities and database schemas |
-| `/finance-driver:represent-tokens` | $[R]$esource | Colors/typography (web apps) |
-| `/finance-driver:represent-shell` | $[R]$esource | Navigation shell (web apps) |
-| `/finance-driver:represent-section` | $[R]$esource | Spec a section |
-| `/finance-driver:implement-data` | $[I]$mplement | Generate sample data (web apps) |
-| `/finance-driver:implement-screen` | $[I]$mplement | Build and run code (Show Don't Tell) |
-| `/finance-driver:validate` | $[V]$alidate | Cross-check: known answers, reasonableness, edges, AI risks |
-| `/finance-driver:evolve` | $[E]$volve | Generate export package |
-| `/finance-driver:reflect` | $R$: Reflect | Metacognitive self-rating, video briefing, and Live Oral Defense |
+| `/finance-driver:define` | D: Define | Bounding the problem space and success criteria |
+| `/finance-driver:discover` | D: Discover | Mapping knowledge inventory, assumptions, and gaps |
+| `/finance-driver:represent-roadmap` | [R]epresent | Break the unique part into buildable sections |
+| `/finance-driver:represent-datamodel` | [R]epresent | Define core entities and database schemas |
+| `/finance-driver:represent-tokens` | [R]epresent | Colors/typography (web apps) |
+| `/finance-driver:represent-shell` | [R]epresent | Navigation shell (web apps) |
+| `/finance-driver:represent-section` | [R]epresent | Spec a section |
+| `/finance-driver:implement-data` | [I]mplement | Generate sample data (web apps) |
+| `/finance-driver:implement-screen` | [I]mplement | Build and run code (Show Don't Tell) |
+| `/finance-driver:validate` | [V]alidate | Cross-check: known answers, reasonableness, edges, AI risks |
+| `/finance-driver:evolve` | [E]volve | Generate export package |
+| `/finance-driver:reflect` | R: Reflect | Metacognitive self-rating, video briefing, and Live Oral Defense |
 
 ---
 
@@ -171,3 +171,4 @@ Testing:      pytest + Hypothesis
 | **VALIDATE** | CROSS-CHECK YOUR INSTRUMENTS — trust no single source |
 | **EVOLVE** | SELF-CONTAINED DELIVERABLE |
 | **REFLECT** | GRADE THE HUMAN, NOT THE ARTIFACT — Spoken / video defense |
+

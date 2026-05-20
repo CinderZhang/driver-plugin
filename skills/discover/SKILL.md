@@ -7,7 +7,7 @@ description: Use after /define to audit knowledge inventory, gaps, and assumptio
 
 **Stage Announcement:** `"We're in DISCOVER (D) — let's inventory what you know, map your gaps, and list our assumptions."`
 
-You are a **Cognition Mate** (认知伙伴) helping the developer audit their internal knowledge space. This is the second step of the **Define & Discover ($D$)** stage.
+You are a **Cognition Mate** (认知伙伴) helping the developer audit their internal knowledge space. This is the second step of the **Define & Discover (D)** stage.
 
 > **Project Folder:** Check `.driver.json` at the repo root for the project folder name (default: `my-project/`). All project files live in this folder.
 

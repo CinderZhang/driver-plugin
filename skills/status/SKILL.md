@@ -35,17 +35,17 @@ Check for the existence of these files/directories and extract key details:
 
 | File/Directory | Stage | Status Checked |
 |----------------|-------|----------------|
-| `[project]/product-overview.md` | $D$: DEFINE | Contains problem & success criteria |
-| `[project]/product-overview.md` | $D$: DISCOVER | Contains `## Knowledge Inventory & Gaps` |
-| `[project]/research.md` | $D$: RESEARCH | Research documented |
-| `[project]/roadmap.md` | $[R]$esource | Roadmap: sections planned |
-| `[project]/data-model.md` | $[R]$esource | Data model defined (optional) |
-| `[project]/spec-*.md` | $[R]$esource | Count section specifications |
-| `app.py` or pages (`"python"`) | $[I]$mplement | Count implemented pages |
-| `src/sections/*/` (`"react"`) | $[I]$mplement | Count implemented sections |
-| `[project]/validation.md` | $[V]$alidate | Check validation results |
-| `driver-plan/` | $[E]$volve | Check export package |
-| `[project]/reflect.md` | $R$: REFLECT | Check retrospective self-rating and defense |
+| `[project]/product-overview.md` | D: DEFINE | Contains problem & success criteria |
+| `[project]/product-overview.md` | D: DISCOVER | Contains `## Knowledge Inventory & Gaps` |
+| `[project]/research.md` | D: RESEARCH | Research documented |
+| `[project]/roadmap.md` | [R]epresent | Roadmap: sections planned |
+| `[project]/data-model.md` | [R]epresent | Data model defined (optional) |
+| `[project]/spec-*.md` | [R]epresent | Count section specifications |
+| `app.py` or pages (`"python"`) | [I]mplement | Count implemented pages |
+| `src/sections/*/` (`"react"`) | [I]mplement | Count implemented sections |
+| `[project]/validation.md` | [V]alidate | Check validation results |
+| `driver-plan/` | [E]volve | Check export package |
+| `[project]/reflect.md` | R: REFLECT | Check retrospective self-rating and defense |
 
 ### 2. Present Status
 
@@ -83,9 +83,9 @@ R (Reflect)
 Provide the next logical action based on the state:
 - If `product-overview.md` has no `Knowledge Inventory & Gaps` section: Suggest `/finance-driver:discover`.
 - If gaps exist but `research.md` is empty: Suggest `/finance-driver:research`.
-- If $D$ is done but no roadmap: Suggest `/finance-driver:represent-roadmap`.
-- If in $[R-I-V-E]$: Recommend writing the next spec, implementing the next page, or running validation.
-- If $[R-I-V-E]$ is finished: Suggest `/finance-driver:reflect` to run the oral defense and video presentation.
+- If D is done but no roadmap: Suggest `/finance-driver:represent-roadmap`.
+- If in [R-I-V-E]: Recommend writing the next spec, implementing the next page, or running validation.
+- If [R-I-V-E] is finished: Suggest `/finance-driver:reflect` to run the oral defense and video presentation.
 
 ### 3. Handle Empty Project
 
@@ -103,6 +103,6 @@ It looks like you haven't started yet.
 
 ## Guiding Principles
 
-- **Clear bracketed status** — Use checkmarks and tables structured around the $D \cdot [R-I-V-E] \cdot R$ boundaries.
-- **Enforce slow edges** — Do not suggest moving to the machine middle ($[R\text{-}I\text{-}V\text{-}E]$) if Define ($D_{def}$) and Discover ($D_{disc}$) are incomplete.
+- **Clear bracketed status** — Use checkmarks and tables structured around the D · [R-I-V-E] · R boundaries.
+- **Enforce slow edges** — Do not suggest moving to the machine middle ([R-I-V-E]) if Define (D: Define) and Discover (D: Discover) are incomplete.
 - **Actionable suggestions** — Always recommend exactly one command/step to maintain momentum.

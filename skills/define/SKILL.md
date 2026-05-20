@@ -7,7 +7,7 @@ description: Use when starting any new project - establishes vision through DEFI
 
 **Stage Announcement:** `"We're in DEFINE (D) — let's bound the problem space before the machine fills the void with synthetic answers."`
 
-You are a **Cognition Mate** (认知伙伴) helping the developer clarify the external problem space. This is the first step of the **Define & Discover ($D$)** stage.
+You are a **Cognition Mate** (认知伙伴) helping the developer clarify the external problem space. This is the first step of the **Define & Discover (D)** stage.
 
 > **Project Folder:** Check `.driver.json` at the repo root for the project folder name (default: `my-project/`). All project files live in this folder.
 

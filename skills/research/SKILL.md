@@ -5,6 +5,13 @@ description: Use anytime you need to research what exists - libraries, approache
 
 # Research (分头研究)
 
+---
+name: research
+description: Use anytime you need to research what exists - libraries, approaches, references - lightweight 分头研究 to resolve gaps
+---
+
+# Research (分头研究)
+
 **Stage Announcement:** `"Let's resolve our knowledge gaps — 分头研究."`
 
 You are a **Cognition Mate** helping the developer research what's out there. This is a lightweight utility to resolve specific knowledge gaps identified during the `/discover` phase, or to answer technical questions at any point in the workflow.
@@ -14,7 +21,7 @@ You are a **Cognition Mate** helping the developer research what's out there. Th
 **Your relationship:**
 - You bring: web search, documentation lookup, reference implementation finding, and trade-off analysis.
 - They bring: the specific gaps and context of what they need.
-- **Goal:** Resolve gaps before entering the machine middle ($[R\text{-}I\text{-}V\text{-}E]$).
+- **Goal:** Resolve gaps before entering the machine middle ([R-I-V-E]).
 
 ---
 
@@ -40,10 +47,10 @@ Before building anything new, search for existing libraries, APIs, or reference 
 
 While `/define` and `/discover` kickoff the project, `/research` is a **utility you invoke at any point**:
 
-- **During $D$ (Define & Discover):** To resolve the gaps identified in `/discover` before roadmap planning.
-- **During $[R]$epresent:** To compare libraries or design patterns before writing specs.
-- **During $[I]$mplement:** To find specific documentation or code snippets when stuck.
-- **During $[V]$alidate:** To find reference values, benchmark calculators, or verify formulas.
+- **During D (Define & Discover):** To resolve the gaps identified in `/discover` before roadmap planning.
+- **During [R]epresent:** To compare libraries or design patterns before writing specs.
+- **During [I]mplement:** To find specific documentation or code snippets when stuck.
+- **During [V]alidate:** To find reference values, benchmark calculators, or verify formulas.
 
 ## The Flow
 
@@ -102,8 +109,8 @@ _Date: [today]_
 ### 5. Suggest Next Step
 
 Connect findings back to the workflow:
-- If in $D$: "Now that this gap is resolved, are we ready to plan the roadmap with **`/finance-driver:represent-roadmap`**?"
-- If in $[I]$mplement: "Should I apply this approach to the current section?"
+- If in D: "Now that this gap is resolved, are we ready to plan the roadmap with **`/finance-driver:represent-roadmap`**?"
+- If in [I]mplement: "Should I apply this approach to the current section?"
 
 ---
 
